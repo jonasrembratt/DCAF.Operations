@@ -12,7 +12,7 @@ local _codeword = "Pheasant"
 local _weco = "Rapture"
 local _msr1 = "the Al Bab, Manjib highway"
 local _destination = "Kharab Ishk"
-local Pheasant = {
+Pheasant = {
     Name = _codeword,
     Groups = {
         BLU = {
@@ -30,14 +30,14 @@ local Pheasant = {
             _weco .. "[CALLSIGN], [CALLSIGN] out.",
         MissionFailed =
             _weco ..
-            "[CALLSIGN], mission " .. _codeword .. " has failed. The motor convoy has reached " .. _destination .. " and have succesfully "
+            ", [CALLSIGN], " .. _codeword .. " is a wash. The motor convoy has reached " .. _destination .. " and have succesfully "
             .. "resupplied and reinforced the forces there. [CALLSIGN] out.",
         MissionComplete =
-            _weco .. "[CALLSIGN], mission " .. _codeword .. ": motor convoy succesfully destroyed, and enemy forces at "
+            _weco .. ", [CALLSIGN], mission " .. _codeword .. ": motor convoy succesfully destroyed, and enemy forces at "
             .. _destination .. " are severely weakened in their ability to maintain control of the base. Good work. [CALLSIGN] out.",
         Pheasant_Urgent =
-            _weco .. "[CALLSIGN], update on " .. _codeword .. ". The motor convoy has just crossed the bridge north east of Manjib into the N F Z. Unless action is taken immediately, "
-            .. "they are slated to arrive at " .. _destination .. " in .[CALLSIGN] out.",
+            _weco .. ", [CALLSIGN], update on " .. _codeword .. ". The motor convoy has just crossed the bridge north east of Manjib into the N F Z. Unless action is taken immediately, "
+            .. "they are slated to arrive at " .. _destination .. " in .[CALLSIGN] out."
     }
 }
 
@@ -77,9 +77,21 @@ function Pheasant:MissionComplete()
     end, Minutes(1))
 end
 
+function Pheasant:CAS_Request()
+    if not self.Groups.RED.Pheasant:IsAlive() then return end
+    for _, unit in ipairs(self.Groups.RED.Pheasant) do
+        self.Groups.RED.Pheasant:GetUnit(unit):Explode(1500, 10)
+        self._CAS_menu:Remove(true)
+    end
+end
+
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
 Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     local tts
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Pheasant:Start(tts)
 end)
+Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
+    Pheasant:CAS_Request()
+end)
+
