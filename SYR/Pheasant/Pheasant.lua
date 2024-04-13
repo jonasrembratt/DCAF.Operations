@@ -80,9 +80,9 @@ end
 function Pheasant:CAS_Request()
     if not self.Groups.RED.Pheasant:IsAlive() then return end
     for _, unit in ipairs(self.Groups.RED.Pheasant) do
-        self.Groups.RED.Pheasant:GetUnit(unit):Explode(1500, 10)
-        self._CAS_menu:Remove(true)
+        self.Groups.RED.Pheasant:Explode(1500, 10)
     end
+    self._CAS_menu:Remove(true)
 end
 
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
