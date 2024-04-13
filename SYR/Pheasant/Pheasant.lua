@@ -78,11 +78,10 @@ function Pheasant:MissionComplete()
 end
 
 function Pheasant:CAS_Request()
-    if not self.Groups.RED.Pheasant:IsAlive() then return end
-    for _, unit in ipairs(self.Groups.RED.Pheasant) do
-        self.Groups.RED.Pheasant:Explode(1500, 10)
+    if self.Group.RED.PHEASANT:IsAlive() then
+        self.Group.RED.PHEASANT:Explode(1500, 2)
+        self._CAS_menu:Remove(true)
     end
-    self._CAS_menu:Remove(true)
 end
 
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
@@ -92,6 +91,6 @@ Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     Pheasant:Start(tts)
 end)
 Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
-    Pheasant:CAS_Request()
+    CAS_Request(Pheasant.Groups.RED.Pheasant, 2)
 end)
 
