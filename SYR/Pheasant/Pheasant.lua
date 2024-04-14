@@ -18,7 +18,7 @@ Pheasant = {
         BLU = {
         },
         RED = {
-            Pheasant = getGroup("Pheasant Convoy-1")
+            Convoy = getGroup("Pheasant Convoy-1")
         },
     },
     MSG = {
@@ -32,22 +32,23 @@ Pheasant = {
             _weco ..
             ", [CALLSIGN], " .. _codeword .. " is a wash. The motor convoy has reached " .. _destination .. " and have succesfully "
             .. "resupplied and reinforced the forces there. [CALLSIGN] out.",
-        MissionComplete =
+        ConvoyDestroyed =
             _weco .. ", [CALLSIGN], mission " .. _codeword .. ": motor convoy succesfully destroyed, and enemy forces at "
             .. _destination .. " are severely weakened in their ability to maintain control of the base. Good work. [CALLSIGN] out.",
         Pheasant_Urgent =
             _weco .. ", [CALLSIGN], update on " .. _codeword .. ". The motor convoy has just crossed the bridge north east of Manjib into the N F Z. Unless action is taken immediately, "
-            .. "they are slated to arrive at " .. _destination .. " in .[CALLSIGN] out."
+            .. "they are slated to arrive at " .. _destination .. " in time + 30 mikes. [CALLSIGN] out."
     }
 }
 
 function Pheasant:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    Pheasant._start_menu:Remove(true)
+    self._start_menu:Remove(true)
     self.TTS = tts
-    self.Groups.RED.Pheasant:Activate()
+    self.Groups.RED.Convoy:Activate()
     self:Send(self.MSG.Start)
+    self:ConvoyAlive()
 end
 
 function Pheasant:Send(msg)
@@ -68,20 +69,35 @@ function Pheasant:Urgent()
     self:Send(self.MSG.Pheasant_Urgent)
 end
 
-function Pheasant:MissionComplete()
-    DCAF.startScheduler(function()
-        if not self.Groups.RED.Pheasant:IsActive() then return end
-        if not self.Groups.RED.Pheasant:IsAlive() then
-            self:Send(self.MSG.MissionComplete)
+function Pheasant:ConvoyDestroyed()
+    self:Send(self.MSG.ConvoyDestroyed)
+end
+
+function Pheasant:ConvoyAlive()
+    self._checkLifeSchedulerID = DCAF.startScheduler(function()
+        local convoy = self.Groups.RED.Convoy
+        local degradeRatio = 0.6
+        if not convoy:IsActive() then return end
+        local ratio = convoy:GetSize() / convoy:GetInitialSize()
+        if ratio <= degradeRatio then
+            self:ConvoyDestroyed()
+            DCAF.stopScheduler(self._checkLifeSchedulerID)
+            convoy:SetAIOff()
         end
-    end, Minutes(1))
+    end, 30)
 end
 
 function Pheasant:CAS_Request()
-    if self.Group.RED.PHEASANT:IsAlive() then
-        self.Group.RED.PHEASANT:Explode(1500, 2)
-        self._CAS_menu:Remove(true)
+    local units = self.Groups.RED.Convoy:GetUnits()
+    local killUnits = math.floor(#units * 0.7)
+    for i = 1, killUnits, 1 do
+        local unit = self.Groups.RED.Convoy:GetUnit(i)
+        unit:Explode(500, 2)
     end
+    -- for i, target in ipairs(units) do
+    --     target:Explode(500, 2)
+    -- end
+    self._CAS_menu:Remove(true)
 end
 
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
@@ -91,6 +107,6 @@ Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     Pheasant:Start(tts)
 end)
 Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
-    CAS_Request(Pheasant.Groups.RED.Pheasant, 2)
+    Pheasant:CAS_Request()
 end)
 
