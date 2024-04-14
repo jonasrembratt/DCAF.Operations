@@ -10,7 +10,7 @@
 -- Complete isEscortNearby function
 
 local _codeword = "Swallow"
-Swallow = {
+Robin = {
     Name = _codeword,
     Groups = {
         BLU = {
@@ -58,10 +58,10 @@ Swallow = {
     }
 }
 
-function Swallow:Start(tts)
+function Robin:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    Swallow._start_menu:Remove(true)
+    Robin._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.BLU.Hercs_1:Activate()
     self.Groups.BLU.Vipers_1:Activate()
@@ -70,17 +70,17 @@ function Swallow:Start(tts)
     self:_monitorForEscort()
 end
 
-function Swallow:Send(msg)
+function Robin:Send(msg)
     if not self.TTS or not isAssignedString(msg) then return end
     self.TTS:Send(msg)
 end
 
-function Swallow:SendActual(msg)
+function Robin:SendActual(msg)
     if not self.TTS or not isAssignedString(msg) then return end
     self.TTS:SendActual(msg)
 end
 
-function Swallow:_monitorForEscort()
+function Robin:_monitorForEscort()
 
     --[[ this is what we get back from ScanAirborneUnits function:
         DCAF.ClosestUnits = {
@@ -122,18 +122,18 @@ Debug("sausage → _monitorForEscort :: Hercs are now escorted :: ENDS SCHEDULIN
     end, 10)
 end
 
-function Swallow:_stopMonitorForEscort()
+function Robin:_stopMonitorForEscort()
     if not self._monitor_escort_scheduleID then return end
     DCAF.stopScheduler(self._monitor_escort_scheduleID)
     self._monitor_escort_scheduleID = nil
 end
 
-function Swallow:RequestEscort()
+function Robin:RequestEscort()
     if self._is_escorted == true then return end
     self:Send(self.MSG.RequestEscort)
 end
 
-function Swallow:GoNoGoDecision()
+function Robin:GoNoGoDecision()
     self:_stopMonitorForEscort()
     if self._is_escorted then
         self:ActivateGauntlet()
@@ -142,7 +142,7 @@ function Swallow:GoNoGoDecision()
     end
 end
 
-function Swallow:ActivateGauntlet()
+function Robin:ActivateGauntlet()
     self.Groups.RED.Gauntlet:Activate()
     DCAF.delay(function()
         if not self.Groups.RED.Gauntlet:IsAlive() then return end
@@ -150,7 +150,7 @@ function Swallow:ActivateGauntlet()
     end, 90)
 end
 
-function Swallow:_topDogActualScolding(msg, delay)
+function Robin:_topDogActualScolding(msg, delay)
     DCAF.delay(function()
         -- temporarily tunes Guard to give everyone a dress-down for failing the mission...
         self.TTS:Tune(Frequencies.Guard)
@@ -159,37 +159,37 @@ function Swallow:_topDogActualScolding(msg, delay)
     end, delay or Minutes(2))
 end
 
-function Swallow:MissionAbortedNoEscort()
+function Robin:MissionAbortedNoEscort()
     self:Send(self.MSG.MissionAbortedNoEscort)
     self:_topDogActualScolding(self.MSG.TDA_ScoldingNoEscort, Minutes(2))
     RTBNow(self.Groups.BLU.Hercs_1, AIRBASE.Syria.Incirlik)
 end
 
-function Swallow:AbortOnGauntletActive()
+function Robin:AbortOnGauntletActive()
     if not self.Groups.RED.Gauntlet:IsAlive() then return end
     Divert(self.Groups.BLU.Hercs_1)
     self:Send(self.MSG.MissionAbortedGauntletAwake)
     self:_topDogActualScolding(self.MSG.TDA_ScoldingGauntletAwake, Minutes(2))
 end
 
-function Swallow:MissionComplete()
+function Robin:MissionComplete()
     self:Send(self.MSG.MissionComplete)
 end
 
-function Swallow:CAS_Request()
+function Robin:CAS_Request()
     if not self.Groups.RED.Gauntlet:IsAlive() then return end
     self.Groups.RED.Gauntlet:GetUnit(1):Explode(1500, 10)
     self._CAS_menu:Remove(true)
 end
 
-Swallow._main_menu = GM_Menu:AddMenu(_codeword)
-Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()
+Robin._main_menu = GM_Menu:AddMenu(_codeword)
+Robin._start_menu = Robin._main_menu:AddCommand("Start", function()
     local tts
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
-    Swallow:Start(tts)
+    Robin:Start(tts)
 end)
-Swallow._CAS_menu = Swallow._main_menu:AddCommand("Request CAS", function()
-    Swallow:CAS_Request()
+Robin._CAS_menu = Robin._main_menu:AddCommand("Request CAS", function()
+    Robin:CAS_Request()
 end)
 
 -- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
