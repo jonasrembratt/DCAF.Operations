@@ -16,7 +16,6 @@ Pheasant = {
     Name = _codeword,
     Groups = {
         BLU = {
-            A10 = getGroup("Sausage Pheasant-1")
         },
         RED = {
             Convoy = getGroup("Pheasant Convoy-1")
@@ -77,7 +76,7 @@ function Pheasant:ConvoyAlive()
     self._checkLifeSchedulerID = DCAF.startScheduler(function()
         local convoy = self.Groups.RED.Convoy
         local degradeRatio = 0.6
-        if not convoy:IsActive() then return end
+        if convoy and not convoy:IsActive() then return end
         local ratio = convoy:GetSize() / convoy:GetInitialSize()
         if ratio <= degradeRatio then
             self:ConvoyDestroyed()
@@ -87,18 +86,18 @@ function Pheasant:ConvoyAlive()
     end, 30)
 end
 
-function Pheasant:CAS_Request()
-    local units = self.Groups.RED.Convoy:GetUnits()
-    local killUnits = math.floor(#units * 0.7)
-    for i = 1, killUnits, 1 do
-        local unit = self.Groups.RED.Convoy:GetUnit(i)
-        unit:Explode(500, 2)
-    end
-    -- for i, target in ipairs(units) do
-    --     target:Explode(500, 2)
-    -- end
-    self._CAS_menu:Remove(true)
-end
+-- function Pheasant:CAS_Request()
+--     local units = self.Groups.RED.Convoy:GetUnits()
+--     local killUnits = math.floor(#units * 0.7)
+--     for i = 1, killUnits, 1 do
+--         local unit = self.Groups.RED.Convoy:GetUnit(i)
+--         unit:Explode(500, 2)
+--     end
+--     -- for i, target in ipairs(units) do
+--     --     target:Explode(500, 2)
+--     -- end
+--     self._CAS_menu:Remove(true)
+-- end
 
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
 Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
@@ -106,7 +105,7 @@ Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Pheasant:Start(tts)
 end)
-Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
-    Pheasant:CAS_Request()
-end)
+-- Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
+--     Pheasant:CAS_Request()
+-- end)
 
