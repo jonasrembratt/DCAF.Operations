@@ -10,50 +10,60 @@
 -- Complete isEscortNearby function
 
 local _codeword = "Swallow"
+local _recipient = "Rapture"
 Swallow = {
     Name = _codeword,
     Groups = {
         BLU = {
             Hercs_1 = getGroup("Swallow Hercs-1"),
-            Vipers_1 = getGroup("Swallow F16-1"),
         },
         RED = {
             Gauntlet = getGroup("Swallow Gauntlet-1")
         }
     },
+    -- after Hercs passes GoNogo point the SA-15 is activated, but in GREEN state until mission BLU aircraft types gets within the specified range...
+    WakeGauntletTypes = {
+        ENUMS.UnitType.C_130,
+        ENUMS.UnitType.F16CM,
+        ENUMS.UnitType.F15ESE,
+        ENUMS.UnitType.AVN8B,
+    },
+    WakeGauntletRange = NauticalMiles(40),
     MSG = {
         Start =
-            "[CALLSIGN], all stations. Priority mission. Operation " .. _codeword .. " is a go. Immediate retasking of Eagles to escort " .. _codeword .. " one " ..
+            _recipient .. ", [CALLSIGN]. Priority mission. Operation " .. _codeword .. " is a go. Request tasking of appropriate flight package to escort " .. _codeword .. " one " ..
             "to their destination in the no fly zone.",
         RequestEscort =
-            "[CALLSIGN], all stations. Relaying urgent request from [CALLSIGN] actual! " .. _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
-            "and is requesting immediate Eagle escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
+            _recipient .. ", [CALLSIGN]. Relaying urgent request from [CALLSIGN] actual! " ..
+            _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
+            "and is requesting immediate flight package to escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
         MissionComplete =
-            "[CALLSIGN], all stations, " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. [CALLSIGN] out.",
+            _recipient .. ", [CALLSIGN]. " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. " ..
+            "[CALLSIGN] out.",
         GauntletActive =
-            "[CALLSIGN], all stations, urgent tasking. We are picking up emission from an active Gauntlet at grid p[EV 09], keypad one. " ..
+            _recipient .. ", [CALLSIGN]. urgent tasking. We are picking up emission from an active Gauntlet at grid p[EV 09], keypad one. " ..
             "The S A fifteen is an imminent threat toward " .. _codeword .. " one and must be eliminated or suppressed before the hercs "..
             "reaches the area in about nine minutes. Repeat. Request immediate destruction of Gauntlet vehicle in grid p[EV 09] keypad one, "..
             "to ensure safety for " .. _codeword .. " one supply drop mission. [CALLSIGN] out.",
         MissionAbortedNoEscort =
-            "[CALLSIGN] with an update. Failure to provide security for the " .. _codeword .. " supply drop mission has forced it to cancel and "..
-            "return to base. This is very unfortunate!",
+            _recipient .. ", [CALLSIGN] with an update. Failure to provide security for the " ..
+            _codeword .. " supply drop mission has forced it to abort and return to base. This is very unfortunate!",
         MissionAbortedGauntletAwake =
-            "[CALLSIGN] with an update. The Gauntlet in grid p[EV 09] is still awake and represent an unacceptable threat to " .. _codeword .. " one. "..
-            "The supply drop is therefore cancelled and " .. _codeword .. " one is now RTB. This is very unfortunate.",
+            _recipient .. ", [CALLSIGN] with an update. The Gauntlet in grid p[EV 09] is still awake and represents an unacceptable threat to " ..
+            _codeword .. " one. The supply drop is therefore cancelled and " .. _codeword .. " one is now RTB. This is very unfortunate.",
         TDA_ScoldingNoEscort =
-            "[CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to meet mission" ..
-            " criteria on time, " .. _codeword .. " mission has been scrapped. We operate on precise timelines for a reason. "..
+            "All stations! [CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to meet mission " ..
+            "criteria on time, " .. _codeword .. " mission has been scrapped. We operate on precise timelines for a reason. "..
             "Failure to adhere to these timelines jeopardizes not only the success of the mission, but the safety of every member of this unit. " ..
             "This lack of discipline is unacceptable. We cannot afford to make excuses or overlook the importance of our protocols. " ..
             "I expect better from each and every one of you. We will review our procedures and ensure that this does not happen again. " ..
             "Get your act together, pilots. Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief "..
             "and review tomorrow at oh eight hundred. [CALLSIGN] out.",
         TDA_ScoldingGauntletAwake =
-            "[CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to uphold security " .. _codeword .. " mission has been scrapped. "..
-            "We need to do better! The inability to react to unexpected threats jeopardizes not only the success of the mission, but the safety of every member "..
-            "of this unit. This is unacceptable. I expect better from each and every one of you. We will review our ability to prioritize and make proper decisions "..
-            "to ensure that this does not repeated.  Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief "..
+            "All stations! [CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to uphold security " .. _codeword .. " mission has been scrapped. " ..
+            "We need to do better! The inability to react to unexpected threats jeopardizes not only the success of the mission, but the safety of every member " ..
+            "of this unit. This is unacceptable. I expect better from each and every one of you. We will review our ability to prioritize and make proper decisions " ..
+            "to ensure that this does not repeat.  Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief " ..
             "and review tomorrow at oh eight hundred. [CALLSIGN] out.",
     }
 }
@@ -61,7 +71,7 @@ Swallow = {
 function Swallow:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    Swallow._start_menu:Remove(true)
+    self._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.BLU.Hercs_1:Activate()
     self.Groups.BLU.Vipers_1:Activate()
@@ -136,18 +146,31 @@ end
 function Swallow:GoNoGoDecision()
     self:_stopMonitorForEscort()
     if self._is_escorted then
-        self:ActivateGauntlet()
+        self:ActivateGauntlet(self.WakeGauntletRange)
     else
         self:MissionAbortedNoEscort()
     end
 end
 
-function Swallow:ActivateGauntlet()
+function Swallow:ActivateGauntlet(wakeUpAtRangeMeters)
     self.Groups.RED.Gauntlet:Activate()
+Debug("nisse - Swallow:ActivateGauntlet :: wakeUpAtRange: " .. Dump(wakeUpAtRangeMeters))
+    if isNumber(wakeUpAtRangeMeters) then
+Debug("nisse - Swallow:ActivateGauntlet :: gauntlet is in GREEN state until hostiles gets to " .. UTILS.MetersToNM(wakeUpAtRangeMeters) .. " nm")
+        self.Groups.RED.Gauntlet:OptionAlarmStateGreen()
+        local locGauntlet = DCAF.Location.Resolve(self.Groups.RED.Gauntlet)
+        locGauntlet:OnUnitTypesInRange(self.WakeGauntletTypes, wakeUpAtRangeMeters, Coalition.Blue, function()
+Debug("nisse - Swallow:ActivateGauntlet :: hostiles at ".. UTILS.MetersToNM(wakeUpAtRangeMeters) .. " nm...")
+            Swallow:ActivateGauntlet()
+        end)
+        return self
+    end
+Debug("nisse - Swallow:ActivateGauntlet :: wakes up gauntlet!")
+    self.Groups.RED.Gauntlet:OptionAlarmStateRed()
     DCAF.delay(function()
         if not self.Groups.RED.Gauntlet:IsAlive() then return end
         self:Send(self.MSG.GauntletActive)
-    end, 90)
+    end, 30)
 end
 
 function Swallow:_topDogActualScolding(msg, delay)
@@ -190,6 +213,10 @@ Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()
 end)
 Swallow._CAS_menu = Swallow._main_menu:AddCommand("Request CAS", function()
     Swallow:CAS_Request()
+end)
+Swallow._sim_escort_menu = Swallow._main_menu:AddCommand("Simulate escort", function()
+    Swallow._is_escorted = true
+    Swallow._sim_escort_menu:Remove()
 end)
 
 -- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
