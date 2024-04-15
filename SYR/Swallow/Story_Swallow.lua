@@ -207,16 +207,14 @@ end
 
 Swallow._main_menu = GM_Menu:AddMenu(_codeword)
 Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()
-    local tts
-    if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
-    Swallow:Start(tts)
+    Swallow:Start(TTS_Top_Dog)
 end)
-Swallow._CAS_menu = Swallow._main_menu:AddCommand("Request CAS", function()
-    Swallow:CAS_Request()
-end)
-Swallow._sim_escort_menu = Swallow._main_menu:AddCommand("Simulate escort", function()
-    Swallow._is_escorted = true
-    Swallow._sim_escort_menu:Remove()
-end)
+-- Swallow._CAS_menu = Swallow._main_menu:AddCommand("Request CAS", function()
+--     Swallow:CAS_Request()
+-- end)
+-- Swallow._sim_escort_menu = Swallow._main_menu:AddCommand("Simulate escort", function()
+--     Swallow._is_escorted = true
+--     Swallow._sim_escort_menu:Remove()
+-- end)
 
 -- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
