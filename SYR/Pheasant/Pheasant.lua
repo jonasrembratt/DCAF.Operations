@@ -101,9 +101,7 @@ end
 
 Pheasant._main_menu = GM_Menu:AddMenu(_codeword)
 Pheasant._start_menu = Pheasant._main_menu:AddCommand("Start", function()
-    local tts
-    if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
-    Pheasant:Start(tts)
+    Pheasant:Start(TTS_Top_Dog)
 end)
 -- Pheasant._CAS_menu = Pheasant._main_menu:AddCommand("Request CAS", function()
 --     Pheasant:CAS_Request()
