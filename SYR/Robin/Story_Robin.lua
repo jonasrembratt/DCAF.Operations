@@ -1,12 +1,14 @@
 -- //////////////////////////////////////////////////////////////////////////////////
 --                                     ROBIN
 --                                     *****
--- Syria has positioned a mechanized battalion and is patrolling the surroundings
--- The battalion is protected from the air by one SA-9, one SA-19, as well as AAA
-
--- TODO
--- More messages (top dog) -- Needs final approval
--- Complete isEscortNearby function
+-- Syria has positioned a mechanized battalion and is patrolling the surroundings. 
+-- The battalion is protected from the air by one SA-9, one SA-19, as well as AAA. 
+-- Story contains a ROZ for A-G players to perform SCAR
+-------------------------------------------------------------------------------------
+-- DEPENDENCIES
+--   DCAF.Core
+--   DCAF.GBAD
+--   DCAF.GBAD.Regiment
 
 local function getZoneVec3(zoneName)
     local zone = ZONE:FindByName(zoneName)
