@@ -22,14 +22,22 @@ Swallow = {
             Gauntlet = getGroup("Swallow Gauntlet-1")
         }
     },
+    -- after Hercs passes GoNogo point the SA-15 is activated, but in GREEN state until mission BLU aircraft types gets within the specified range...
+    WakeGauntletTypes = {
+        ENUMS.UnitType.C_130,
+        ENUMS.UnitType.F16CM,
+        ENUMS.UnitType.F15ESE,
+        ENUMS.UnitType.AVN8B,
+    },
+    WakeGauntletRange = NauticalMiles(40),
     MSG = {
         Start =
-            _recipient .. ", [CALLSIGN]. Priority mission. Operation " .. _codeword .. " is a go. Immediate retasking of Eagles to escort " .. _codeword .. " one " ..
+            _recipient .. ", [CALLSIGN]. Priority mission. Operation " .. _codeword .. " is a go. Request tasking of appropriate flight package to escort " .. _codeword .. " one " ..
             "to their destination in the no fly zone.",
         RequestEscort =
             _recipient .. ", [CALLSIGN]. Relaying urgent request from [CALLSIGN] actual! " ..
             _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
-            "and is requesting immediate Eagle escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
+            "and is requesting immediate flight package to escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
         MissionComplete =
             _recipient .. ", [CALLSIGN]. " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. " ..
             "[CALLSIGN] out.",
@@ -139,18 +147,31 @@ end
 function Swallow:GoNoGoDecision()
     self:_stopMonitorForEscort()
     if self._is_escorted then
-        self:ActivateGauntlet()
+        self:ActivateGauntlet(self.WakeGauntletRange)
     else
         self:MissionAbortedNoEscort()
     end
 end
 
-function Swallow:ActivateGauntlet()
+function Swallow:ActivateGauntlet(wakeUpAtRangeMeters)
     self.Groups.RED.Gauntlet:Activate()
+Debug("nisse - Swallow:ActivateGauntlet :: wakeUpAtRange: " .. Dump(wakeUpAtRangeMeters))
+    if isNumber(wakeUpAtRangeMeters) then
+Debug("nisse - Swallow:ActivateGauntlet :: gauntlet is in GREEN state until hostiles gets to " .. UTILS.MetersToNM(wakeUpAtRangeMeters) .. " nm")
+        self.Groups.RED.Gauntlet:OptionAlarmStateGreen()
+        local locGauntlet = DCAF.Location.Resolve(self.Groups.RED.Gauntlet)
+        locGauntlet:OnUnitTypesInRange(self.WakeGauntletTypes, wakeUpAtRangeMeters, Coalition.Blue, function()
+Debug("nisse - Swallow:ActivateGauntlet :: hostiles at ".. UTILS.MetersToNM(wakeUpAtRangeMeters) .. " nm...")
+            Swallow:ActivateGauntlet()
+        end)
+        return self
+    end
+Debug("nisse - Swallow:ActivateGauntlet :: wakes up gauntlet!")
+    self.Groups.RED.Gauntlet:OptionAlarmStateRed()
     DCAF.delay(function()
         if not self.Groups.RED.Gauntlet:IsAlive() then return end
         self:Send(self.MSG.GauntletActive)
-    end, 90)
+    end, 30)
 end
 
 function Swallow:_topDogActualScolding(msg, delay)
@@ -193,6 +214,10 @@ Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()
 end)
 Swallow._CAS_menu = Swallow._main_menu:AddCommand("Request CAS", function()
     Swallow:CAS_Request()
+end)
+Swallow._sim_escort_menu = Swallow._main_menu:AddCommand("Simulate escort", function()
+    Swallow._is_escorted = true
+    Swallow._sim_escort_menu:Remove()
 end)
 
 -- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
