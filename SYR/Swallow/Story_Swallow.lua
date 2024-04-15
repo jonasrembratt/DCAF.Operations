@@ -32,12 +32,12 @@ Swallow = {
     WakeGauntletRange = NauticalMiles(40),
     MSG = {
         Start =
-            _recipient .. ", [CALLSIGN]. Priority mission. Operation " .. _codeword .. " is a go. Immediate retasking of Eagles to escort " .. _codeword .. " one " ..
+            _recipient .. ", [CALLSIGN]. Priority mission. Operation " .. _codeword .. " is a go. Request tasking of appropriate flight package to escort " .. _codeword .. " one " ..
             "to their destination in the no fly zone.",
         RequestEscort =
             _recipient .. ", [CALLSIGN]. Relaying urgent request from [CALLSIGN] actual! " ..
             _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
-            "and is requesting immediate Eagle escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
+            "and is requesting immediate flight package to escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
         MissionComplete =
             _recipient .. ", [CALLSIGN]. " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. " ..
             "[CALLSIGN] out.",
