@@ -22,27 +22,39 @@ Swallow = {
         }
     },
     MSG = {
-        Start = "[CALLSIGN], all stations. Priority mission. Operation " .. _codeword .. " is a go. Immediate retasking of Eagles to escort " .. _codeword .. " one " ..
-         "to their destination in the no fly zone.",
-        RequestEscort = "[CALLSIGN], all stations. Relaying urgent request from [CALLSIGN] actual! " .. _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
+        Start =
+            "[CALLSIGN], all stations. Priority mission. Operation " .. _codeword .. " is a go. Immediate retasking of Eagles to escort " .. _codeword .. " one " ..
+            "to their destination in the no fly zone.",
+        RequestEscort =
+            "[CALLSIGN], all stations. Relaying urgent request from [CALLSIGN] actual! " .. _codeword .. " one is expected to enter the no fly zone at time plus seventeen " ..
             "and is requesting immediate Eagle escort. [CALLSIGN] actual would like to remind you that the ".. _codeword .. " one mission is critical to our objective. [CALLSIGN] out.",
-        MissionAborted = 
-            -- jonas: Only use [CALLSIGN] in the text. The DCAF.TTSChannel will automatically replace it with whatever callsign we have configured for it. 
-            "[CALLSIGN] actual, attention all stations. I'm disappointed to report that due to failure to meet mission" ..
-            " criteria on time, " .. _codeword .. " mission has been scrapped. We operate on precise timelines for a reason. Failure to adhere to these timelines jeopardizes" ..
-            " not only the success of the mission, but the safety of every member of this unit." ..
-            " This lack of discipline is unacceptable. We cannot afford to make excuses or overlook the importance of our protocols." ..
-            " I expect better from each and every one of you. We will review our procedures and ensure that this does not happen again." ..
-            " Get your act together, pilots. Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief and review tomorrow at oh eight hundred." ..
-            " Top Dog Actual out.", -- jonas: don't add the "actual" suffix to the text. Instead use SendActual(...) to transmit
-        MissionComplete = "[CALLSIGN], all stations, " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. [CALLSIGN] out.",
-        GauntletActive = "[CALLSIGN], all stations, urgent tasking. We are picking up emission from an active Gauntlet at grid p[EV 09], keypad one. " ..
+        MissionComplete =
+            "[CALLSIGN], all stations, " .. _codeword .. " has completed their mission and is RTB. [CALLSIGN] actual is pleased with your work. [CALLSIGN] out.",
+        GauntletActive =
+            "[CALLSIGN], all stations, urgent tasking. We are picking up emission from an active Gauntlet at grid p[EV 09], keypad one. " ..
             "The S A fifteen is an imminent threat toward " .. _codeword .. " one and must be eliminated or suppressed before the hercs "..
             "reaches the area in about nine minutes. Repeat. Request immediate destruction of Gauntlet vehicle in grid p[EV 09] keypad one, "..
             "to ensure safety for " .. _codeword .. " one supply drop mission. [CALLSIGN] out.",
-        AbortOnGauntletActive =
-            "[CALLSIGN], all stations, update. " .. _codeword .. " one is aborting the supply drop and is now RTB as the Gauntlet in "..
-            "grid p[EV 09] has not been eliminated. Stand by for [CALLSIGN] actual."
+        MissionAbortedNoEscort =
+            "[CALLSIGN] with an update. Failure to provide security for the " .. _codeword .. " supply drop mission has forced it to cancel and "..
+            "return to base. This is very unfortunate!",
+        MissionAbortedGauntletAwake =
+            "[CALLSIGN] with an update. The Gauntlet in grid p[EV 09] is still awake and represent an unacceptable threat to " .. _codeword .. " one. "..
+            "The supply drop is therefore cancelled and " .. _codeword .. " one is now RTB. This is very unfortunate.",
+        TDA_ScoldingNoEscort =
+            "[CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to meet mission" ..
+            " criteria on time, " .. _codeword .. " mission has been scrapped. We operate on precise timelines for a reason. "..
+            "Failure to adhere to these timelines jeopardizes not only the success of the mission, but the safety of every member of this unit. " ..
+            "This lack of discipline is unacceptable. We cannot afford to make excuses or overlook the importance of our protocols. " ..
+            "I expect better from each and every one of you. We will review our procedures and ensure that this does not happen again. " ..
+            "Get your act together, pilots. Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief "..
+            "and review tomorrow at oh eight hundred. [CALLSIGN] out.",
+        TDA_ScoldingGauntletAwake =
+            "[CALLSIGN] here. Listen up! I'm disappointed to report that due to failure to uphold security " .. _codeword .. " mission has been scrapped. "..
+            "We need to do better! The inability to react to unexpected threats jeopardizes not only the success of the mission, but the safety of every member "..
+            "of this unit. This is unacceptable. I expect better from each and every one of you. We will review our ability to prioritize and make proper decisions "..
+            "to ensure that this does not repeated.  Our reputation, and the lives of our comrades are at stake. Flight leads, expect a full debrief "..
+            "and review tomorrow at oh eight hundred. [CALLSIGN] out.",
     }
 }
 
@@ -126,7 +138,7 @@ function Swallow:GoNoGoDecision()
     if self._is_escorted then
         self:ActivateGauntlet()
     else
-        self:MissionAborted()
+        self:MissionAbortedNoEscort()
     end
 end
 
@@ -138,16 +150,26 @@ function Swallow:ActivateGauntlet()
     end, 90)
 end
 
-function Swallow:MissionAborted()
-    self:Send(self.MSG.MissionAborted)
+function Swallow:_topDogActualScolding(msg, delay)
+    DCAF.delay(function()
+        -- temporarily tunes Guard to give everyone a dress-down for failing the mission...
+        self.TTS:Tune(Frequencies.Guard)
+        self:SendActual(msg)
+        self.TTS:Detune()
+    end, delay or Minutes(2))
+end
+
+function Swallow:MissionAbortedNoEscort()
+    self:Send(self.MSG.MissionAbortedNoEscort)
+    self:_topDogActualScolding(self.MSG.TDA_ScoldingNoEscort, Minutes(2))
     RTBNow(self.Groups.BLU.Hercs_1, AIRBASE.Syria.Incirlik)
 end
 
 function Swallow:AbortOnGauntletActive()
     if not self.Groups.RED.Gauntlet:IsAlive() then return end
     Divert(self.Groups.BLU.Hercs_1)
-    self:Send(self.MSG.AbortOnGauntletActive) -- jonas: Change to :SendActual(...). That will automatically replace all "[CALLSIGN]" identifiers in text to "Top Dog" and add "actual" at the end. It will also use a (potentioally) different voice, which has a great immersion effect
-    DCAF.delay(self:Send(self.MSG.MissionAborted), 120)
+    self:Send(self.MSG.MissionAbortedGauntletAwake)
+    self:_topDogActualScolding(self.MSG.TDA_ScoldingGauntletAwake, Minutes(2))
 end
 
 function Swallow:MissionComplete()
