@@ -64,7 +64,7 @@ Swallow = {
 function Swallow:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    Swallow._start_menu:Remove(true)
+    self._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.BLU.Hercs_1:Activate()
     self.Groups.BLU.Vipers_1:Activate()
