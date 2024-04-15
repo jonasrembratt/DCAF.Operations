@@ -16,7 +16,6 @@ Swallow = {
     Groups = {
         BLU = {
             Hercs_1 = getGroup("Swallow Hercs-1"),
-            Vipers_1 = getGroup("Swallow F16-1"),
         },
         RED = {
             Gauntlet = getGroup("Swallow Gauntlet-1")
