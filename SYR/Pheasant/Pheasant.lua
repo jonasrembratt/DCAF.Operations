@@ -10,8 +10,8 @@
 
 local _codeword = "Pheasant"
 local _ido = "FOCUS"
-local _msr1 = "the Al Bab, Manbij highway"
-local _destination = "Kharab Ishk"
+local _msr1 = "the Al Bab Manbiidge highway"
+local _destination = "Kharabishq"
 Pheasant = {
     Name = _codeword,
     Groups = {
@@ -23,19 +23,19 @@ Pheasant = {
     },
     MSG = {
         Start =
-            _ido .. ", [CALLSIGN]. New mission, codename: " .. _codeword .. ". We've received intel that a motor convoy was spotted at grid p[CA 83] driving along " ..
-            _msr1 .. " towards " .. _destination .. ", carrying supplies and troops . Request retasking of Harriers to intercept and destroy A S A P. E T A of convoy at " ..
-            _destination .. " is time plus one hour and fifteen. R O E weapons free outside " .. _destination .. " and densely populated areas. Repeat, R O E weapons free outside " ..
+            _ido .. ", [CALLSIGN]. New mission, codename: " .. _codeword .. ". We've received intel that a motor convoy was spotted at grid, p[CA 83], driving along " ..
+            _msr1 .. " towards " .. _destination .. ", carrying supplies and troops . Request retasking of appropriate flight package to intercept and destroy A S A P . E T A of convoy at " ..
+            _destination .. " is time, plus, one hour and fifteen. R O E; weapons free outside " .. _destination .. " and densely populated areas. Repeat, R O E; weapons free outside " ..
             _destination .. " and densely populated areas. Civilian casualties are absolutely unacceptable. [CALLSIGN] out.",
         MissionFailed =
             _ido .. ", [CALLSIGN], " .. _codeword .. " is a wash. The motor convoy has reached " .. _destination .. " and have succesfully "
             .. "resupplied and reinforced the regiment there. Our efforts to secure the N F Z has been negatively impacted as a result. [CALLSIGN] out.",
         ConvoyDestroyed =
-            _ido .. ", [CALLSIGN], mission " .. _codeword .. ": motor convoy succesfully routed, and enemy forces at "
+            _ido .. ", [CALLSIGN], mission " .. _codeword .. ": motor convoy succesfully destroyed, and enemy forces at "
             .. _destination .. " are severely weakened in their ability to maintain control of the base. Excellent work. [CALLSIGN] out.",
         Pheasant_Urgent =
-            _ido .. ", [CALLSIGN], update on " .. _codeword .. ". The motor convoy has just crossed the bridge north west of " .. _destination .. " into the N F Z. Unless action is taken immediately, "
-            .. "they are slated to arrive at " .. _destination .. " in time plus thirty. [CALLSIGN] out."
+            _ido .. ", [CALLSIGN], update on " .. _codeword .. ". The motor convoy has just crossed the bridge north west of " .. _destination .. " into the no fly zone. Unless action is taken immediately, "
+            .. "their E T A at " .. _destination .. " is time, plus thirty. [CALLSIGN] out."
     }
 }
 

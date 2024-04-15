@@ -1,13 +1,21 @@
 -- //////////////////////////////////////////////////////////////////////////////////
 --                                    ALBATROZ
 --                                    ********
--- Syrian motor convoy departs to _site for emergency repairs of _targetVehicleType
--- revealing the location of _maintenanceBuilding for a future Strike package if
--- if located within _revealDeadline.
+-- Syrian motor convoy departs to _destination for emergency repairs of _targetVehicleType
+-- revealing the location of the vehicledepot for a future Strike package if located within _revealDeadline.
+
+-- ///////////////////////////////CONFIG SECTION\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--                      CHANGE THESE TO REFLECT YOUR MISSION
+
+local function getZoneVec3(zoneName)
+    local zone = ZONE:FindByName(zoneName)
+    if zone then return zone:GetCoordinate():GetVec3() end
+end
 
 local _codeword = "Albatroz"
 local _ido = "FOCUS"
-local _gridStart = "p[LL XX]"
+local _vehicleDepotLocation = getZoneVec3("Albatroz Maintenance-1")
+local _gridStart = "p[DV 17]"
 local _msr1 = "[Descriptor]"
 local _destination = "[Desto Name]"
 Albatroz = {
@@ -20,12 +28,17 @@ Albatroz = {
         },
     },
     MSG = {
-        Start = _ido .. "[CALLSIGN], ",
+        Start =
+        _ido .. ", [CALLSIGN]. We've received intel that a Syrian motor convoy with supplies and technical staff is departing from " .. _gridStart .. ", headed to " ..
+        _destination .. " to repair critical equipment there. [CALLSIGN] actual requests that you task appropriate flight packages to intercept " ..
+        " and destroy the convoy. [CALLSIGN] out.",
         MissionFailed = _ido .. "[CALLSIGN], ",
         ConvoyDestroyed = _ido .. "[CALLSIGN], ",
         Albatroz_Urgent = _ido .. "[CALLSIGN], ",
     }
 }
+
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ←     ↓     → ///////////////////////////////////
 
 function Albatroz:Start(tts)
     if self._is_started then return end
@@ -38,9 +51,11 @@ function Albatroz:Start(tts)
 end
 
 
+
 Albatroz._main_menu = GM_Menu:AddMenu(_codeword)
 Albatroz._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     local tts
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Albatroz:Start(tts)
 end)
+Trace(\\\\\\\\\)
