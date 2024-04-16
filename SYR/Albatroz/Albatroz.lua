@@ -4,8 +4,9 @@
 -- Syrian motor convoy departs to _destination for emergency repairs of _targetVehicleType
 -- revealing the location of the vehicledepot for a future Strike package if located within _revealDeadline.
 
--- ///////////////////////////////CONFIG SECTION\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---                      CHANGE THESE TO REFLECT YOUR MISSION
+-- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--                                     CONFIG
+--                                     ******
 
 local function getZoneVec3(zoneName)
     local zone = ZONE:FindByName(zoneName)
@@ -38,7 +39,7 @@ Albatroz = {
     }
 }
 
--- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ←     ↓     → ///////////////////////////////////
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
 function Albatroz:Start(tts)
     if self._is_started then return end
@@ -58,4 +59,4 @@ Albatroz._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Albatroz:Start(tts)
 end)
-Trace(\\\\\\\\\)
+Trace("\\\\\\\\\\ Story :: Albatroz.lua was loaded //////////")

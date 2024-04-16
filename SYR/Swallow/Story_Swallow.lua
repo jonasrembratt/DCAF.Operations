@@ -6,8 +6,12 @@
 -- Syrian airspace
 
 -- TODO
--- More messages (top dog) -- Needs final approval
--- Complete isEscortNearby function
+--
+--
+
+-- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--                                     CONFIG
+--                                     ******
 
 local _codeword = "Swallow"
 local _recipient = "Rapture"
@@ -67,6 +71,8 @@ Swallow = {
             "and review tomorrow at oh eight hundred. [CALLSIGN] out.",
     }
 }
+
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
 function Swallow:Start(tts)
     if self._is_started then return end
@@ -219,4 +225,4 @@ Swallow._sim_escort_menu = Swallow._main_menu:AddCommand("Simulate escort", func
     Swallow._sim_escort_menu:Remove()
 end)
 
--- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
+Trace("\\\\\\\\\\ Story :: Swallow.lua was loaded //////////")
