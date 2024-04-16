@@ -42,7 +42,7 @@ Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormoran
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
 function Cormorant:addSHORAD()
-    for i = 1, 8, 1 do
+    for i = 1, 6, 1 do
         self.Groups.RED.SHORAD[i] = getGroup("Cormorant SHORAD-" .. i)
     end
 end
