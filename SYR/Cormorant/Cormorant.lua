@@ -5,7 +5,7 @@
 -- near Al Tabqa. Harriers are tasked with intercepting and disabling the train.
 
 -- TODO
---
+-- Configure messages to be sent on start, death, etc.
 --
 
 -- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -15,6 +15,7 @@ local _codeword = "CORMORANT"
 local _recipient = "FOCUS"
 local _msr1 = "the railroad south of lake Buhayrat Al Asad, from Aleppo to Al Tabqa"
 local _destination = "the Artillery emplacement at Tabqa"
+local _offloadDelay = Minutes(30)
 Cormorant = {
     Name = _codeword,
     Groups = {
@@ -37,21 +38,23 @@ Cormorant = {
     }
 }
 
-local function addSHORAD()
-    for i = 1, 4, 1 do
-        Cormorant.Groups.RED.SHORAD[i] = getGroup("Cormorant SHORAD-" .. i)
+Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormorant.Groups.RED.Convoy, 3))
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
+
+function Cormorant:addSHORAD()
+    for i = 1, 8, 1 do
+        self.Groups.RED.SHORAD[i] = getGroup("Cormorant SHORAD-" .. i)
     end
 end
 
-addSHORAD()
--- Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormorant.Groups.RED.SHORAD))
--- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
+Cormorant:addSHORAD()
 
 function Cormorant:Start(tts)
     if self._is_started then return end
     self._is_started = true
     self._start_menu:Remove(true)
     self.TTS = tts
+    self:addSHORAD()
     self.Groups.RED.Convoy:Activate()
     for _, group in pairs(self.Groups.RED.SHORAD) do
         group:Activate()
@@ -83,6 +86,17 @@ function Cormorant:ConvoyDestroyed()
     self:Send(self.MSG.ConvoyDestroyed)
 end
 
+function Cormorant:Offload()
+    local convoy = self.Groups.RED.Convoy
+    if convoy and not convoy:IsActive() then return end
+    self.Groups.RED.Convoy:SetAIOff()
+    self._offLoadSchedulerID = DCAF.startScheduler(function()
+    if convoy and convoy:IsAlive() then
+            convoy:SetAIOn()
+        end
+    end, _offloadDelay)
+end
+
 function Cormorant:ConvoyAlive()
     self._checkLifeSchedulerID = DCAF.startScheduler(function()
         local convoy = self.Groups.RED.Convoy
@@ -99,7 +113,7 @@ end
 
 function Cormorant:CAS_Request()
     local units = self.Groups.RED.Convoy:GetUnits()
-    local killUnits = math.floor(#units * 0.7)
+    local killUnits = math.floor(#units * 1)
     for i = 1, killUnits, 1 do
         local unit = self.Groups.RED.Convoy:GetUnit(i)
         unit:Explode(500, 2)

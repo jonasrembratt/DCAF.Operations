@@ -118,4 +118,4 @@ end)
 --     Pheasant:CAS_Request()
 -- end)
 
-Trace("\\\\\\\\\\ Story :: Cormorant.lua was loaded //////////")
+Trace("\\\\\\\\\\ Story :: Pheasant.lua was loaded //////////")
