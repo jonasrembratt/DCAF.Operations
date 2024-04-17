@@ -80,7 +80,6 @@ function Swallow:Start(tts)
     self._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.BLU.Hercs_1:Activate()
-    self.Groups.BLU.Vipers_1:Activate()
     self:Send(self.MSG.Start)
     self._is_escorted = nil
     self:_monitorForEscort()
@@ -205,11 +204,11 @@ function Swallow:MissionComplete()
     self:Send(self.MSG.MissionComplete)
 end
 
-function Swallow:CAS_Request()
-    if not self.Groups.RED.Gauntlet:IsAlive() then return end
-    self.Groups.RED.Gauntlet:GetUnit(1):Explode(1500, 10)
-    self._CAS_menu:Remove(true)
-end
+-- function Swallow:CAS_Request()
+--     if not self.Groups.RED.Gauntlet:IsAlive() then return end
+--     self.Groups.RED.Gauntlet:GetUnit(1):Explode(1500, 10)
+--     self._CAS_menu:Remove(true)
+-- end
 
 Swallow._main_menu = GM_Menu:AddMenu(_codeword)
 Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()

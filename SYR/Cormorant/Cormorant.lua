@@ -47,8 +47,6 @@ function Cormorant:addSHORAD()
     end
 end
 
-Cormorant:addSHORAD()
-
 function Cormorant:Start(tts)
     if self._is_started then return end
     self._is_started = true
