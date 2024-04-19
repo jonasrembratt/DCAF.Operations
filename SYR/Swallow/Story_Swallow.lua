@@ -104,6 +104,8 @@ Swallow = {
     }
 }
 
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
+
 function Swallow:Start(tts)
     if self._is_started then return end
     self._is_started = true
@@ -251,11 +253,11 @@ function Swallow:MissionComplete()
     self:Send(self.MSG.MissionComplete)
 end
 
-function Swallow:CAS_Request()
-    if not self.Groups.RED.Gauntlet:IsAlive() then return end
-    self.Groups.RED.Gauntlet:GetUnit(1):Explode(1500, 10)
-    self._CAS_menu:Remove(true)
-end
+-- function Swallow:CAS_Request()
+--     if not self.Groups.RED.Gauntlet:IsAlive() then return end
+--     self.Groups.RED.Gauntlet:GetUnit(1):Explode(1500, 10)
+--     self._CAS_menu:Remove(true)
+-- end
 
 function Swallow:Debug()
     self._debug = true
@@ -274,4 +276,4 @@ Swallow._start_menu = Swallow._main_menu:AddCommand("Start", function()
     Swallow:Start(TTS_Top_Dog)
 end)
 
--- Debug("sausage →→ " .. DumpPrettyDeep(Swallow))
+Trace("\\\\\\\\\\ Story :: Swallow.lua was loaded //////////")
