@@ -5,7 +5,7 @@
 -- near Al Tabqa. Harriers are tasked with intercepting and disabling the train.
 
 -- TODO
--- Configure messages to be sent on start, death, etc.
+--
 --
 
 -- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -50,14 +50,15 @@ function Cormorant:addSHORAD()
     end
 end
 
-Cormorant:addSHORAD()
+addSHORAD()
+-- Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormorant.Groups.RED.SHORAD))
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
 function Cormorant:Start(tts)
     if self._is_started then return end
     self._is_started = true
     self._start_menu:Remove(true)
     self.TTS = tts
-    self:addSHORAD()
     self.Groups.RED.Convoy:Activate()
     for _, group in pairs(self.Groups.RED.SHORAD) do
         group:Activate()
