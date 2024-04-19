@@ -42,7 +42,7 @@ Albatroz = {
     }
 }
 
--- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ←     ↓     → ///////////////////////////////////
 
 function Albatroz:Start(tts)
     if self._is_started then return end
@@ -62,4 +62,4 @@ Albatroz._start_menu = Pheasant._main_menu:AddCommand("Start", function()
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Albatroz:Start(tts)
 end)
-Trace("\\\\\\\\\\ Story :: Albatroz.lua was loaded //////////")
+Trace(\\\\\\\\\)
