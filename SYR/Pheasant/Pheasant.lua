@@ -54,6 +54,7 @@ function Pheasant:Start(tts)
     self._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.RED.Convoy:Activate()
+    DCAF.MobileDefence:New(self.Groups.RED.Convoy, 2, "Pheasant MobDefense SA")
     self:Send(self.MSG.Start)
     self:ConvoyAlive()
 end
