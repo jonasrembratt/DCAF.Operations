@@ -1,12 +1,19 @@
 -- //////////////////////////////////////////////////////////////////////////////////
 --                                    PHEASANT
 --                                    ********
--- Syrian Army dispatches a freight train with infantry and supplies to reinforce position
--- near Al Tabqah. Harriers are tasked with intercepting and disabling the train.
+-- Syrian Army dispatches a motor convoy with infantry and supplies to reinforce position
+-- near _destination. DCAF are tasked with intercepting and disabling the train.
+-- Possibility of revealing the location of vehicle maintenance/depot if spotted
+-- early enough.
 
--- TODO
--- More messages (top dog)'
--- Complete isEscortNearby function
+--- TODO
+-- Create function to check if convoy is spotted before deadline, and set flag to reveal
+-- location of depot.
+--
+
+-- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--                                     CONFIG
+--                                     ******
 
 local _codeword = "Pheasant"
 local _ido = "FOCUS"
@@ -39,12 +46,15 @@ Pheasant = {
     }
 }
 
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
+
 function Pheasant:Start(tts)
     if self._is_started then return end
     self._is_started = true
     self._start_menu:Remove(true)
     self.TTS = tts
     self.Groups.RED.Convoy:Activate()
+    DCAF.MobileDefence:New(self.Groups.RED.Convoy, 2, "Pheasant MobDefense SA")
     self:Send(self.MSG.Start)
     self:ConvoyAlive()
 end
@@ -107,3 +117,4 @@ end)
 --     Pheasant:CAS_Request()
 -- end)
 
+Trace("\\\\\\\\\\ Story :: Pheasant.lua was loaded //////////")

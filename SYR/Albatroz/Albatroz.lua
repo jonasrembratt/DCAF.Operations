@@ -1,11 +1,15 @@
 -- //////////////////////////////////////////////////////////////////////////////////
 --                                    ALBATROZ
 --                                    ********
--- Syrian motor convoy departs to _destination for emergency repairs of _targetVehicleType
--- revealing the location of the vehicledepot for a future Strike package if located within _revealDeadline.
-
--- ///////////////////////////////CONFIG SECTION\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---                      CHANGE THESE TO REFLECT YOUR MISSION
+-- A high ranking official ha
+--
+--
+--
+--
+--
+-- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--                                     CONFIG
+--                                     ******
 
 local function getZoneVec3(zoneName)
     local zone = ZONE:FindByName(zoneName)
