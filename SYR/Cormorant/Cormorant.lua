@@ -13,9 +13,10 @@
 --                                     ******
 local _codeword = "CORMORANT"
 local _recipient = "FOCUS"
-local _msr1 = "the railroad south of lake Buhayrat Al Asad, from Aleppo to Al Tabqa"
+local _msr1 = "the highway south of lake Buhayrat Al Asad, from Aleppo to Tabqa"
 local _destination = "the Artillery emplacement at Tabqa"
 local _offloadDelay = Minutes(30)
+local _departurePoint = "Aleppo"
 Cormorant = {
     Name = _codeword,
     Groups = {
@@ -28,7 +29,9 @@ Cormorant = {
     },
     MSG = {
         Start =
-            _recipient .. ", [CALLSIGN]. New mission, codename: " .. _codeword .. ". . [CALLSIGN] out.",
+            _recipient .. ", [CALLSIGN]. Priority mission, codename: " .. _codeword .. ". We've received intel that a motor convoy has just departed " ..
+            _departurePoint .. " headed for " .. _destination .. " along " .. _msr1 .. ". [CALLSIGN] actual requests that you retask appropriate package" ..
+            " to intercept and destroy. [CALLSIGN] out.",
         MissionFailed =
             _recipient .. ", [CALLSIGN], . [CALLSIGN] out.",
         ConvoyDestroyed =
@@ -38,11 +41,11 @@ Cormorant = {
     }
 }
 
-Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormorant.Groups.RED.Convoy, 3))
+Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPretty(Cormorant.Groups.RED.Convoy))
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
 function Cormorant:addSHORAD()
-    for i = 1, 6, 1 do
+    for i = 1, 10, 1 do
         self.Groups.RED.SHORAD[i] = getGroup("Cormorant SHORAD-" .. i)
     end
 end
@@ -91,6 +94,7 @@ function Cormorant:Offload()
     self._offLoadSchedulerID = DCAF.startScheduler(function()
     if convoy and convoy:IsAlive() then
             convoy:SetAIOn()
+            DCAF.stopScheduler(self._offLoadSchedulerID)
         end
     end, _offloadDelay)
 end
@@ -98,7 +102,7 @@ end
 function Cormorant:ConvoyAlive()
     self._checkLifeSchedulerID = DCAF.startScheduler(function()
         local convoy = self.Groups.RED.Convoy
-        local degradeRatio = 0.6
+        local degradeRatio = 0.7
         if convoy and not convoy:IsActive() then return end
         local ratio = convoy:GetSize() / convoy:GetInitialSize()
         if ratio <= degradeRatio then
@@ -111,7 +115,7 @@ end
 
 function Cormorant:CAS_Request()
     local units = self.Groups.RED.Convoy:GetUnits()
-    local killUnits = math.floor(#units * 1)
+    local killUnits = math.floor(#units * 0.8)
     for i = 1, killUnits, 1 do
         local unit = self.Groups.RED.Convoy:GetUnit(i)
         unit:Explode(500, 2)
