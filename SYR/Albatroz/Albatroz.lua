@@ -1,9 +1,9 @@
 -- //////////////////////////////////////////////////////////////////////////////////
 --                                    ALBATROZ
 --                                    ********
--- A high ranking official ha
---
---
+-- A high ranking official has been the victim of an assassination attempt. Albatroz flight
+-- is flying into the AANES to extract them to a hospital in Turkey. Albatroz will need
+-- clear skies to expedite extraction.
 --
 --
 --
