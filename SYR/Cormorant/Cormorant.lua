@@ -13,7 +13,7 @@
 --                                     CONFIG
 --                                     ******
 local _codeword = "CORMORANT"
-local _recipient = "FOCUS"
+local _recipient = "VIGILANT"
 local _msr1 = "the highway south of lake Buhayrat Al Asad, from Aleppo to Tabqa"
 local _destination = "the remains of the mechanized infantry regiment codename: Robin, situated at p[DV 45]: keypad one"
 local _offloadDelay = Minutes(30)
