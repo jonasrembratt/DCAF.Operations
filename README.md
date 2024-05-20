@@ -8,17 +8,21 @@
 -- Story contains a ROZ for A-G players to perform SCAR
 -------------------------------------------------------------------------------------
 --- DEPENDENCIES
---   DCAF.Core
---   DCAF.GBAD
---   DCAF.GBAD.Regiment
+-- DCAF.Core
+-- DCAF.GBAD
+-- DCAF.GBAD.Regiment
+-- OVS_IADS_Jirah.lua
+--
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑//////////////////////////////////////////
 
 -- ///////////////////////////////////////↓\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --                                     SWALLOW
 --                                     *******
--- Transport aircraft arrives into Syria from the north west, with a mission to drop
--- supplies into the Rojava area. The aircraft needs escort before they can enter
--- Syrian airspace
+--     Transport aircraft arrives into Syria, with a mission to drop supplies at a
+    designated drop zone (DZ). The mission is deemed critical and its safety must be
+    assured for it to be successful. Should the situation be deemed to risky the GM
+    can cancel the mission. If GM feels security can be assured by delaying the mission
+    the transporters can be ordered to hold. GM can also cancel the mission if necessary.
 -------------------------------------------------------------------------------------
 --- DEPENDENCIES
 --   DCAF.Core
@@ -28,7 +32,7 @@
 --                                    PHEASANT
 --                                    ********
 -- Syrian Army dispatches a motor convoy with infantry and supplies to reinforce position
--- near _destination. DCAF are tasked with intercepting and disabling the convoy.
+-- near _destination. DCAF are tasked with intercepting and disabling the train.
 -- Possibility of revealing the location of vehicle maintenance/depot if spotted
 -- early enough.
 -------------------------------------------------------------------------------------
