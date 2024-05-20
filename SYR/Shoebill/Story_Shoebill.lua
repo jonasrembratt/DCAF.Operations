@@ -57,6 +57,7 @@ function Shoebill:Start(tts)
     _shoebillSmoke = true
     self.Groups.BLU.Chinook:Activate()
     self.Groups.BLU.Chinook:Explode(150, 2)
+    self.Groups.BLU.Chinook:GetCoordinate():BigSmokeAndFire( 6, 1)
     self.Groups.BLU.SpecOps:Activate()
     self.Groups.BLU.JTAC:Activate()
     self.Groups.BLU.SAR_Helo:Activate()
