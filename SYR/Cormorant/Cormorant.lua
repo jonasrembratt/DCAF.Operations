@@ -17,6 +17,8 @@ local _msr1 = "the highway south of lake Buhayrat Al Asad, from Aleppo to Tabqa"
 local _destination = "the Artillery emplacement at Tabqa"
 local _offloadDelay = Minutes(30)
 local _departurePoint = "Aleppo"
+local setShorad = SET_GROUP:New():FilterCoalitions({coalition.side.RED}):FilterPrefix("Cormorant SHORAD-"):FilterOnce()
+
 Cormorant = {
     Name = _codeword,
     Groups = {
@@ -24,7 +26,7 @@ Cormorant = {
         },
         RED = {
             Convoy = getGroup("Cormorant Convoy-1"),
-            SHORAD = {}
+            SHORAD = SET_GROUP:New():FilterCoalitions({coalition.side.RED}):FilterPrefix("Cormorant SHORAD-"):FilterOnce()
         },
     },
     MSG = {
@@ -44,24 +46,21 @@ Cormorant = {
 Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPretty(Cormorant.Groups.RED.Convoy))
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
 
-function Cormorant:addSHORAD()
-    for i = 1, 10, 1 do
-        self.Groups.RED.SHORAD[i] = getGroup("Cormorant SHORAD-" .. i)
-    end
-end
-
-addSHORAD()
--- Debug("sausage :: dump Cormorant.Groups.RED.SHORAD: " .. DumpPrettyDeep(Cormorant.Groups.RED.SHORAD))
--- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\↑///////////////////////////////////////////////
-
 function Cormorant:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    self._start_menu:Remove(true)
+    if self._start_menu then self._start_menu:Remove(true) end
     self.TTS = tts
     self.Groups.RED.Convoy:Activate()
-    for _, group in pairs(self.Groups.RED.SHORAD) do
-        group:Activate()
+
+    -- self.Groups.RED.SHORAD:ForEachGroup(function(group)
+    --     group:Activate()
+    -- end)
+
+    for i = 1, #self.Groups.RED.SHORAD.Set, 1 do
+        if self.Groups.RED.SHORAD[i] then
+            self.Groups.RED.SHORAD[i]:Activate()
+        end
     end
     self:Send(self.MSG.Start)
     self:ConvoyAlive()
