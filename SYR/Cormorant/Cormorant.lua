@@ -15,7 +15,7 @@
 local _codeword = "CORMORANT"
 local _recipient = "VIGILANT"
 local _msr1 = "the highway south of lake Buhayrat Al Asad, from Aleppo to Tabqa"
-local _destination = "the remains of the mechanized infantry regiment codename: Robin, situated at p[DV 45]: keypad one"
+local _destination = "the remains of the mechanized infantry regiment codename: Robin"
 local _offloadDelay = Minutes(30)
 local _departurePoint = "Aleppo"
 Cormorant = {
@@ -40,9 +40,9 @@ Cormorant = {
         --     _departurePoint .. " headed for " .. _destination .. " along " .. _msr1 .. ". [CALLSIGN] actual requests that you retask appropriate package" ..
         --     " to intercept and destroy. [CALLSIGN] out.",
         MissionFailed =
-            _recipient .. ", [CALLSIGN], the motorconvoy, codenamed " .. _codeword .. " has managed to reach " .. _destination .. ". Mission failed. [CALLSIGN] out.",
+            _recipient .. ", [CALLSIGN], the motorconvoy codenamed " .. _codeword .. " has managed to reach " .. _destination .. ". Mission failed. [CALLSIGN] out.",
         ConvoyDestroyed =
-            _recipient .. ", [CALLSIGN], mission " .. _codeword .. ": is a success. The supply convoy has been mostly destroyed and any remaining units have fled"
+            _recipient .. ", [CALLSIGN], mission " .. _codeword .. " is a success. The supply convoy has been mostly destroyed and any remaining units have fled"
             .. " the area. [CALLSIGN] out.",
         -- Cormorant_Urgent =
         --     _recipient .. ", [CALLSIGN], update on " .. _codeword .. ". . [CALLSIGN] out."
@@ -57,7 +57,7 @@ Cormorant = {
 function Cormorant:Start(tts)
     if self._is_started then return end
     self._is_started = true
-    self._start_menu:Remove(true)
+    if self._start_menu then self._start_menu:Remove(true) end
     self.TTS = tts
     self.Groups.RED.Convoy:Activate()
     for i = 1, 5, 1 do
