@@ -18,6 +18,8 @@ local _msr1 = "the highway south of lake Buhayrat Al Asad, from Aleppo to Tabqa"
 local _destination = "the remains of the mechanized infantry regiment codename: Robin"
 local _offloadDelay = Minutes(30)
 local _departurePoint = "Aleppo"
+local setShorad = SET_GROUP:New():FilterCoalitions({coalition.side.RED}):FilterPrefix("Cormorant SHORAD-"):FilterOnce()
+
 Cormorant = {
     Name = _codeword,
     Groups = {
