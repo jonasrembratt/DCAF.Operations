@@ -15,60 +15,56 @@ local function getZoneVec3(zoneName)
     if zone then return zone:GetCoordinate():GetVec3() end
 end
 
-local _codeword = "Robin"
-Robin = {
-    Name = _codeword,
-    Groups = {
-        RED = {
-            Tents_1 = getGroup("Robin Tents-1"),
-            Tents_2 = getGroup("Robin Tents-2"),
-            Logistics_1 = getGroup("Robin Logistics-1"),
-            Logistics_2 = getGroup("Robin Logistics-2"),
-            AAA = getGroup("Robin AAA-1"),
-            MechInf_1 = getGroup("Robin Mechinf-1"),
-            IFV_1 = getGroup("Robin IFV-1"),
-            IFV_2 = getGroup("Robin IFV-2"),
-            MBT_1 = getGroup("Robin MBT-1"),
+Robin = DCAF.Story:New("Robin")
+if not Robin then return end
+Robin.Groups = {
+    RED = {
+        Tents_1 = getGroup("Robin Tents-1"),
+        Tents_2 = getGroup("Robin Tents-2"),
+        Logistics_1 = getGroup("Robin Logistics-1"),
+        Logistics_2 = getGroup("Robin Logistics-2"),
+        AAA = getGroup("Robin AAA-1"),
+        MechInf_1 = getGroup("Robin Mechinf-1"),
+        IFV_1 = getGroup("Robin IFV-1"),
+        IFV_2 = getGroup("Robin IFV-2"),
+        MBT_1 = getGroup("Robin MBT-1"),
+        MBT_2 = getGroup("Robin MBT-2"),
+    },
+}
+Robin.PatrolsSpeed = 40 -- Km/h
+Robin.Vec3Sources = {
+    Random_1 = getZoneVec3("Robin ZN RND-1"),
+    Random_2 = getZoneVec3("Robin ZN RND-2"),
+    Random_3 = getZoneVec3("Robin ZN RND-3"),
+    Random_4 = getZoneVec3("Robin ZN RND-4"),
+    Random_5 = getZoneVec3("Robin ZN RND-5"),
+}
+Robin.Vec3 = {
+    ["Random_1"] = {
+        ["y"] = 329.75576782227,
+        ["x"] = 81052.3046875,
+        ["z"] = 223218.96875
         },
-    },
-    PatrolsSpeed = 40, -- Km/h
-    MSG = {
-
-    },
-    Vec3Sources = {
-        Random_1 = getZoneVec3("Robin ZN RND-1"),
-        Random_2 = getZoneVec3("Robin ZN RND-2"),
-        Random_3 = getZoneVec3("Robin ZN RND-3"),
-        Random_4 = getZoneVec3("Robin ZN RND-4"),
-        Random_5 = getZoneVec3("Robin ZN RND-5"),
-    },
-    Vec3 = {
-        ["Random_1"] = {
-            ["y"] = 348.73226928711,
-            ["x"] = 108099.5234375,
-            ["z"] = 192300.65625,
-          },
-          ["Random_5"] = {
-            ["y"] = 348.74346923828,
-            ["x"] = 97637.5703125,
-            ["z"] = 193569.46875,
-          },
-          ["Random_3"] = {
-            ["y"] = 339.03994750977,
-            ["x"] = 104035.4609375,
-            ["z"] = 197327.5,
-          },
-          ["Random_2"] = {
-            ["y"] = 348.73742675781,
-            ["x"] = 102657.5546875,
-            ["z"] = 191891.5625,
-          },
-          ["Random_4"] = {
-            ["y"] = 345.40322875977,
-            ["x"] = 99722.0078125,
-            ["z"] = 198754.078125,
-          }
-    }
+    ["Random_5"] = {
+        ["y"] = 343.42758178711,
+        ["x"] = 74452.671875,
+        ["z"] = 223261.421875
+        },
+    ["Random_3"] = {
+        ["y"] = 328.97280883789,
+        ["x"] = 77430.53125,
+        ["z"] = 223516.9375
+        },
+    ["Random_2"] = {
+        ["y"] = 300.82061767578,
+        ["x"] = 79625.8203125,
+        ["z"] = 225418.046875
+        },
+    ["Random_4"] = {
+        ["y"] = 332.9111328125,
+        ["x"] = 76987.3203125,
+        ["z"] = 219587.15625
+        }
 }
 
 local countVec3Sources = dictCount(Robin.Vec3Sources)
@@ -76,39 +72,27 @@ local countVec3 = dictCount(Robin.Vec3)
 if countVec3Sources > 0 and countVec3Sources ~= countVec3 then
     -- we have no Vec3s at this point; generate from ZONE sources so we can just copy/paste into the file (remove all Battle.Vec3 items to re-generate)
     Robin.Vec3 = Robin.Vec3Sources
-    Debug("|||||||||||||||||||||||||||||||||||||| " .. _codeword .. " Vec3 ||||||||||||||||||||||||||||||||||||||")
+    Debug("|||||||||||||||||||||||||||||||||||||| " .. Robin.Name .. " Vec3 ||||||||||||||||||||||||||||||||||||||")
     Debug(DumpPrettyDeep(Robin.Vec3Sources, 2))
-    error(_codeword .. " please re-inject Vec3s into the story")
+    error(Robin.Name .. " please re-inject Vec3s into the story")
 end
 
-function Robin:Start(tts)
-    if self._is_started then return end
-    self._is_started = true
-    --Robin._start_menu:Remove(true)
-    self.TTS = tts
-    self:_activateStaggered(10,
+function Robin:OnStarted()
+    if Robin._start_menu then Robin._start_menu:Remove(true) end
+    DCAF.Story:ActivateStaggered({
         self.Groups.RED.AAA,
         self.Groups.RED.Logistics_1,
         self.Groups.RED.Logistics_2,
         self.Groups.RED.MechInf_1,
         self.Groups.RED.Tents_1,
-        self.Groups.RED.Tents_2)
+        self.Groups.RED.Tents_2,
+        self.Groups.RED.MBT_2
+    }, 10)
+
     self:_activateStaggeredRandomLocation(10,
         self.Groups.RED.IFV_1,
         self.Groups.RED.IFV_2,
         self.Groups.RED.MBT_1)
-end
-
-function Robin:Send(msg)
-    if not self.TTS or not isAssignedString(msg) then return end
-    self.TTS:Send(msg)
-    return self
-end
-
-function Robin:SendActual(msg)
-    if not self.TTS or not isAssignedString(msg) then return end
-    self.TTS:SendActual(msg)
-    return self
 end
 
 function Robin:_activateAtRandomLocation(group)
@@ -147,17 +131,6 @@ function Robin:_randomReroute(group)
         group:RouteGroundOnRoad(coordDestination, self.PatrolsSpeed)
         self:_randomReroute(group)
     end, Minutes(delay))
-end
-
-function Robin:_activateStaggered(interval, ...)
-    local delay = 0
-    for i = 1, #arg, 1 do
-        local group = arg[i]
-        DCAF.delay(function()
-            group:Activate()
-        end, delay)
-        delay = delay + interval
-    end
 end
 
 function Robin:_activateStaggeredRandomLocation(interval, ...)
