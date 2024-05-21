@@ -91,8 +91,14 @@ end
 
 function Shoebill:Recover()
     DCAF.delay(function()
-        self.Groups.BLU.SpecOps:Destroy()
-        self.Groups.BLU.JTAC:Destroy()
+        local jtac = self.Groups.BLU.JTAC:getGroup()
+        local spec = self.Groups.BLU.SpecOps:getGroup()
+        if jtac then
+            jtac:Destroy(true, 2)
+        end
+        if spec then
+            spec:Destroy(true, 2)
+        end
     end, 30)
 end
 
