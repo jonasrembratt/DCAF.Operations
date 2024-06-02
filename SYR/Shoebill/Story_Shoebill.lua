@@ -12,13 +12,14 @@
 local _codeword = "SHOEBILL"
 local _recipient = "FOCUS"
 local _nearestCity = "RAQQA"
-local _JTAC_Frequency = "69"
-local _JTAC_Callsign = "SPARTAN 3-1"
-local _heloType = "UH-60A"
+local _JTAC_Frequency = "p[030] decimal p[0]" -- << -- changed to phonetic (p[...]) as frequency was otherwise pronounced "sixty nine"
+local _JTAC_Callsign = "SPARTAN p[31]"        -- << -- also changed to phonetic
+local _heloType = "Chinook"                   -- << -- changed to reporting name. is much clearer as original took time and was hard to discern
 local _destination = "Tabqa"
 
 Shoebill = {
     Name = _codeword,
+    MANPADSpattern = "Shoebill_MANPADS", -- <<-- specifies a naming pattern for the DCAF.MobileDefense script (see Start function)
     Groups = {
         BLU = {
             Chinook = getGroup("Shoebill_Chinook-1"),
@@ -35,18 +36,20 @@ Shoebill = {
     Flags = {
     },
     MSG = {
+        -- << -- removed use of _recipient from message declarations, as this made it impossible to changed recipient from :InitTTS (see function. Also see :Send function)
         Start =
-        _recipient .. ", [CALLSIGN]. Priority mission. A " .. _heloType .. " has been shot down near the city of " .. _nearestCity .. " by unknown hostiles. " ..
-        "The helicopter was carrying a Special Ops group bound for " .. _destination .. ". They are requesting immediate CAS support and exfil. Coordinate with local " ..
-            "JTAC, callsign " .. _JTAC_Callsign .. ", on frequency, " .. _JTAC_Frequency .. ", before dispatching a Cesar mission.",
+            "[CALLSIGN]. Priority mission. A " .. _heloType .. " has been shot down near the city of " .. _nearestCity .. " by unknown hostiles. " ..
+            "The helicopter was carrying a Special Ops group bound for " .. _destination .. ". The crew escaped and are requesting immediate CAS support and exfil. "..
+            "Coordinate with local jaytac, callsign " .. _JTAC_Callsign .. ", on frequency, " .. _JTAC_Frequency .. ", before dispatching a see-sar mission." ..
+            "Be advised we may have troops in contact",
         CSAR =
-            _recipient .. ", [CALLSIGN]. Cesar dispatched. E T A is twenty minutes. Ensure the area is secure.",
+            "[CALLSIGN]. see-sar dispatched. E T A is twenty minutes. Ensure the area is secure.",
         MissionComplete =
-            _recipient .. ", [CALLSIGN]. Shoebill succesfully extracted, mission accomplished.",
+            "[CALLSIGN]. Shoebill succesfully extracted, mission accomplished.",
         MissionFailed =
-            _recipient .. ", [CALLSIGN]. The entire Spec Ops team was killed, and the Cesar is R T B. Full debrief and A A R tomorrow at oh eight hundred.",
+            "[CALLSIGN]. The entire Spec Ops team was killed, and the see-sar is R T B. Full debrief and A A R tomorrow at oh eight hundred.",
         MissionFailedShotDown =
-        _recipient .. ", [CALLSIGN]. The Cesar helicopter was shot down as we failed to secure the L Z. Debriefing of wing leaders at oh eight hundred tomorrow morning.",
+            "[CALLSIGN]. The see-sar helicopter was shot down as we failed to secure the L Z. Debriefing of wing leaders at oh eight hundred tomorrow morning.",
         }
 }
 
@@ -65,6 +68,7 @@ function Shoebill:Start(tts)
     DCAF.delay(function()
         self.Groups.BLU.JTAC:SetAIOff()
     end, .5)
+    DCAF.MobileDefence:New(self.Groups.RED.InsCon:Activate(), 2, self.MANPADSpattern) -- <<-- makes the convoy stop and deploy MANPADS
     self.Groups.RED.InsCon:Activate()
     self.Groups.RED.InsInf:Activate()
     self:Send(self.MSG.Start)
@@ -79,13 +83,18 @@ function Shoebill:ReinforcementsArrive()
     self.Groups.RED.InsReinforce:Activate()
 end
 
-function Shoebill:InitTTS(tts)
+function Shoebill:InitTTS(tts, recipient) -- << -- added ability to specify recipient. Allows for MM to init these things from the ME, making the story easier to adapt without access to story file
     self.TTS = tts
+    if isAssignedString(recipient) then
+        _recipient = recipient
+        Debug(_codeword..":InitTTS :: recipient was set to '" .. _recipient .. "'")
+    end
     return self
 end
 
 function Shoebill:Send(msg)
     if not self.TTS or not isAssignedString(msg) then return end
+    msg = _recipient .. ". " .. msg .. ". [CALLSIGN] out" -- << -- automatically injects recipient and then a "[CALLSIGN] out" to all transmissions
     self.TTS:Send(msg)
 end
 
