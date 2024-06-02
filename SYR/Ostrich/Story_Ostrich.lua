@@ -23,20 +23,14 @@ Ostrich.TriggerDistance = NauticalMiles(12)
 if not Ostrich then return end
 
 function Ostrich:OnStarted()
-    self:ActivateGroups()
+    self:WakeGroups()
     self:MonitorHostilesApproaching()
 end
 
-function Ostrich:ActivateGroups()
+function Ostrich:WakeGroups()
     local set = SET_GROUP:New():FilterCoalitions({"red"}):FilterPrefixes(self.Name):FilterOnce()
-    local groups = {}
+    -- local groups = {}
     set:ForEachGroup(function(group)
-        if not group:IsActive() then
-            groups[#groups+1] = group
-        end
-    end)
-
-    activateGroupsStaggered(groups, nil, function(_, group)
         Debug(self.Name .. ":Start :: activates group: " .. group.GroupName)
         if string.find(group.GroupName, " STC ") then
             DCAF.delay(function()
@@ -44,7 +38,20 @@ function Ostrich:ActivateGroups()
                 group:SetAIOff()
             end, 1)
         end
+        -- if not group:IsActive() then
+        --     groups[#groups+1] = group
+        -- end
     end)
+
+    -- activateGroupsStaggered(groups, nil, function(_, group)
+    --     Debug(self.Name .. ":Start :: activates group: " .. group.GroupName)
+    --     if string.find(group.GroupName, " STC ") then
+    --         DCAF.delay(function()
+    --             Debug(self.Name .. ":Start :: lobotomizes group: " .. group.GroupName)
+    --             group:SetAIOff()
+    --         end, 1)
+    --     end
+    -- end)
 end
 
 function Ostrich:MonitorHostilesApproaching()
