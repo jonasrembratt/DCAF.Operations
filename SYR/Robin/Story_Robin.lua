@@ -15,9 +15,9 @@ local function getZoneVec3(zoneName)
     if zone then return zone:GetCoordinate():GetVec3() end
 end
 
-Robin = DCAF.Story:New("Robin")
-if not Robin then return end
-Robin.Groups = {
+Ragdoll = DCAF.Story:New("Robin")
+if not Ragdoll then return end
+Ragdoll.Groups = {
     RED = {
         Tents_1 = getGroup("Robin Tents-1"),
         Tents_2 = getGroup("Robin Tents-2"),
@@ -31,15 +31,15 @@ Robin.Groups = {
         MBT_2 = getGroup("Robin MBT-2"),
     },
 }
-Robin.PatrolsSpeed = 40 -- Km/h
-Robin.Vec3Sources = {
+Ragdoll.PatrolsSpeed = 40 -- Km/h
+Ragdoll.Vec3SmokeSources = {
     Random_1 = getZoneVec3("Robin ZN RND-1"),
     Random_2 = getZoneVec3("Robin ZN RND-2"),
     Random_3 = getZoneVec3("Robin ZN RND-3"),
     Random_4 = getZoneVec3("Robin ZN RND-4"),
     Random_5 = getZoneVec3("Robin ZN RND-5"),
 }
-Robin.Vec3 = {
+Ragdoll.Vec3Smokes = {
     ["Random_1"] = {
         ["y"] = 329.75576782227,
         ["x"] = 81052.3046875,
@@ -64,21 +64,21 @@ Robin.Vec3 = {
         ["y"] = 332.9111328125,
         ["x"] = 76987.3203125,
         ["z"] = 219587.15625
-        }
+     }
 }
 
-local countVec3Sources = dictCount(Robin.Vec3Sources)
-local countVec3 = dictCount(Robin.Vec3)
+local countVec3Sources = dictCount(Ragdoll.Vec3SmokeSources)
+local countVec3 = dictCount(Ragdoll.Vec3Smokes)
 if countVec3Sources > 0 and countVec3Sources ~= countVec3 then
     -- we have no Vec3s at this point; generate from ZONE sources so we can just copy/paste into the file (remove all Battle.Vec3 items to re-generate)
-    Robin.Vec3 = Robin.Vec3Sources
-    Debug("|||||||||||||||||||||||||||||||||||||| " .. Robin.Name .. " Vec3 ||||||||||||||||||||||||||||||||||||||")
-    Debug(DumpPrettyDeep(Robin.Vec3Sources, 2))
-    error(Robin.Name .. " please re-inject Vec3s into the story")
+    Ragdoll.Vec3Smokes = Ragdoll.Vec3SmokeSources
+    Debug("|||||||||||||||||||||||||||||||||||||| " .. Ragdoll.Name .. " Vec3 ||||||||||||||||||||||||||||||||||||||")
+    Debug(DumpPrettyDeep(Ragdoll.Vec3SmokeSources, 2))
+    error(Ragdoll.Name .. " please re-inject Vec3s into the story")
 end
 
-function Robin:OnStarted()
-    if Robin._start_menu then Robin._start_menu:Remove(true) end
+function Ragdoll:OnStarted()
+    if Ragdoll._start_menu then Ragdoll._start_menu:Remove(true) end
     DCAF.Story:ActivateStaggered({
         self.Groups.RED.AAA,
         self.Groups.RED.Logistics_1,
@@ -95,32 +95,32 @@ function Robin:OnStarted()
         self.Groups.RED.MBT_1)
 end
 
-function Robin:_activateAtRandomLocation(group)
+function Ragdoll:_activateAtRandomLocation(group)
     local spawn = getSpawn(group.GroupName)
     if not spawn then return Error("Robin:_activateAtRandomLocation :: cannot resolve SPAWN from: " .. group.GroupName) end
     self._randomStartLocations = self._randomStartLocations or {}
-    local randomVec3Key = dictRandomKey(self.Vec3)
+    local randomVec3Key = dictRandomKey(self.Vec3Smokes)
     local retry = 5
     while self._randomStartLocations[randomVec3Key] and retry > 0 do
-        randomVec3Key = dictRandomKey(self.Vec3)
+        randomVec3Key = dictRandomKey(self.Vec3Smokes)
         retry = retry - 1
     end
     self._randomStartLocations[randomVec3Key] = true
-    local randomVec3 = self.Vec3[randomVec3Key]
+    local randomVec3 = self.Vec3Smokes[randomVec3Key]
     local group = spawn:SpawnFromVec3(randomVec3)
-    randomVec3 = self.Vec3[dictRandomKey(self.Vec3)]
+    randomVec3 = self.Vec3Smokes[dictRandomKey(self.Vec3Smokes)]
     group:RouteGroundOnRoad(COORDINATE:NewFromVec3(randomVec3), self.PatrolsSpeed)
     self:_randomReroute(group)
     return self
 end
 
 --- Reroutes group to a different random location
-function Robin:_randomReroute(group)
+function Ragdoll:_randomReroute(group)
     local delay = math.random(10, 30) -- minutes
     DCAF.delay(function()
         local coord = group:GetCoordinate()
         if not coord then return end
-        local randomVec3 = self.Vec3[dictRandomKey(self.Vec3)]
+        local randomVec3 = self.Vec3Smokes[dictRandomKey(self.Vec3Smokes)]
         local coordDestination = COORDINATE:NewFromVec3(randomVec3)
         local distance = coord:Get2DDistance(coordDestination)
         if distance < 10 then
@@ -133,7 +133,7 @@ function Robin:_randomReroute(group)
     end, Minutes(delay))
 end
 
-function Robin:_activateStaggeredRandomLocation(interval, ...)
+function Ragdoll:_activateStaggeredRandomLocation(interval, ...)
     local delay = 0
     for i = 1, #arg, 1 do
         local group = arg[i]
