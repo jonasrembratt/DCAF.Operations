@@ -111,6 +111,10 @@ function Birman:GraveyardShift()
     self.Groups.BLU.Valkyrie:Activate()
 end
 
+function Birman:TruckStrobeBegin()
+    self._truckStrobe = DCAF.Lase:New(self.Groups.BLU.CivilianTruck):StartStrobe()
+end
+
 function Birman:StartCivilianTruck()
     self.Groups.BLU.CivilianTruck:Activate()
 end
