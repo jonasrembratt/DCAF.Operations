@@ -32,6 +32,7 @@ Birman.Groups = {
     RED = {
         Convoy = getGroup(_name .. " Connvoy"),
         Checkpoint = getGroup(_name .. " Checkpoint 1"),
+        Checkpoint2 = getGroup(_name .. " Checkpoint 2"),
     },
 }
 Birman.MSG = {
@@ -57,10 +58,15 @@ Birman.Vec3 = {
         ["y"] = 37.869323730469,
     },
     Ambush = {
-        ["z"] = 7969.1049804688,
-        ["x"] = 130164.3515625,
-        ["y"] = 130.69932556152,
-    }
+        ["z"] = 7971.3984375,
+        ["x"] = 130168.2421875,
+        ["y"] = 130.80070495605,
+    },
+    Ambush_2 = {
+        ["z"] = 4499.6591796875,
+        ["x"] = 124127.6875,
+        ["y"] = 60.641513824463,
+    },
 }
 -- Birman.Codewords = {
 --     TrickOrTreat = false,
@@ -94,11 +100,19 @@ if not Birman.Vec3.GraveyardShift then
 end
 
 if not Birman.Vec3.Ambush then
-    Birman.Vec3.Ambush = ZONE:New(_name .. " Ambush"):GetCoordinate()
+    Birman.Vec3.Ambush = ZONE:New(_name .. " Late"):GetCoordinate()
     Debug("|||||||||||||||||||||||||||||||||||||| " ..
         _name .. " Ambush Vec3 ||||||||||||||||||||||||||||||||||||||")
     Debug(DumpPrettyDeep(Birman.Vec3.Ambush, 2))
     Trace(_name .. " please re-inject Vec3 into the story")
+end
+
+if not Birman.Vec3.Ambush_2 then
+    Birman.Vec3.Ambush_2 = ZONE:New(_name .. " Early"):GetCoordinate()
+    Debug("|||||||||||||||||||||||||||||||||||||| " ..
+        _name .. " Ambush 2 Vec3 ||||||||||||||||||||||||||||||||||||||")
+    Debug(DumpPrettyDeep(Birman.Vec3.Ambush_2, 2))
+    Trace(_name .. " please re-inject Vec3 above into the story")
 end
 
 function Birman:OnStarted()
@@ -116,6 +130,8 @@ function Birman:OnStarted()
 end
 
 function Birman:SpectreDrift()
+    Birman._graveyard_menu:Remove()
+    self.Groups.BLU.Valkyrie:Activate()
     self._SpectreDriftFlag = true
     local convoy = Birman.Groups.RED.Convoy
     local fenris = Birman.Groups.BLU.Fenris_2
@@ -129,8 +145,14 @@ function Birman:SpectreDrift()
         fenris:RouteGroundOnRoad(coord, 120)
     end, Minutes(2))
     self._spectre_menu:Remove()
-    Birman._convoy_ambush_menu = Birman._main_menu:AddCommand("Ambush", function()
-        Birman:Ambush()
+    Birman._convoy_ambush2_menu = Birman._main_menu:AddCommand("Ambush early", function()
+        Birman:Ambush2()
+        Birman._convoy_ambush_menu = Birman._main_menu:AddCommand("Ambush late", function()
+            Birman:Ambush()
+        end)
+        Birman._graveyard_menu = Birman._main_menu:AddCommand("Graveyard Shift", function()
+            Birman:GraveyardShift()
+        end)
     end)
 end
 
@@ -141,6 +163,15 @@ function Birman:Ambush()
     convoy:RouteGroundOnRoad(coord, 80)
     fenris:RouteGroundOnRoad(coord, 100)
     self._convoy_ambush_menu:Remove()
+end
+
+function Birman:Ambush2()
+    local convoy = Birman.Groups.RED.Convoy
+    local fenris = Birman.Groups.BLU.Fenris_2
+    local coord = COORDINATE:NewFromVec3(Birman.Vec3.Ambush_2)
+    convoy:RouteGroundOnRoad(coord, 80)
+    fenris:RouteGroundOnRoad(coord, 100)
+    self._convoy_ambush2_menu:Remove()
 end
 
 function Birman:GraveyardShift()
@@ -155,6 +186,8 @@ function Birman:GraveyardShift()
     end, Minutes(2))
     self.Groups.BLU.Valkyrie:Activate()
     self._graveyard_menu:Remove()
+    self._convoy_ambush2_menu:Remove()
+    self._convoy_ambush_menu:Remove()
     Birman._heli_option = Birman._main_menu:AddCommand("Heli Proceed", function()
         SetFlag("_heli_continue")
         Birman._heli_option:Remove()
@@ -162,7 +195,16 @@ function Birman:GraveyardShift()
     end)
     Birman._checkpoint_menu = Birman._main_menu:AddCommand("Enable Checkpoint", function()
         Birman.Groups.RED.Checkpoint:Activate()
+        Birman.Groups.RED.Checkpoint2:Activate()
         Birman._checkpoint_menu:Remove()
+        Birman._stop_fenris_menu = Birman._main_menu:AddCommand("Fenris Hold", function()
+            Birman.Groups.BLU.Fenris_2:RouteStop()
+            Birman._resume_fenris_menu = Birman._main_menu:AddCommand("Fenris Resume", function()
+                Birman.Groups.BLU.Fenris_2:RouteResume()
+                Birman._resume_fenris_menu:Remove()
+            end)
+            Birman._stop_fenris_menu:Remove()
+        end)
     end)
 end
 
