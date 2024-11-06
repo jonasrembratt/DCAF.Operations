@@ -1,0 +1,3931 @@
+staticTemplate = 
+{
+	["coalition"] = 
+	{
+		["neutrals"] = 
+		{
+			["name"] = "neutrals",
+			["country"] = 
+			{
+				[1] = 
+				{
+					["id"] = 70,
+					["vehicle"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["visible"] = true,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = false,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = 
+									{
+										[1] = 
+										{
+											[1] = 
+											{
+												["y"] = 2459.8298717717,
+												["x"] = 115152.74845051,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2448.0195306457,
+												["x"] = 115150.1744018,
+											}, -- end of [2]
+										}, -- end of [1]
+										[2] = 
+										{
+											[1] = 
+											{
+												["y"] = 2448.0195306457,
+												["x"] = 115150.1744018,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2449.9879208334,
+												["x"] = 115134.4272803,
+											}, -- end of [2]
+										}, -- end of [2]
+										[3] = 
+										{
+											[1] = 
+											{
+												["y"] = 2449.9879208334,
+												["x"] = 115134.4272803,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2423.0258202804,
+												["x"] = 115129.70681591,
+											}, -- end of [2]
+										}, -- end of [3]
+										[4] = 
+										{
+											[1] = 
+											{
+												["y"] = 2422.6865646384,
+												["x"] = 115131.74676369,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2314.6048874457,
+												["x"] = 115111.31653448,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 2300.0601528299,
+												["x"] = 115107.67379966,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 2295.4861884089,
+												["x"] = 115105.69890311,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 2292.661827199,
+												["x"] = 115101.69636693,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 2292.2633740014,
+												["x"] = 115096.735247,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 2292.706426887,
+												["x"] = 115091.75817889,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 2294.229856867,
+												["x"] = 115081.87303424,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 2304.9807419035,
+												["x"] = 115027.93825278,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 2307.7317143119,
+												["x"] = 115018.25516899,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 2310.9615619776,
+												["x"] = 115014.88701873,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 2315.8142016961,
+												["x"] = 115015.86014948,
+											}, -- end of [12]
+											[13] = 
+											{
+												["y"] = 2320.6397411638,
+												["x"] = 115017.26243715,
+											}, -- end of [13]
+											[14] = 
+											{
+												["y"] = 2536.3939105717,
+												["x"] = 115060.26787793,
+											}, -- end of [14]
+											[15] = 
+											{
+												["y"] = 2614.9805135936,
+												["x"] = 115075.20451616,
+											}, -- end of [15]
+											[16] = 
+											{
+												["y"] = 2619.9532038373,
+												["x"] = 115075.73525452,
+											}, -- end of [16]
+											[17] = 
+											{
+												["y"] = 2624.9465763446,
+												["x"] = 115075.78308826,
+											}, -- end of [17]
+											[18] = 
+											{
+												["y"] = 2629.7738387927,
+												["x"] = 115074.58947919,
+											}, -- end of [18]
+											[19] = 
+											{
+												["y"] = 2633.9549784536,
+												["x"] = 115071.87516007,
+											}, -- end of [19]
+											[20] = 
+											{
+												["y"] = 2637.4423663983,
+												["x"] = 115068.30211637,
+											}, -- end of [20]
+											[21] = 
+											{
+												["y"] = 2640.4141771002,
+												["x"] = 115064.28270374,
+											}, -- end of [21]
+											[22] = 
+											{
+												["y"] = 2645.7438555909,
+												["x"] = 115055.82444265,
+											}, -- end of [22]
+											[23] = 
+											{
+												["y"] = 2648.2759629094,
+												["x"] = 115051.5135997,
+											}, -- end of [23]
+											[24] = 
+											{
+												["y"] = 2656.2568462956,
+												["x"] = 115038.79015033,
+											}, -- end of [24]
+											[25] = 
+											{
+												["y"] = 2658.3799170202,
+												["x"] = 115034.28539769,
+											}, -- end of [25]
+											[26] = 
+											{
+												["y"] = 2660.1433707356,
+												["x"] = 115029.62005692,
+											}, -- end of [26]
+											[27] = 
+											{
+												["y"] = 2661.5552880134,
+												["x"] = 115024.83233958,
+											}, -- end of [27]
+											[28] = 
+											{
+												["y"] = 2663.6628658706,
+												["x"] = 115015.07163516,
+											}, -- end of [28]
+											[29] = 
+											{
+												["y"] = 2666.5627869826,
+												["x"] = 114995.26646555,
+											}, -- end of [29]
+											[30] = 
+											{
+												["y"] = 2726.0739971551,
+												["x"] = 114312.87899498,
+											}, -- end of [30]
+											[31] = 
+											{
+												["y"] = 2733.3671408495,
+												["x"] = 114228.21234445,
+											}, -- end of [31]
+											[32] = 
+											{
+												["y"] = 2760.9698630565,
+												["x"] = 114035.1888799,
+											}, -- end of [32]
+											[33] = 
+											{
+												["y"] = 2783.9770552506,
+												["x"] = 113917.41902284,
+											}, -- end of [33]
+											[34] = 
+											{
+												["y"] = 2855.025885848,
+												["x"] = 113627.34380548,
+											}, -- end of [34]
+										}, -- end of [4]
+										[5] = 
+										{
+											[1] = 
+											{
+												["y"] = 2855.025571072,
+												["x"] = 113627.34380129,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3002.9300161059,
+												["x"] = 113035.55382166,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 3007.3942626016,
+												["x"] = 113010.97550275,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 3010.4034810279,
+												["x"] = 113001.43756803,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 3010.7712202405,
+												["x"] = 113000.35362675,
+											}, -- end of [5]
+										}, -- end of [5]
+										[6] = 
+										{
+											[1] = 
+											{
+												["y"] = 3010.8117967349,
+												["x"] = 113000.22637498,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3016.3156853167,
+												["x"] = 112986.06966973,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 3018.7393967221,
+												["x"] = 112981.62801335,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 3021.7010106003,
+												["x"] = 112977.72210909,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 3025.4346499864,
+												["x"] = 112974.6654205,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 3030.0191326171,
+												["x"] = 112973.03477715,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 3034.8589097328,
+												["x"] = 112972.82962132,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 3039.7855955878,
+												["x"] = 112973.4810648,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 3044.717924395,
+												["x"] = 112974.61276775,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 3054.4646474381,
+												["x"] = 112977.51145179,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 3572.2756255855,
+												["x"] = 113147.39094918,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 3576.9252472025,
+												["x"] = 113149.30060323,
+											}, -- end of [12]
+											[13] = 
+											{
+												["y"] = 3581.4114418947,
+												["x"] = 113151.57112905,
+											}, -- end of [13]
+											[14] = 
+											{
+												["y"] = 3585.3059317107,
+												["x"] = 113154.62514548,
+											}, -- end of [14]
+											[15] = 
+											{
+												["y"] = 3587.4667901698,
+												["x"] = 113159.03770265,
+											}, -- end of [15]
+											[16] = 
+											{
+												["y"] = 3587.9644556388,
+												["x"] = 113163.97573664,
+											}, -- end of [16]
+											[20] = 
+											{
+												["y"] = 3586.219435336,
+												["x"] = 113188.85098524,
+											}, -- end of [20]
+											[17] = 
+											{
+												["y"] = 3587.7188396971,
+												["x"] = 113168.97324199,
+											}, -- end of [17]
+											[21] = 
+											{
+												["y"] = 3587.6878453987,
+												["x"] = 113198.74025082,
+											}, -- end of [21]
+											[18] = 
+											{
+												["y"] = 3587.0657044168,
+												["x"] = 113173.95191592,
+											}, -- end of [18]
+											[22] = 
+											{
+												["y"] = 3600.4033258265,
+												["x"] = 113272.45098711,
+											}, -- end of [22]
+											[19] = 
+											{
+												["y"] = 3585.8930201091,
+												["x"] = 113183.86344206,
+											}, -- end of [19]
+										}, -- end of [6]
+										[7] = 
+										{
+											[1] = 
+											{
+												["y"] = 3600.4015391797,
+												["x"] = 113272.43833538,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3605.360370506,
+												["x"] = 113312.12340059,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 3605.8902585046,
+												["x"] = 113322.10924677,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 3605.8662986736,
+												["x"] = 113327.10732945,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 3605.5502102764,
+												["x"] = 113332.09532256,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 3604.902075214,
+												["x"] = 113337.05151372,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 3603.931477892,
+												["x"] = 113341.9572028,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 3602.6866565803,
+												["x"] = 113346.79817163,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 3595.2330622596,
+												["x"] = 113370.6612585,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 3591.8832122555,
+												["x"] = 113380.08237491,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 3589.9030416072,
+												["x"] = 113384.67193581,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 3587.4192061296,
+												["x"] = 113389.00742373,
+											}, -- end of [12]
+											[13] = 
+											{
+												["y"] = 3584.3777379802,
+												["x"] = 113392.97049823,
+											}, -- end of [13]
+											[14] = 
+											{
+												["y"] = 3580.7674491799,
+												["x"] = 113396.42218945,
+											}, -- end of [14]
+											[15] = 
+											{
+												["y"] = 3576.6599105273,
+												["x"] = 113399.26409586,
+											}, -- end of [15]
+											[16] = 
+											{
+												["y"] = 3572.2015939036,
+												["x"] = 113401.52084559,
+											}, -- end of [16]
+											[17] = 
+											{
+												["y"] = 3567.5292457002,
+												["x"] = 113403.29574324,
+											}, -- end of [17]
+											[18] = 
+											{
+												["y"] = 3562.7319920708,
+												["x"] = 113404.70240073,
+											}, -- end of [18]
+											[19] = 
+											{
+												["y"] = 3557.8624288691,
+												["x"] = 113405.83479794,
+											}, -- end of [19]
+											[20] = 
+											{
+												["y"] = 3548.01115573,
+												["x"] = 113407.54384697,
+											}, -- end of [20]
+											[21] = 
+											{
+												["y"] = 3535.7308950299,
+												["x"] = 113408.96966368,
+											}, -- end of [21]
+										}, -- end of [7]
+										[8] = 
+										{
+											[1] = 
+											{
+												["y"] = 3535.4151138751,
+												["x"] = 113406.98029724,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3532.2665546489,
+												["x"] = 113399.94602236,
+											}, -- end of [2]
+										}, -- end of [8]
+										[9] = 
+										{
+											[1] = 
+											{
+												["y"] = 3532.2665546489,
+												["x"] = 113399.94602236,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3542.0463178361,
+												["x"] = 113356.56647872,
+											}, -- end of [2]
+										}, -- end of [9]
+										[10] = 
+										{
+											[1] = 
+											{
+												["y"] = 3542.0463178361,
+												["x"] = 113356.56647872,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3544.6607099753,
+												["x"] = 113354.82355062,
+											}, -- end of [2]
+										}, -- end of [10]
+										[11] = 
+										{
+											[1] = 
+											{
+												["y"] = 3544.6607099753,
+												["x"] = 113354.82355062,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3545.8226620371,
+												["x"] = 113350.07891304,
+											}, -- end of [2]
+										}, -- end of [11]
+										[12] = 
+										{
+											[1] = 
+											{
+												["y"] = 3545.8226620371,
+												["x"] = 113350.07891304,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3545.8226620371,
+												["x"] = 113350.07891304,
+											}, -- end of [2]
+										}, -- end of [12]
+									}, -- end of ["spans"]
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2459.8298717717,
+											["x"] = 115152.74845051,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+										[2] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 0.58804502409543,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2448.0195306457,
+											["x"] = 115150.1744018,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [2]
+										[3] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 1.360082977435,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2449.9879208334,
+											["x"] = 115134.4272803,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [3]
+										[4] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 2.6917038000753,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2423.0258202804,
+											["x"] = 115129.70681591,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Script",
+																	["params"] = 
+																	{
+																		["command"] = "Birman:TruckStrobeBegin()",
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [4]
+										[5] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 101.11047872528,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2858.4206046689,
+											["x"] = 113628.19453481,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [5]
+										[6] = 
+										{
+											["alt"] = 20,
+											["type"] = "Turning Point",
+											["ETA"] = 132.54330314096,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3014.1270984365,
+											["x"] = 113001.35364861,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [6]
+										[7] = 
+										{
+											["alt"] = 23,
+											["type"] = "Turning Point",
+											["ETA"] = 168.52047865243,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3598.549852359,
+											["x"] = 113272.70636343,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [7]
+										[8] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 177.14694108443,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3535.4151138751,
+											["x"] = 113406.98029724,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [8]
+										[9] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 177.52186548631,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3532.2665546489,
+											["x"] = 113399.94602236,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [9]
+										[10] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 179.68518757064,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3542.0463178361,
+											["x"] = 113356.56647872,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [10]
+										[11] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 179.83804689373,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3544.6607099753,
+											["x"] = 113354.82355062,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [11]
+										[12] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 180.70219651693,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3545.8226620371,
+											["x"] = 113350.07891304,
+											["ETA_locked"] = false,
+											["speed"] = 5.6527777777778,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [12]
+									}, -- end of ["points"]
+									["routeRelativeTOT"] = true,
+								}, -- end of ["route"]
+								["groupId"] = 3,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = true,
+										["type"] = "MAZ-6303",
+										["unitId"] = 7,
+										["y"] = 2459.8298717717,
+										["x"] = 115152.74845051,
+										["name"] = "Birman Civ Truck-1",
+										["heading"] = 4.5204027626653,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+								}, -- end of ["units"]
+								["y"] = 2459.8298717717,
+								["x"] = 115152.74845051,
+								["name"] = "Birman Civ Truck",
+								["start_time"] = 0,
+								["manualHeading"] = true,
+								["hiddenOnPlanner"] = true,
+							}, -- end of [1]
+						}, -- end of ["group"]
+					}, -- end of ["vehicle"]
+					["name"] = "Algeria",
+				}, -- end of [1]
+				[2] = 
+				{
+					["id"] = 74,
+					["vehicle"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["visible"] = false,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = true,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = 
+									{
+										[1] = 
+										{
+											[1] = 
+											{
+												["y"] = -3992.7341342808,
+												["x"] = 110195.03620629,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = -3992.7341342808,
+												["x"] = 110195.03620629,
+											}, -- end of [2]
+										}, -- end of [1]
+									}, -- end of ["spans"]
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = -3992.7341342808,
+											["x"] = 110195.03620629,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "Hold",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["templateId"] = "",
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["name"] = 8,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+									}, -- end of ["points"]
+									["routeRelativeTOT"] = true,
+								}, -- end of ["route"]
+								["groupId"] = 14,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["TentedRoof"] = true,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_109_S3",
+										["unitId"] = 46,
+										["y"] = -3992.7341342808,
+										["x"] = 110195.03620629,
+										["name"] = "Birman Checkpoint 2-1",
+										["heading"] = 4.3982297150257,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+									[2] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "tacr2a",
+										["unitId"] = 45,
+										["y"] = -3977.3844771371,
+										["x"] = 110199.02003693,
+										["name"] = "Birman Checkpoint 2-2",
+										["heading"] = 4.4331363000656,
+										["playerCanDrive"] = false,
+									}, -- end of [2]
+									[3] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "P20_drivable",
+										["unitId"] = 47,
+										["y"] = -3956.2830971096,
+										["x"] = 110197.54284014,
+										["name"] = "Birman Checkpoint 2-3",
+										["heading"] = 4.5029494701454,
+										["playerCanDrive"] = false,
+									}, -- end of [3]
+									[4] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Variant"] = 4,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_101_FC",
+										["unitId"] = 48,
+										["y"] = -4041.0793693808,
+										["x"] = 110167.70152588,
+										["name"] = "Birman Checkpoint 2-4",
+										["heading"] = 1.3089969389957,
+										["playerCanDrive"] = false,
+									}, -- end of [4]
+									[5] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Clown",
+										["unitId"] = 49,
+										["y"] = -4051.9528732754,
+										["x"] = 110164.91969344,
+										["name"] = "Birman Checkpoint 2-5",
+										["heading"] = 1.3439035240356,
+										["playerCanDrive"] = false,
+									}, -- end of [5]
+									[6] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["TentedRoof"] = true,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_109_S3",
+										["unitId"] = 50,
+										["y"] = -4029.5266041331,
+										["x"] = 110163.34425455,
+										["name"] = "Birman Checkpoint 2-6",
+										["heading"] = 1.3439035240356,
+										["playerCanDrive"] = false,
+									}, -- end of [6]
+									[7] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_White",
+										["unitId"] = 51,
+										["y"] = -3989.6132521203,
+										["x"] = 110188.17026554,
+										["name"] = "Birman Checkpoint 2-7",
+										["heading"] = 4.4331363000656,
+										["playerCanDrive"] = false,
+									}, -- end of [7]
+									[8] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Variant"] = 4,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_101_FC",
+										["unitId"] = 52,
+										["y"] = -4057.5704611642,
+										["x"] = 110163.43727441,
+										["name"] = "Birman Checkpoint 2-8",
+										["heading"] = 1.3788101090755,
+										["playerCanDrive"] = false,
+									}, -- end of [8]
+									[9] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Red",
+										["unitId"] = 53,
+										["y"] = -4029.184346796,
+										["x"] = 110171.13691868,
+										["name"] = "Birman Checkpoint 2-9",
+										["heading"] = 1.3788101090755,
+										["playerCanDrive"] = false,
+									}, -- end of [9]
+									[10] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_TOYOTA_Desert",
+										["unitId"] = 54,
+										["y"] = -4047.1555642515,
+										["x"] = 110158.5472586,
+										["name"] = "Birman Checkpoint 2-10",
+										["heading"] = 1.2740903539559,
+										["playerCanDrive"] = false,
+									}, -- end of [10]
+									[11] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Camo",
+										["unitId"] = 55,
+										["y"] = -3969.9499576435,
+										["x"] = 110201.18632254,
+										["name"] = "Birman Checkpoint 2-11",
+										["heading"] = 4.3982297150257,
+										["playerCanDrive"] = false,
+									}, -- end of [11]
+									[12] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_TOYOTA_Desert",
+										["unitId"] = 56,
+										["y"] = -4035.4679707325,
+										["x"] = 110169.35605216,
+										["name"] = "Birman Checkpoint 2-12",
+										["heading"] = 1.3089969389957,
+										["playerCanDrive"] = false,
+									}, -- end of [12]
+									[13] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Red",
+										["unitId"] = 57,
+										["y"] = -3964.834683976,
+										["x"] = 110202.63211827,
+										["name"] = "Birman Checkpoint 2-13",
+										["heading"] = 4.3982297150257,
+										["playerCanDrive"] = false,
+									}, -- end of [13]
+									[14] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "r11_volvo_drivable",
+										["unitId"] = 58,
+										["y"] = -3965.3471517188,
+										["x"] = 110194.93116766,
+										["name"] = "Birman Checkpoint 2-14",
+										["heading"] = 4.4505895925855,
+										["playerCanDrive"] = false,
+									}, -- end of [14]
+									[15] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "M978 HEMTT Tanker",
+										["unitId"] = 59,
+										["y"] = -4039.0006711355,
+										["x"] = 110160.82583168,
+										["name"] = "Birman Checkpoint 2-15",
+										["heading"] = 1.3264502315157,
+										["playerCanDrive"] = false,
+									}, -- end of [15]
+									[16] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Camo",
+										["unitId"] = 60,
+										["y"] = -3974.9147935895,
+										["x"] = 110192.4564626,
+										["name"] = "Birman Checkpoint 2-16",
+										["heading"] = 4.3982297150257,
+										["playerCanDrive"] = false,
+									}, -- end of [16]
+									[17] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Variant"] = 4,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_101_FC",
+										["unitId"] = 61,
+										["y"] = -3985.1870065901,
+										["x"] = 110197.00081017,
+										["name"] = "Birman Checkpoint 2-17",
+										["heading"] = 4.4156830075457,
+										["playerCanDrive"] = false,
+									}, -- end of [17]
+									[18] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Variant"] = 4,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_101_FC",
+										["unitId"] = 62,
+										["y"] = -4045.9962902301,
+										["x"] = 110166.26242709,
+										["name"] = "Birman Checkpoint 2-18",
+										["heading"] = 1.3439035240356,
+										["playerCanDrive"] = false,
+									}, -- end of [18]
+									[19] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "ERO_Toyota_Clown",
+										["unitId"] = 63,
+										["y"] = -3980.9278065901,
+										["x"] = 110190.61201017,
+										["name"] = "Birman Checkpoint 2-19",
+										["heading"] = 4.5727626402251,
+										["playerCanDrive"] = false,
+									}, -- end of [19]
+									[20] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "r11_volvo_drivable",
+										["unitId"] = 64,
+										["y"] = -4055.7612159741,
+										["x"] = 110155.8790633,
+										["name"] = "Birman Checkpoint 2-20",
+										["heading"] = 1.3089969389957,
+										["playerCanDrive"] = false,
+									}, -- end of [20]
+								}, -- end of ["units"]
+								["y"] = -3992.7341342808,
+								["x"] = 110195.03620629,
+								["name"] = "Birman Checkpoint 2",
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+							}, -- end of [1]
+						}, -- end of ["group"]
+					}, -- end of ["vehicle"]
+					["name"] = "United Arab Emirates",
+				}, -- end of [2]
+			}, -- end of ["country"]
+		}, -- end of ["neutrals"]
+		["blue"] = 
+		{
+			["name"] = "blue",
+			["country"] = 
+			{
+				[1] = 
+				{
+					["helicopter"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["dynSpawnTemplate"] = false,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["radioSet"] = false,
+								["task"] = "Transport",
+								["uncontrolled"] = false,
+								["hiddenOnMFD"] = false,
+								["route"] = 
+								{
+									["routeRelativeTOT"] = true,
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 0,
+											["action"] = "From Parking Area",
+											["alt_type"] = "BARO",
+											["linkUnit"] = 11,
+											["helipadId"] = 11,
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "SetUnlimitedFuel",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["number"] = 2,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																		["name"] = 32,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+														[3] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["number"] = 3,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 2,
+																		["name"] = 4,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [3]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "TakeOffParking",
+											["ETA"] = 0,
+											["ETA_locked"] = true,
+											["y"] = 58920.476813781,
+											["x"] = -2362.7614232722,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [1]
+										[2] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 800.06608406416,
+											["ETA_locked"] = false,
+											["y"] = 34078.762599527,
+											["x"] = 25061.961309117,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [2]
+										[3] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 1324.6330801844,
+											["ETA_locked"] = false,
+											["y"] = 20434.401158517,
+											["x"] = 45122.827940644,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [3]
+										[4] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 1696.8653681552,
+											["ETA_locked"] = false,
+											["y"] = 9992.2348893166,
+											["x"] = 58810.157176835,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [4]
+										[5] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 1961.9454816093,
+											["ETA_locked"] = false,
+											["y"] = 5332.073319221,
+											["x"] = 70149.883664068,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [5]
+										[6] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2240.5029797403,
+											["ETA_locked"] = false,
+											["y"] = 6652.4524307481,
+											["x"] = 82965.327981831,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [6]
+										[7] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2388.2274187455,
+											["ETA_locked"] = false,
+											["y"] = 7662.1541042688,
+											["x"] = 89722.562258469,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [7]
+										[8] = 
+										{
+											["alt"] = 152.4,
+											["action"] = "Turning Point",
+											["alt_type"] = "RADIO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "ControlledTask",
+															["number"] = 1,
+															["params"] = 
+															{
+																["task"] = 
+																{
+																	["id"] = "Orbit",
+																	["params"] = 
+																	{
+																		["altitudeEdited"] = true,
+																		["pattern"] = "Circle",
+																		["speed"] = 41.666666666667,
+																		["altitude"] = 60.96,
+																	}, -- end of ["params"]
+																}, -- end of ["task"]
+																["stopCondition"] = 
+																{
+																	["userFlag"] = "_heli_continue",
+																}, -- end of ["stopCondition"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2652.969763815,
+											["ETA_locked"] = false,
+											["y"] = -1615.9980042396,
+											["x"] = 97712.530676303,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [8]
+										[9] = 
+										{
+											["alt"] = 500,
+											["action"] = "Fly Over Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "Embarking",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["distributionFlag"] = false,
+																["duration"] = 300,
+																["durationFlag"] = true,
+																["distribution"] = 
+																{
+																	[13] = 
+																	{
+																		[1] = 11,
+																	}, -- end of [13]
+																}, -- end of ["distribution"]
+																["x"] = 111277.33704494,
+																["y"] = -6981.0233265364,
+																["onStartMission"] = false,
+																["groupsForEmbarking"] = 
+																{
+																	[1] = 11,
+																}, -- end of ["groupsForEmbarking"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2871.3160762192,
+											["ETA_locked"] = false,
+											["y"] = -6143.7320100143,
+											["x"] = 106499.76946229,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [9]
+										[10] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["name"] = "Resume Escort",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Script",
+																	["params"] = 
+																	{
+																		["command"] = "SetFlag(\"_follow_continue\")",
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2988.2081811607,
+											["ETA_locked"] = false,
+											["y"] = -11759.274229238,
+											["x"] = 106285.21644385,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [10]
+										[11] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2194.589832718,
+											["ETA_locked"] = false,
+											["y"] = -10709.103414134,
+											["x"] = 97929.509523675,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [11]
+										[12] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2469.8426712233,
+											["ETA_locked"] = false,
+											["y"] = 7344.803602924,
+											["x"] = 89646.316878305,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [12]
+										[13] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2631.8627556034,
+											["ETA_locked"] = false,
+											["y"] = 6353.767212221,
+											["x"] = 82968.61929333,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [13]
+										[14] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2943.1382166319,
+											["ETA_locked"] = false,
+											["y"] = 5079.5775670315,
+											["x"] = 70061.550109651,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [14]
+										[15] = 
+										{
+											["alt"] = 38,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 46.25,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 3239.5898027653,
+											["ETA_locked"] = false,
+											["y"] = 9728.0101615193,
+											["x"] = 58617.439407486,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [15]
+										[16] = 
+										{
+											["alt"] = 0,
+											["action"] = "LandingReFuAr",
+											["alt_type"] = "BARO",
+											["linkUnit"] = 11,
+											["helipadId"] = 11,
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "LandingReFuAr",
+											["ETA"] = 6173.2199583056,
+											["ETA_locked"] = false,
+											["timeReFuAr"] = 10,
+											["y"] = 58926.126813781,
+											["x"] = -2337.7614232722,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [16]
+									}, -- end of ["points"]
+								}, -- end of ["route"]
+								["groupId"] = 8,
+								["uncontrollable"] = true,
+								["hidden"] = false,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["alt"] = 0,
+										["hardpoint_racks"] = true,
+										["alt_type"] = "BARO",
+										["livery_id"] = "standard",
+										["skill"] = "High",
+										["parking"] = "1",
+										["ropeLength"] = 15,
+										["speed"] = 41.666666666667,
+										["type"] = "UH-60A",
+										["unitId"] = 13,
+										["psi"] = 0.73601831497949,
+										["onboard_num"] = "010",
+										["parking_id"] = "1",
+										["x"] = -2362.7614232722,
+										["name"] = "Birman Valkyrie 1-1",
+										["payload"] = 
+										{
+											["pylons"] = {},
+											["fuel"] = "1100",
+											["flare"] = 30,
+											["chaff"] = 30,
+											["gun"] = 100,
+										}, -- end of ["payload"]
+										["y"] = 58920.476813781,
+										["heading"] = -0.73601831497949,
+										["callsign"] = 
+										{
+											[1] = 1,
+											[2] = 1,
+											[3] = 1,
+											["name"] = "Enfield11",
+										}, -- end of ["callsign"]
+									}, -- end of [1]
+								}, -- end of ["units"]
+								["y"] = 58920.476813781,
+								["x"] = -2362.7614232722,
+								["name"] = "Birman Valkyrie 1",
+								["communication"] = true,
+								["modulation"] = 0,
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+								["frequency"] = 127.5,
+							}, -- end of [1]
+						}, -- end of ["group"]
+					}, -- end of ["helicopter"]
+					["name"] = "CJTF Blue",
+					["ship"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["visible"] = false,
+								["hiddenOnPlanner"] = false,
+								["tasks"] = {},
+								["uncontrollable"] = false,
+								["hiddenOnMFD"] = false,
+								["route"] = 
+								{
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 0,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 58926.126813781,
+											["x"] = -2337.7614232722,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Turning Point",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "ActivateBeacon",
+																	["params"] = 
+																	{
+																		["type"] = 4,
+																		["AA"] = false,
+																		["unitId"] = 11,
+																		["modeChannel"] = "X",
+																		["channel"] = 1,
+																		["system"] = 3,
+																		["callsign"] = "TKR",
+																		["bearing"] = true,
+																		["frequency"] = 962000000,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "ActivateICLS",
+																	["params"] = 
+																	{
+																		["type"] = 131584,
+																		["channel"] = 1,
+																		["unitId"] = 11,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+									}, -- end of ["points"]
+								}, -- end of ["route"]
+								["groupId"] = 6,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["modulation"] = 0,
+										["skill"] = "Average",
+										["type"] = "LHA_Tarawa",
+										["unitId"] = 11,
+										["y"] = 58926.126813781,
+										["x"] = -2337.7614232722,
+										["name"] = "Naval-1-1",
+										["heading"] = 0,
+										["frequency"] = 127500000,
+									}, -- end of [1]
+								}, -- end of ["units"]
+								["y"] = 58926.126813781,
+								["x"] = -2337.7614232722,
+								["name"] = "Birman Carrier",
+								["start_time"] = 0,
+							}, -- end of [1]
+						}, -- end of ["group"]
+					}, -- end of ["ship"]
+					["id"] = 80,
+					["vehicle"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["visible"] = true,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = false,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = 
+									{
+										[1] = 
+										{
+											[1] = 
+											{
+												["y"] = 2470.9508880013,
+												["x"] = 115155.33453345,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2449.2155255446,
+												["x"] = 115146.42793756,
+											}, -- end of [2]
+										}, -- end of [1]
+										[2] = 
+										{
+											[1] = 
+											{
+												["y"] = 2449.2155255446,
+												["x"] = 115146.42793756,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2451.258322768,
+												["x"] = 115135.31512067,
+											}, -- end of [2]
+										}, -- end of [2]
+										[3] = 
+										{
+											[1] = 
+											{
+												["y"] = 2451.258322768,
+												["x"] = 115135.31512067,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2421.5794916582,
+												["x"] = 115129.45781038,
+											}, -- end of [2]
+										}, -- end of [3]
+										[4] = 
+										{
+											[1] = 
+											{
+												["y"] = 2421.2388640924,
+												["x"] = 115131.50600243,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 2313.1714978832,
+												["x"] = 115111.00177228,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 2298.6710463821,
+												["x"] = 115107.19808948,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 2294.3616654938,
+												["x"] = 115104.76130779,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 2292.3754271424,
+												["x"] = 115100.26043104,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 2292.348076714,
+												["x"] = 115095.27150385,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 2292.8962429535,
+												["x"] = 115090.3025138,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 2296.2864104195,
+												["x"] = 115070.59174338,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 2305.319582144,
+												["x"] = 115026.5105778,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 2308.364612533,
+												["x"] = 115016.92922197,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 2312.379760828,
+												["x"] = 115014.92949441,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 2317.2330027226,
+												["x"] = 115016.31012532,
+											}, -- end of [12]
+											[13] = 
+											{
+												["y"] = 2322.0666300512,
+												["x"] = 115017.60267044,
+											}, -- end of [13]
+											[14] = 
+											{
+												["y"] = 2606.5518370803,
+												["x"] = 115073.88329061,
+											}, -- end of [14]
+											[15] = 
+											{
+												["y"] = 2616.4367137037,
+												["x"] = 115075.38832405,
+											}, -- end of [15]
+											[16] = 
+											{
+												["y"] = 2621.4181248072,
+												["x"] = 115075.82127071,
+											}, -- end of [16]
+											[17] = 
+											{
+												["y"] = 2626.4022880645,
+												["x"] = 115075.608136,
+											}, -- end of [17]
+											[18] = 
+											{
+												["y"] = 2631.0768183881,
+												["x"] = 115073.915108,
+											}, -- end of [18]
+											[19] = 
+											{
+												["y"] = 2635.0489667952,
+												["x"] = 115070.8966678,
+											}, -- end of [19]
+											[20] = 
+											{
+												["y"] = 2638.3505456674,
+												["x"] = 115067.14942234,
+											}, -- end of [20]
+											[21] = 
+											{
+												["y"] = 2641.2393349481,
+												["x"] = 115063.0692096,
+											}, -- end of [21]
+											[22] = 
+											{
+												["y"] = 2646.4639354041,
+												["x"] = 115054.5446497,
+											}, -- end of [22]
+											[23] = 
+											{
+												["y"] = 2649.0729213159,
+												["x"] = 115050.28221128,
+											}, -- end of [23]
+											[24] = 
+											{
+												["y"] = 2654.5506144037,
+												["x"] = 115041.87828849,
+											}, -- end of [24]
+											[25] = 
+											{
+												["y"] = 2656.9163837996,
+												["x"] = 115037.48450432,
+											}, -- end of [25]
+											[26] = 
+											{
+												["y"] = 2658.9352941591,
+												["x"] = 115032.93285227,
+											}, -- end of [26]
+											[27] = 
+											{
+												["y"] = 2660.591252506,
+												["x"] = 115028.22391159,
+											}, -- end of [27]
+											[28] = 
+											{
+												["y"] = 2661.9151922334,
+												["x"] = 115023.41268204,
+											}, -- end of [28]
+											[29] = 
+											{
+												["y"] = 2663.9182893465,
+												["x"] = 115013.62638122,
+											}, -- end of [29]
+											[30] = 
+											{
+												["y"] = 2667.3643957874,
+												["x"] = 114988.84792894,
+											}, -- end of [30]
+											[31] = 
+											{
+												["y"] = 2726.9427129176,
+												["x"] = 114301.44460169,
+											}, -- end of [31]
+											[32] = 
+											{
+												["y"] = 2732.2951390241,
+												["x"] = 114236.67743413,
+											}, -- end of [32]
+											[33] = 
+											{
+												["y"] = 2759.4837097994,
+												["x"] = 114043.59060557,
+											}, -- end of [33]
+											[34] = 
+											{
+												["y"] = 2783.1754045943,
+												["x"] = 113920.85923699,
+											}, -- end of [34]
+											[35] = 
+											{
+												["y"] = 3002.4255121441,
+												["x"] = 113039.11017953,
+											}, -- end of [35]
+										}, -- end of [4]
+										[5] = 
+										{
+											[1] = 
+											{
+												["y"] = 3002.4255121041,
+												["x"] = 113039.1101801,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3003.4029865232,
+												["x"] = 113034.2090108,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 3006.5521172338,
+												["x"] = 113014.46921416,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 3007.8365918581,
+												["x"] = 113009.64038193,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 3010.9479634273,
+												["x"] = 113000.13615111,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 3016.4615120266,
+												["x"] = 112985.95780916,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 3018.8696718475,
+												["x"] = 112981.53100659,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 3021.8213814624,
+												["x"] = 112977.62797319,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 3025.5753698266,
+												["x"] = 112974.59422024,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 3030.174631788,
+												["x"] = 112973.01485895,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 3035.0186876547,
+												["x"] = 112972.8429055,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 3039.9466580181,
+												["x"] = 112973.51330893,
+											}, -- end of [12]
+											[13] = 
+											{
+												["y"] = 3044.8787077391,
+												["x"] = 112974.65549896,
+											}, -- end of [13]
+											[14] = 
+											{
+												["y"] = 3054.6227956346,
+												["x"] = 112977.56217716,
+											}, -- end of [14]
+											[15] = 
+											{
+												["y"] = 3717.1932723438,
+												["x"] = 113186.86640592,
+											}, -- end of [15]
+											[16] = 
+											{
+												["y"] = 3956.7908817622,
+												["x"] = 113251.87012394,
+											}, -- end of [16]
+										}, -- end of [5]
+										[6] = 
+										{
+											[1] = 
+											{
+												["y"] = 3956.7908888145,
+												["x"] = 113251.87012613,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3961.5737273543,
+												["x"] = 113253.36437603,
+											}, -- end of [2]
+											[3] = 
+											{
+												["y"] = 3966.1340635543,
+												["x"] = 113255.37505445,
+											}, -- end of [3]
+											[4] = 
+											{
+												["y"] = 3970.1927459614,
+												["x"] = 113258.3351484,
+											}, -- end of [4]
+											[5] = 
+											{
+												["y"] = 3973.1070178267,
+												["x"] = 113262.3454223,
+											}, -- end of [5]
+											[6] = 
+											{
+												["y"] = 3974.4747513313,
+												["x"] = 113267.10006884,
+											}, -- end of [6]
+											[7] = 
+											{
+												["y"] = 3974.6167617444,
+												["x"] = 113272.06879244,
+											}, -- end of [7]
+											[8] = 
+											{
+												["y"] = 3974.1078221491,
+												["x"] = 113277.05134737,
+											}, -- end of [8]
+											[9] = 
+											{
+												["y"] = 3973.2570109411,
+												["x"] = 113281.99610751,
+											}, -- end of [9]
+											[10] = 
+											{
+												["y"] = 3971.0752273825,
+												["x"] = 113291.75596669,
+											}, -- end of [10]
+											[11] = 
+											{
+												["y"] = 3963.0949566797,
+												["x"] = 113320.67357543,
+											}, -- end of [11]
+											[12] = 
+											{
+												["y"] = 3921.6295085158,
+												["x"] = 113446.03698569,
+											}, -- end of [12]
+										}, -- end of [6]
+										[7] = 
+										{
+											[1] = 
+											{
+												["y"] = 3920.1972822483,
+												["x"] = 113445.63095947,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3896.281759023,
+												["x"] = 113444.39735173,
+											}, -- end of [2]
+										}, -- end of [7]
+										[8] = 
+										{
+											[1] = 
+											{
+												["y"] = 3896.281759023,
+												["x"] = 113444.39735173,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3881.2078053754,
+												["x"] = 113441.00040443,
+											}, -- end of [2]
+										}, -- end of [8]
+										[9] = 
+										{
+											[1] = 
+											{
+												["y"] = 3881.2078053754,
+												["x"] = 113441.00040443,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3846.0660362385,
+												["x"] = 113437.18209458,
+											}, -- end of [2]
+										}, -- end of [9]
+										[10] = 
+										{
+											[1] = 
+											{
+												["y"] = 3846.0660362385,
+												["x"] = 113437.18209458,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3846.0660362385,
+												["x"] = 113437.18209458,
+											}, -- end of [2]
+										}, -- end of [10]
+									}, -- end of ["spans"]
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2470.9508880013,
+											["x"] = 115155.33453345,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "ControlledTask",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["task"] = 
+																{
+																	["id"] = "Hold",
+																	["params"] = 
+																	{
+																		["templateId"] = "",
+																	}, -- end of ["params"]
+																}, -- end of ["task"]
+																["stopCondition"] = 
+																{
+																	["duration"] = 30,
+																}, -- end of ["stopCondition"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+										[2] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 1.1427291406748,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2449.2155255446,
+											["x"] = 115146.42793756,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 3,
+																		["name"] = 0,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "SetImmortal",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [2]
+										[3] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 1.6924109079056,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2451.258322768,
+											["x"] = 115135.31512067,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [3]
+										[4] = 
+										{
+											["alt"] = 22,
+											["type"] = "Turning Point",
+											["ETA"] = 3.1640957311092,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 2421.5794916582,
+											["x"] = 115129.45781038,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [4]
+										[5] = 
+										{
+											["alt"] = 20,
+											["type"] = "Turning Point",
+											["ETA"] = 131.0084597222,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3005.6383240519,
+											["x"] = 113039.91524866,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [5]
+										[6] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 181.74771626108,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3955.8665808114,
+											["x"] = 113255.24589207,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [6]
+										[7] = 
+										{
+											["alt"] = 26,
+											["type"] = "Turning Point",
+											["ETA"] = 192.05938155205,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3920.1972822483,
+											["x"] = 113445.63095947,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "On Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [7]
+										[8] = 
+										{
+											["alt"] = 26,
+											["type"] = "Turning Point",
+											["ETA"] = 193.22438621131,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3896.281759023,
+											["x"] = 113444.39735173,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [8]
+										[9] = 
+										{
+											["alt"] = 25,
+											["type"] = "Turning Point",
+											["ETA"] = 193.97610359624,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3881.2078053754,
+											["x"] = 113441.00040443,
+											["ETA_locked"] = false,
+											["speed"] = 20.555555555556,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [9]
+										[10] = 
+										{
+											["alt"] = 25,
+											["type"] = "Turning Point",
+											["ETA"] = 200.85474982451,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3846.0660362385,
+											["x"] = 113437.18209458,
+											["ETA_locked"] = false,
+											["speed"] = 5.1388888888889,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [10]
+									}, -- end of ["points"]
+									["routeRelativeTOT"] = true,
+								}, -- end of ["route"]
+								["groupId"] = 10,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Excellent",
+										["AddPropVehicle"] = 
+										{
+											["TentedRoof"] = true,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = true,
+										["type"] = "Land_Rover_109_S3",
+										["unitId"] = 15,
+										["y"] = 2470.9508880013,
+										["x"] = 115155.33453345,
+										["name"] = "Birman Fenris 2-1",
+										["heading"] = -1.959700439156,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+								}, -- end of ["units"]
+								["y"] = 2470.9508880013,
+								["x"] = 115155.33453345,
+								["name"] = "Birman Fenris 2",
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+							}, -- end of [1]
+							[2] = 
+							{
+								["visible"] = false,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = false,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = {},
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 37,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = -6891.7110441259,
+											["x"] = 111351.91830793,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Diamond",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "EmbarkToTransport",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["y"] = -6923.0086861849,
+																["x"] = 111282.60914027,
+																["selectedType"] = "UH-60A",
+																["zoneRadius"] = 200,
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "SetImmortal",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+									}, -- end of ["points"]
+									["routeRelativeTOT"] = true,
+								}, -- end of ["route"]
+								["groupId"] = 11,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Excellent",
+										["coldAtStart"] = false,
+										["type"] = "Soldier M4",
+										["unitId"] = 20,
+										["y"] = -6891.7110441259,
+										["x"] = 111351.91830793,
+										["name"] = "Birman Goblin-5",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+									[2] = 
+									{
+										["skill"] = "Excellent",
+										["coldAtStart"] = false,
+										["type"] = "Soldier M4",
+										["unitId"] = 19,
+										["y"] = -6876.5032914582,
+										["x"] = 111370.07681857,
+										["name"] = "Birman Goblin-4",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [2]
+									[3] = 
+									{
+										["skill"] = "Excellent",
+										["coldAtStart"] = false,
+										["type"] = "Soldier M4",
+										["unitId"] = 18,
+										["y"] = -6860.8415760242,
+										["x"] = 111363.94832123,
+										["name"] = "Birman Goblin-3",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [3]
+									[4] = 
+									{
+										["skill"] = "Excellent",
+										["coldAtStart"] = false,
+										["type"] = "Soldier M4",
+										["unitId"] = 17,
+										["y"] = -6875.8223473089,
+										["x"] = 111339.88829462,
+										["name"] = "Birman Goblin-2",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [4]
+									[5] = 
+									{
+										["skill"] = "Excellent",
+										["coldAtStart"] = false,
+										["type"] = "Soldier M4",
+										["unitId"] = 16,
+										["y"] = -6863.5653526215,
+										["x"] = 111348.2866058,
+										["name"] = "Birman Goblin-1",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [5]
+								}, -- end of ["units"]
+								["y"] = -6891.7110441259,
+								["x"] = 111351.91830793,
+								["name"] = "Birman Goblin",
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+							}, -- end of [2]
+						}, -- end of ["group"]
+					}, -- end of ["vehicle"]
+				}, -- end of [1]
+				[2] = 
+				{
+					["id"] = 2,
+					["name"] = "USA",
+					["helicopter"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["dynSpawnTemplate"] = false,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["radioSet"] = false,
+								["task"] = "CAS",
+								["uncontrolled"] = false,
+								["route"] = 
+								{
+									["routeRelativeTOT"] = true,
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 0,
+											["action"] = "From Parking Area",
+											["alt_type"] = "BARO",
+											["linkUnit"] = 11,
+											["helipadId"] = 11,
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "SetUnlimitedFuel",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["enabled"] = true,
+															["key"] = "CAS",
+															["id"] = "EngageTargets",
+															["number"] = 2,
+															["auto"] = true,
+															["params"] = 
+															{
+																["targetTypes"] = 
+																{
+																	[1] = "Helicopters",
+																	[2] = "Ground Units",
+																	[3] = "Light armed ships",
+																}, -- end of ["targetTypes"]
+																["priority"] = 0,
+															}, -- end of ["params"]
+														}, -- end of [2]
+														[3] = 
+														{
+															["enabled"] = true,
+															["auto"] = true,
+															["id"] = "WrappedAction",
+															["number"] = 3,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "EPLRS",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																		["groupId"] = 2,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [3]
+														[4] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["number"] = 4,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 3,
+																		["name"] = 0,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [4]
+														[5] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "Follow",
+															["number"] = 5,
+															["params"] = 
+															{
+																["lastWptIndexFlagChangedManually"] = true,
+																["groupId"] = 8,
+																["lastWptIndex"] = 8,
+																["lastWptIndexFlag"] = true,
+																["pos"] = 
+																{
+																	["y"] = 0,
+																	["x"] = -500,
+																	["z"] = 200,
+																}, -- end of ["pos"]
+															}, -- end of ["params"]
+														}, -- end of [5]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "TakeOffParking",
+											["ETA"] = 0,
+											["ETA_locked"] = true,
+											["y"] = 58919.836813781,
+											["x"] = -2387.7614232722,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [1]
+										[2] = 
+										{
+											["alt"] = 2000,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "ControlledTask",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["task"] = 
+																{
+																	["id"] = "Orbit",
+																	["params"] = 
+																	{
+																		["altitudeEdited"] = true,
+																		["pattern"] = "Circle",
+																		["speed"] = 50.694444444444,
+																		["altitude"] = 60.96,
+																	}, -- end of ["params"]
+																}, -- end of ["task"]
+																["stopCondition"] = 
+																{
+																	["userFlag"] = "_valkyrie2_engage",
+																}, -- end of ["stopCondition"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["enabled"] = true,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["number"] = 2,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 2,
+																		["name"] = 0,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+														[3] = 
+														{
+															["number"] = 3,
+															["auto"] = false,
+															["id"] = "ControlledTask",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["task"] = 
+																{
+																	["id"] = "AttackGroup",
+																	["params"] = 
+																	{
+																		["groupAttack"] = false,
+																		["groupId"] = 12,
+																		["attackQtyLimit"] = false,
+																		["attackQty"] = 1,
+																		["expend"] = "Auto",
+																		["altitude"] = 2000,
+																		["directionEnabled"] = true,
+																		["direction"] = 3.1066860685499,
+																		["weaponType"] = 9663676414,
+																		["altitudeEnabled"] = false,
+																	}, -- end of ["params"]
+																}, -- end of ["task"]
+																["condition"] = 
+																{
+																	["userFlag"] = "_valkyrie2_engage",
+																}, -- end of ["condition"]
+															}, -- end of ["params"]
+														}, -- end of [3]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 2792.6745877605,
+											["ETA_locked"] = false,
+											["y"] = -1941.7524833667,
+											["x"] = 96788.102254777,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [2]
+										[3] = 
+										{
+											["alt"] = 2000,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "ControlledTask",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["task"] = 
+																{
+																	["id"] = "Orbit",
+																	["params"] = 
+																	{
+																		["altitudeEdited"] = true,
+																		["pattern"] = "Circle",
+																		["speed"] = 50.694444444444,
+																		["altitude"] = 60.96,
+																	}, -- end of ["params"]
+																}, -- end of ["task"]
+																["stopCondition"] = 
+																{
+																	["userFlag"] = "_follow_continue",
+																}, -- end of ["stopCondition"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "Follow",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["lastWptIndexFlagChangedManually"] = true,
+																["groupId"] = 8,
+																["lastWptIndex"] = 16,
+																["lastWptIndexFlag"] = true,
+																["pos"] = 
+																{
+																	["y"] = 0,
+																	["x"] = -500,
+																	["z"] = 200,
+																}, -- end of ["pos"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 3059.4065807379,
+											["ETA_locked"] = false,
+											["y"] = -13041.092677819,
+											["x"] = 97355.492865289,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [3]
+										[4] = 
+										{
+											["alt"] = 2000,
+											["action"] = "Turning Point",
+											["alt_type"] = "BARO",
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "Turning Point",
+											["ETA"] = 4.6066498639966,
+											["ETA_locked"] = false,
+											["y"] = 58742.283114905,
+											["x"] = -2314.8430785023,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [4]
+										[5] = 
+										{
+											["alt"] = 0,
+											["action"] = "LandingReFuAr",
+											["alt_type"] = "BARO",
+											["linkUnit"] = 11,
+											["helipadId"] = 11,
+											["speed"] = 41.666666666667,
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = {},
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["type"] = "LandingReFuAr",
+											["ETA"] = 9.0530510535733,
+											["ETA_locked"] = false,
+											["timeReFuAr"] = 10,
+											["y"] = 58926.126813781,
+											["x"] = -2337.7614232722,
+											["speed_locked"] = true,
+											["formation_template"] = "",
+										}, -- end of [5]
+									}, -- end of ["points"]
+								}, -- end of ["route"]
+								["groupId"] = 15,
+								["uncontrollable"] = true,
+								["hidden"] = false,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["alt"] = 0,
+										["hardpoint_racks"] = true,
+										["alt_type"] = "BARO",
+										["livery_id"] = "wolfpack 1-82 arb",
+										["skill"] = "High",
+										["parking"] = 2,
+										["speed"] = 41.666666666667,
+										["AddPropAircraft"] = 
+										{
+											["TN_IDM_LB"] = "1",
+											["OwnshipCallSign"] = "G-1",
+											["PltNVG"] = true,
+											["AIDisabled"] = false,
+											["TrackAirTargets"] = true,
+											["CpgNVG"] = true,
+										}, -- end of ["AddPropAircraft"]
+										["type"] = "AH-64D_BLK_II",
+										["unitId"] = 65,
+										["psi"] = 0.55041285124639,
+										["onboard_num"] = "010",
+										["parking_id"] = "2",
+										["x"] = -2387.7614232722,
+										["name"] = "Birman Valkyrie 2-1",
+										["payload"] = 
+										{
+											["pylons"] = 
+											{
+												[1] = 
+												{
+													["CLSID"] = "{M261_OUTBOARD_AB_M151_E_M257}",
+												}, -- end of [1]
+												[2] = 
+												{
+													["CLSID"] = "{88D18A5E-99C8-4B04-B40B-1C02F2018B6E}",
+												}, -- end of [2]
+												[3] = 
+												{
+													["CLSID"] = "{88D18A5E-99C8-4B04-B40B-1C02F2018B6E}",
+												}, -- end of [3]
+												[4] = 
+												{
+													["CLSID"] = "{M261_OUTBOARD_AB_M151_E_M257}",
+												}, -- end of [4]
+												[5] = 
+												{
+													["CLSID"] = "{IAFS_ComboPak_100}",
+												}, -- end of [5]
+												[6] = 
+												{
+													["CLSID"] = "{AN_APG_78}",
+												}, -- end of [6]
+											}, -- end of ["pylons"]
+											["fuel"] = 1140,
+											["flare"] = 60,
+											["ammo_type"] = 1,
+											["chaff"] = 30,
+											["gun"] = 25,
+										}, -- end of ["payload"]
+										["y"] = 58919.836813781,
+										["heading"] = -0.55041285124639,
+										["callsign"] = 
+										{
+											[1] = 1,
+											[2] = 1,
+											[3] = 1,
+											["name"] = "Enfield11",
+										}, -- end of ["callsign"]
+										["datalinks"] = 
+										{
+											["IDM"] = 
+											{
+												["settings"] = 
+												{
+													["presets"] = 
+													{
+														[1] = 
+														{
+															["primaryFreq"] = 1,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 1",
+															["presetName"] = "PRESET 1",
+														}, -- end of [1]
+														[2] = 
+														{
+															["primaryFreq"] = 2,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 2",
+															["presetName"] = "PRESET 2",
+														}, -- end of [2]
+														[3] = 
+														{
+															["primaryFreq"] = 3,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 3",
+															["presetName"] = "PRESET 3",
+														}, -- end of [3]
+														[4] = 
+														{
+															["primaryFreq"] = 4,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 4",
+															["presetName"] = "PRESET 4",
+														}, -- end of [4]
+														[5] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 5",
+															["presetName"] = "PRESET 5",
+														}, -- end of [5]
+														[6] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 6",
+															["presetName"] = "PRESET 6",
+														}, -- end of [6]
+														[7] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 7",
+															["presetName"] = "PRESET 7",
+														}, -- end of [7]
+														[8] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = true,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 8",
+															["presetName"] = "PRESET 8",
+														}, -- end of [8]
+														[9] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = false,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE 9",
+															["presetName"] = "PRESET 9",
+														}, -- end of [9]
+														[10] = 
+														{
+															["primaryFreq"] = 0,
+															["NoAcknowledgmentRetries"] = 2,
+															["LB_Net"] = false,
+															["autoAcknowledgment"] = true,
+															["callSign"] = "PRE10",
+															["presetName"] = "PRESET10",
+														}, -- end of [10]
+													}, -- end of ["presets"]
+												}, -- end of ["settings"]
+												["network"] = 
+												{
+													["presets"] = 
+													{
+														[1] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [2]
+														[3] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [3]
+														[4] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [4]
+														[5] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [5]
+														[6] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [6]
+														[7] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [7]
+														[8] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [8]
+														[9] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [9]
+														[10] = 
+														{
+															["members"] = 
+															{
+																[1] = 
+																{
+																	["PRI_value"] = true,
+																	["TM_value"] = true,
+																	["missionUnitId"] = 65,
+																}, -- end of [1]
+															}, -- end of ["members"]
+														}, -- end of [10]
+													}, -- end of ["presets"]
+												}, -- end of ["network"]
+											}, -- end of ["IDM"]
+										}, -- end of ["datalinks"]
+									}, -- end of [1]
+								}, -- end of ["units"]
+								["y"] = 58919.836813781,
+								["x"] = -2387.7614232722,
+								["name"] = "Birman Valkyrie 2",
+								["communication"] = true,
+								["modulation"] = 0,
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+								["frequency"] = 225,
+							}, -- end of [1]
+						}, -- end of ["group"]
+					}, -- end of ["helicopter"]
+				}, -- end of [2]
+			}, -- end of ["country"]
+		}, -- end of ["blue"]
+		["red"] = 
+		{
+			["name"] = "red",
+			["country"] = 
+			{
+				[1] = 
+				{
+					["id"] = 81,
+					["vehicle"] = 
+					{
+						["group"] = 
+						{
+							[1] = 
+							{
+								["visible"] = false,
+								["hiddenOnPlanner"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = true,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = 
+									{
+										[1] = 
+										{
+											[1] = 
+											{
+												["y"] = 3549.6782643409,
+												["x"] = 113372.29087199,
+											}, -- end of [1]
+											[2] = 
+											{
+												["y"] = 3549.6782643409,
+												["x"] = 113372.29087199,
+											}, -- end of [2]
+										}, -- end of [1]
+									}, -- end of ["spans"]
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = 3549.6782643409,
+											["x"] = 113372.29087199,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["number"] = 1,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 30,
+																		["name"] = 8,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+														[2] = 
+														{
+															["number"] = 2,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 9.144,
+																		["name"] = 30,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [2]
+														[3] = 
+														{
+															["number"] = 3,
+															["auto"] = false,
+															["id"] = "WrappedAction",
+															["enabled"] = true,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "Option",
+																	["params"] = 
+																	{
+																		["value"] = 0,
+																		["name"] = 9,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [3]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+									}, -- end of ["points"]
+								}, -- end of ["route"]
+								["groupId"] = 1,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["TentedRoof"] = true,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_109_S3",
+										["unitId"] = 2,
+										["y"] = 3549.6782643409,
+										["x"] = 113372.29087199,
+										["name"] = "Birman Connvoy-1",
+										["heading"] = 6.14355896702,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+									[2] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Tent"] = 2,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Bedford_MWD",
+										["unitId"] = 1,
+										["y"] = 3545.7485303818,
+										["x"] = 113362.86927233,
+										["name"] = "Birman Connvoy-2",
+										["heading"] = 5.0440015382636,
+										["playerCanDrive"] = false,
+									}, -- end of [2]
+									[3] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["TentedRoof"] = true,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "Land_Rover_109_S3",
+										["unitId"] = 4,
+										["y"] = 3559.461083736,
+										["x"] = 113372.3351283,
+										["name"] = "Birman Connvoy-3",
+										["heading"] = 1.3788101090755,
+										["playerCanDrive"] = false,
+									}, -- end of [3]
+								}, -- end of ["units"]
+								["y"] = 3549.6782643409,
+								["x"] = 113372.29087199,
+								["name"] = "Birman Connvoy",
+								["start_time"] = 0,
+								["manualHeading"] = true,
+							}, -- end of [1]
+							[2] = 
+							{
+								["visible"] = false,
+								["lateActivation"] = true,
+								["tasks"] = {},
+								["uncontrollable"] = false,
+								["task"] = "Ground Nothing",
+								["hiddenOnMFD"] = true,
+								["taskSelected"] = true,
+								["route"] = 
+								{
+									["spans"] = {},
+									["points"] = 
+									{
+										[1] = 
+										{
+											["alt"] = 24,
+											["type"] = "Turning Point",
+											["ETA"] = 0,
+											["alt_type"] = "BARO",
+											["formation_template"] = "",
+											["y"] = -4011.9451382518,
+											["x"] = 110182.23817351,
+											["ETA_locked"] = true,
+											["speed"] = 0,
+											["action"] = "Off Road",
+											["task"] = 
+											{
+												["id"] = "ComboTask",
+												["params"] = 
+												{
+													["tasks"] = 
+													{
+														[1] = 
+														{
+															["enabled"] = true,
+															["auto"] = true,
+															["id"] = "WrappedAction",
+															["number"] = 1,
+															["params"] = 
+															{
+																["action"] = 
+																{
+																	["id"] = "EPLRS",
+																	["params"] = 
+																	{
+																		["value"] = true,
+																		["groupId"] = 1,
+																	}, -- end of ["params"]
+																}, -- end of ["action"]
+															}, -- end of ["params"]
+														}, -- end of [1]
+													}, -- end of ["tasks"]
+												}, -- end of ["params"]
+											}, -- end of ["task"]
+											["speed_locked"] = true,
+										}, -- end of [1]
+									}, -- end of ["points"]
+									["routeRelativeTOT"] = true,
+								}, -- end of ["route"]
+								["groupId"] = 12,
+								["hidden"] = true,
+								["units"] = 
+								{
+									[1] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Gear"] = 1,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "LandcruiserPickupSFM2",
+										["unitId"] = 26,
+										["y"] = -4011.9451382518,
+										["x"] = 110182.23817351,
+										["name"] = "Birman Checkpoint 1-1",
+										["heading"] = 0.55850536063819,
+										["playerCanDrive"] = false,
+									}, -- end of [1]
+									[2] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 34,
+										["y"] = -4013.9428768429,
+										["x"] = 110187.66111454,
+										["name"] = "Birman Checkpoint 1-9",
+										["heading"] = 1.9373154697137,
+										["playerCanDrive"] = false,
+									}, -- end of [2]
+									[3] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 33,
+										["y"] = -4012.6122124312,
+										["x"] = 110184.12255451,
+										["name"] = "Birman Checkpoint 1-8",
+										["heading"] = 1.1519173063163,
+										["playerCanDrive"] = false,
+									}, -- end of [3]
+									[4] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 32,
+										["y"] = -4009.7718907912,
+										["x"] = 110182.71728494,
+										["name"] = "Birman Checkpoint 1-7",
+										["heading"] = 1.0297442586767,
+										["playerCanDrive"] = false,
+									}, -- end of [4]
+									[5] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 31,
+										["y"] = -4011.2857339857,
+										["x"] = 110174.03254311,
+										["name"] = "Birman Checkpoint 1-6",
+										["heading"] = 4.4680428851055,
+										["playerCanDrive"] = false,
+									}, -- end of [5]
+									[6] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 30,
+										["y"] = -4010.6107156804,
+										["x"] = 110178.69505151,
+										["name"] = "Birman Checkpoint 1-5",
+										["heading"] = 2.0420352248334,
+										["playerCanDrive"] = false,
+									}, -- end of [6]
+									[7] = 
+									{
+										["skill"] = "Average",
+										["coldAtStart"] = false,
+										["type"] = "Infantry AK",
+										["unitId"] = 29,
+										["y"] = -4009.6857339857,
+										["x"] = 110169.66111454,
+										["name"] = "Birman Checkpoint 1-4",
+										["heading"] = 4.4331363000656,
+										["playerCanDrive"] = false,
+									}, -- end of [7]
+									[8] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Gear"] = 1,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "LandcruiserPickupSFM2",
+										["unitId"] = 28,
+										["y"] = -4010.0857339857,
+										["x"] = 110168.00397169,
+										["name"] = "Birman Checkpoint 1-3",
+										["heading"] = 5.1661745859032,
+										["playerCanDrive"] = false,
+									}, -- end of [8]
+									[9] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Gear"] = 1,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "LandcruiserPickupSFM2",
+										["unitId"] = 27,
+										["y"] = -4012.4857339857,
+										["x"] = 110175.83254311,
+										["name"] = "Birman Checkpoint 1-2",
+										["heading"] = 3.5430183815485,
+										["playerCanDrive"] = false,
+									}, -- end of [9]
+									[10] = 
+									{
+										["skill"] = "Average",
+										["AddPropVehicle"] = 
+										{
+											["Gear"] = 1,
+										}, -- end of ["AddPropVehicle"]
+										["coldAtStart"] = false,
+										["type"] = "LandcruiserPickupSFM2",
+										["unitId"] = 21,
+										["y"] = -4013.9143054143,
+										["x"] = 110190.03254311,
+										["name"] = "Birman Checkpoint 1-10",
+										["heading"] = 2.1293016874331,
+										["playerCanDrive"] = false,
+									}, -- end of [10]
+								}, -- end of ["units"]
+								["y"] = -4011.9451382518,
+								["x"] = 110182.23817351,
+								["name"] = "Birman Checkpoint 1",
+								["start_time"] = 0,
+								["hiddenOnPlanner"] = true,
+							}, -- end of [2]
+						}, -- end of ["group"]
+					}, -- end of ["vehicle"]
+					["name"] = "CJTF Red",
+				}, -- end of [1]
+			}, -- end of ["country"]
+		}, -- end of ["red"]
+	}, -- end of ["coalition"]
+	["name"] = "Birman STM",
+	["requiredModules"] = 
+	{
+		["SAM Sites Asset Pack"] = "SAM Sites Asset Pack",
+		["Special Mission Aircraft and Operators AI Mod"] = "Special Mission Aircraft and Operators AI Mod",
+	}, -- end of ["requiredModules"]
+	["localization"] = 
+	{
+		["DEFAULT"] = 
+		{
+			["DictKey_ActionText_10"] = "",
+			["DictKey_ActionText_6"] = "",
+			["DictKey_ActionText_7"] = "",
+			["DictKey_ActionText_24"] = "",
+			["DictKey_ActionText_17"] = "",
+			["DictKey_ActionText_13"] = "",
+			["DictKey_sortie_5"] = "",
+			["DictKey_ActionText_14"] = "",
+			["DictKey_descriptionRedTask_2"] = "",
+			["DictKey_ActionText_22"] = "",
+			["DictKey_ActionText_9"] = "",
+			["DictKey_ActionText_20"] = "",
+			["DictKey_descriptionNeutralsTask_4"] = "",
+			["DictKey_descriptionText_1"] = "",
+			["DictKey_ActionText_11"] = "",
+			["DictKey_ActionText_8"] = "",
+			["DictKey_descriptionBlueTask_3"] = "",
+			["DictKey_ActionText_12"] = "",
+		}, -- end of ["DEFAULT"]
+	}, -- end of ["localization"]
+	["theatre"] = "PersianGulf",
+	["desc"] = "",
+} -- end of staticTemplate
