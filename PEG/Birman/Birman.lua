@@ -19,6 +19,7 @@ local _words = {
 }
 
 Birman = DCAF.Story:New(_name)
+
 if not Birman then return Error(_name .. " :: cannot create story") end
 Birman.Groups = {
     BLU = {
@@ -228,7 +229,7 @@ function Birman:TruckStrobeBegin()
     self._truckStrobe = DCAF.Lase:New(self.Groups.BLU.CivilianTruck, 1613):StartStrobe()
 end
 
-function Birman:StartCivilianTruck()
+function Birman: StartCivilianTruck()
     self.Groups.BLU.CivilianTruck:Activate()
 end
 
@@ -241,6 +242,13 @@ Birman._start_menu = Birman._main_menu:AddCommand("Start", function()
     local tts
     if DCAF.TTSChannel then tts = DCAF.TTSChannel:New() end
     Birman:Start(tts)
+end)
+Birman._spectre_menu = Birman._main_menu:AddCommand("Spectre Drift", function()
+    -- Debug("sausage --> " .. Birman.Codewords.SpectreDrift)
+    Birman:SpectreDrift()
+end)
+Birman._graveyars_shirtstart_menu = Birman._main_menu:AddCommand("Graveyard Shift", function()
+    Birman:GraveyardShift()
 end)
 
 
