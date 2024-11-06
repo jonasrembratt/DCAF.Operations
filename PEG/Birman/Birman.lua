@@ -27,6 +27,7 @@ Birman.Groups = {
         Fenris_2_1 = getGroup(_name .. " Fenris 2-1"),
         Fenris_6 = getGroup(_name .. " Fenris 6"),
         Valkyrie = getGroup(_name .. " Valkyrie 1"),
+        Valkyrie2 = getGroup(_name .. " Valkyrie 2"),
         Goblin = getGroup(_name .. " Goblin"),
     },
     RED = {
@@ -53,9 +54,9 @@ Birman.Vec3 = {
         ["y"] = 24.104047775269,
     },
     GraveyardShift = {
-        ["z"] = -6920.8745117188,
-        ["x"] = 111281.171875,
-        ["y"] = 37.869323730469,
+        ["z"] = -6874.693359375,
+        ["x"] = 111354.1484375,
+        ["y"] = 36.771984100342,
     },
     Ambush = {
         ["z"] = 7971.3984375,
@@ -117,6 +118,8 @@ end
 
 function Birman:OnStarted()
     -- self:StartConvoy()
+    self.Groups.BLU.Valkyrie:Activate()
+    self.Groups.BLU.Valkyrie2:Activate()
     self:StartCivilianTruck()
     self:StartFenris2()
     self._start_menu:Remove()
@@ -131,7 +134,6 @@ end
 
 function Birman:SpectreDrift()
     Birman._graveyard_menu:Remove()
-    self.Groups.BLU.Valkyrie:Activate()
     self._SpectreDriftFlag = true
     local convoy = Birman.Groups.RED.Convoy
     local fenris = Birman.Groups.BLU.Fenris_2
@@ -142,7 +144,7 @@ function Birman:SpectreDrift()
         fenris:RouteGroundOnRoad(pumpkin, 60)
     end, 30)
     DCAF.delay(function()
-        fenris:RouteGroundOnRoad(coord, 120)
+        fenris:RouteGroundOnRoad(coord, 131)
     end, Minutes(2))
     self._spectre_menu:Remove()
     Birman._convoy_ambush2_menu = Birman._main_menu:AddCommand("Ambush early", function()
@@ -161,7 +163,7 @@ function Birman:Ambush()
     local fenris = Birman.Groups.BLU.Fenris_2
     local coord = COORDINATE:NewFromVec3(Birman.Vec3.Ambush)
     convoy:RouteGroundOnRoad(coord, 80)
-    fenris:RouteGroundOnRoad(coord, 100)
+    fenris:RouteGroundOnRoad(coord, 131)
     self._convoy_ambush_menu:Remove()
 end
 
@@ -170,7 +172,7 @@ function Birman:Ambush2()
     local fenris = Birman.Groups.BLU.Fenris_2
     local coord = COORDINATE:NewFromVec3(Birman.Vec3.Ambush_2)
     convoy:RouteGroundOnRoad(coord, 80)
-    fenris:RouteGroundOnRoad(coord, 100)
+    fenris:RouteGroundOnRoad(coord, 131)
     self._convoy_ambush2_menu:Remove()
 end
 
@@ -182,34 +184,48 @@ function Birman:GraveyardShift()
         fenris:RouteGroundOnRoad(coord, 100)
     end
     DCAF.delay(function()
-        fenris:RouteGroundOnRoad(evac, 100)
+        fenris:RouteGroundOnRoad(evac, 131)
     end, Minutes(2))
-    self.Groups.BLU.Valkyrie:Activate()
     self._graveyard_menu:Remove()
     self._convoy_ambush2_menu:Remove()
     self._convoy_ambush_menu:Remove()
+    self._engage_checkpoint = self._main_menu:AddCommand("Angry Apache", function()
+        SetFlag("_valkyrie2_engage")
+        Birman._engage_checkpoint:Remove()
+    end)
     Birman._heli_option = Birman._main_menu:AddCommand("Heli Proceed", function()
         SetFlag("_heli_continue")
         Birman._heli_option:Remove()
-        Birman.Groups.BLU.Goblin:Activate()
-    end)
-    Birman._checkpoint_menu = Birman._main_menu:AddCommand("Enable Checkpoint", function()
-        Birman.Groups.RED.Checkpoint:Activate()
-        Birman.Groups.RED.Checkpoint2:Activate()
-        Birman._checkpoint_menu:Remove()
-        Birman._stop_fenris_menu = Birman._main_menu:AddCommand("Fenris Hold", function()
-            Birman.Groups.BLU.Fenris_2:RouteStop()
-            Birman._resume_fenris_menu = Birman._main_menu:AddCommand("Fenris Resume", function()
-                Birman.Groups.BLU.Fenris_2:RouteResume()
-                Birman._resume_fenris_menu:Remove()
-            end)
-            Birman._stop_fenris_menu:Remove()
+        Birman._goblin_menu = Birman._main_menu:AddCommand("Goblin Spawn", function()
+            Birman.Groups.BLU.Goblin:Activate()
+            Birman._goblin_menu:Remove()
         end)
+    end)
+    self.Groups.RED.Checkpoint:Activate()
+    self.Groups.RED.Checkpoint2:Activate()
+    self._stop_fenris_menu = self._main_menu:AddCommand("Fenris Hold", function()
+        Birman:FenrisHold()
     end)
 end
 
+function Birman:FenrisHold()
+    self.Groups.BLU.Fenris_2:RouteStop()
+    Birman._resume_fenris_menu = Birman._main_menu:AddCommand("Fenris Resume", function()
+        Birman:FenrisResume()
+    end)
+    self._stop_fenris_menu:Remove()
+end
+
+function Birman:FenrisResume()
+    self.Groups.BLU.Fenris_2:RouteResume()
+    Birman._stop_fenris_menu = Birman._main_menu:AddCommand("Fenris Hold", function()
+        Birman:FenrisHold()
+    end)
+    self._resume_fenris_menu:Remove()
+end
+
 function Birman:TruckStrobeBegin()
-    self._truckStrobe = DCAF.Lase:New(self.Groups.BLU.CivilianTruck):StartStrobe()
+    self._truckStrobe = DCAF.Lase:New(self.Groups.BLU.CivilianTruck, 1613):StartStrobe()
 end
 
 function Birman:StartCivilianTruck()
