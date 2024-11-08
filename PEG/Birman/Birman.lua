@@ -21,6 +21,7 @@ local _name = "Birman"
 
 Birman = DCAF.Story:New(_name)
 if not Birman then return Error(_name .. " :: cannot create story") end
+Birman._name = "Birman"
 Birman.Groups = {
     BLU = {
         CivilianTruck = getGroup(_name .. " Civ Truck"),
@@ -133,8 +134,27 @@ function Birman:OnStarted()
         Birman:GraveyardShift()
     end)
     Birman._coffin_menu = Birman._main_menu:AddCommand("Coffin (ABORT)", function()
-        Birman:Coffin()
+        self:CoffinDecide()
     end)
+end
+
+function Birman:CoffinDecide()
+    self._confirm_coffin_menu = self._main_menu:AddCommand("CONFIRM COFFIN", function()
+        local a = "Yes"
+        Birman:CoffinChoice(a)
+    end)
+    self._deny_coffin_menu = self._main_menu:AddCommand("OUPS! I FUCKED UP!", function()
+        Birman:CoffinChoice()
+    end)
+end
+
+function Birman:CoffinChoice(choice)
+    if choice then
+        self:Coffin()
+    else
+        self:RemoveMenu(self._confirm_coffin_menu)
+        self:RemoveMenu(self._deny_coffin_menu)
+    end
 end
 
 function Birman:SpectreDrift()
@@ -264,13 +284,11 @@ Birman._start_menu = Birman._main_menu:AddCommand("Start", function()
 end)
 
 function Birman:Coffin()
-    local coord = COORDINATE:NewFromVec3(Birman.Vec3.GraveyardShift)
+    local coord = COORDINATE:NewFromVec3(Birman.Vec3.ConvoyDestination)
     local fenris2 = self.Groups.BLU.Fenris_2
     fenris2:RouteGroundOnRoad(coord, 130)
-    self.Groups.RED.Checkpoint:Activate()
-    self.Groups.RED.Checkpoint2:Activate()
-    SetFlag("_valkyrie2_engage")
-    SetFlag("_heli_continue")
+    Divert(self.Groups.BLU.Valkyrie, "COFFIN")
+    Divert(self.Groups.BLU.Valkyrie2, "COFFIN2")
     self:RemoveMenu(self._coffin_menu)
     self:RemoveMenu(self._convoy_ambush2_menu)
     self:RemoveMenu(self._convoy_ambush_menu)
@@ -281,6 +299,8 @@ function Birman:Coffin()
     self:RemoveMenu(self._start_menu)
     self:RemoveMenu(self._resume_fenris_menu)
     self:RemoveMenu(self._stop_fenris_menu)
+    self:RemoveMenu(self._confirm_coffin_menu)
+    self:RemoveMenu(self._deny_coffin_menu)
 end
 
 function Birman:RemoveMenu(menu)
