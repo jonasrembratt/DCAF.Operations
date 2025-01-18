@@ -6,5 +6,6 @@ FREQ = {
     UN_Horizon = DCAF.Frequencies:AddNew("UN/Horizon ", 357.25, AM, "Used by units of the UN 'Orion' logistical hub (Batumi)"),
     NATO_Center = DCAF.Frequencies:AddNew("NATO Center", 322.30, AM, "Used in some stories to allow traffic between AI aircraft and NFZ 'ATC'"),
     Rostov_Control = DCAF.Frequencies:AddNew("Rostov Control", 322.30, AM, "Used in some stories to allow traffic between AI aircraft and 'ATC'"),
+    TbilisiApproach = DCAF.Frequencies:AddNew("Tbilisi Approach", 267.60, AM, "Tbilisi Approach (also controls Vaziani AB)"),
 }
 

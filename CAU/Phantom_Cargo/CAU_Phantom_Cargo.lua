@@ -58,13 +58,20 @@ PhantomCargo.Coordinates = {
     ApproachTbilisi = PhantomCargo:GetRefLoc(_name.." RefLoc-3"),
 }
 
+local names = {
+    SA6_1 = _name.." SA6-1",
+    SA6_2 = _name.." SA6-2",
+    SA15 = _name.." SA15"
+}
+
 PhantomCargo.Groups = {
     Russia = {
         CargoPlane = getGroup(_name.." CargoPlane")
     },
     Militia = {
-        Sa6_1 = getGroup(_name.." SA6-1"),
-        Sa6_2 = getGroup(_name.." SA6-2"),
+        Sa6_1 = getGroup(names.SA6_1),
+        Sa6_2 = getGroup(names.SA6_2),
+        Sa15 = getGroup(names.SA15)
     },
     UN = {
         -- any?
@@ -87,6 +94,10 @@ PhantomCargo.Airbases = {
 PhantomCargo.Messages = {
     TopDog = {
         Start = "",
+        Lowdown_1 = "[CALLSIGN] to all NATO units. Be advised, radar activation detected near Abkhazian border. Gainful. kp["..names.SA6_1.."]. "..
+            "Request immediate de-ad tasking. Repeat. Active Gainful at kp["..names.SA6_1.."]. All flights to exercise caution, and avoid the area. [CALLSIGN] out.",
+        Lowdown_2 = "[CALLSIGN] to all NATO units. We have another radar activation detected in South Ossetia. Gauntlet. kp["..names.SA15.."]. "..
+            "Request immediate de-ad tasking. Repeat. Active Gainful at kp["..names.SA15.."]. All flights to stay above flight level p[300] when in the area, and exercise caution. [CALLSIGN] out."
     },
     CargoPlane = {
         NATO_C_1 = "[NATO_CENTER]. [CALLSIGN]. We have already been cleared to divert Sukhumi. Be advised, we are critically low on fuel. "..
@@ -94,7 +105,7 @@ PhantomCargo.Messages = {
         NATO_C_2 = "[NATO_CENTER]. [CALLSIGN]. Be advised, we are critically low on fuel. We have to go to Sukhumi.",
         -- long silence before...
         NATO_C_3 = "Turn heading [HEADING]. [CLIMB_OR_DESCEND]. [PC_CANDID_SHORT]",
-        Acknowledge_Signal = "NATO aircraft, [CALLSIGN]. Acknowledging signal. Adjusting course as to follow.",
+        Acknowledge_Signal = "NATO aircraft, [CALLSIGN]. Acknowledging. I will adjust course as to follow you lead.",
         StartDescent = "Expect ILS approach. Runway p[13] right. [PC_CANDID_SHORT]"
     },
     NatoCenter = {
@@ -119,9 +130,10 @@ PhantomCargo.Messages = {
             "Council Resolution p[2141]. Sukhumi is unsafe for landing due to regional instability. [PC_CANDID] will remain under NATO escort to Kutaisi",
         Rostov_C_2 = "[ROSTOV], this is [CALLSIGN]. The No-Fly Zone is internationally recognized under UN Security Council Resolution p[2141]. "..
             "The flight path of [PC_CANDID_SHORT] is noncompliant and presents a clear violation. We advise against any escalation. [CALLSIGN] out.",
-        DivertTbilisi = "[FLIGHT]. [CALLSIGN]. Turn heading [HEADING] and [CLIMB_OR_DESCEND]. New destination is Tbilisi-Lochini. Repeat. "..
-            "Cancel destination Kutaisi. You are to escort [PC_CANDID] to Tbilisi-Lochini. Turn heading [HEADING] and maintain "..flightLevel.."",
-        StartDescent = "[FLIGHT]. [CALLSIGN]. Turn heading [HEADING] and descend and maintain p[5000] feet. [PC_CANDID_SHORT]. Expect ILS approach. Runway p[13] right."
+        DivertTbilisi = "[FLIGHT]. [CALLSIGN]. Turn heading [HEADING] and [CLIMB_OR_DESCEND]. You are cleared VIZRO. We need to change destination is Tbilisi-Lochini. Repeat. "..
+            "Cancel destination Kutaisi. You are to escort [PC_CANDID] to Tbilisi-Lochini. Turn heading [HEADING] and [CLIMB_OR_DESCEND]. You are cleared VIZRO.",
+        StartDescent = "[FLIGHT]. [CALLSIGN]. Turn heading [HEADING]. You are cleared to start your descent to p[6000] feet. Go to "..FREQ.TbilisiApproach.Name.." on frequency "..
+            FREQ.TbilisiApproach:PhoneticText()..". [CALLSIGN] out."
     },
     RostovControl = {
         NATO_C_1 = "[NATO_CENTER], this is [CALLSIGN]. [PC_CANDID] is under Russian jurisdiction. Your interference is a violation of international norms. "..
@@ -164,12 +176,19 @@ function PhantomCargo:FlightInitialTasking()
         self:SendSyntheticController(self:_substAtcDirectives(self.Messages.NatoCenter.FlightInitialTasking, flight, flightLevel, coordCandid))
         self:SendSyntheticController(self.Messages.NatoCenter.FlightTaskBriefing, 40)
         DCAF.delay(function()
-Debug("nisse - calls PhantomCargo:PlayConversation")
             self:PlayConversation()
         end, 80)
     else
         self:EnableHumanControllerSyntheticConversation()
     end
+    
+    -- divert flight and Candid to Tbilisi when they get closer to Kuthaisi, of no later than 10 minutes from initial tasking...
+    self:WhenIn2DRange(NauticalMiles(22), self.AssignedFlight.Group, self.Coordinates.DivertTbilisi, function()
+        self:DivertTbilisi()
+    end)
+    DCAF.delay(function()
+        self:DivertTbilisi()
+    end, Minutes(10))
 end
 
 function PhantomCargo:PlayConversation()
@@ -215,7 +234,13 @@ function PhantomCargo:CargoPlaneReroute_Sukhumi(hdg)
     setGroupRoute(group, waypoints)
     if DCAF.GBAD then
         local options = DCAF.GBAD.AmbushOptions:New():AttackOnlyTarget():EnsureHit(4000)
-        self:SetupSamAmbushForTarget(self.Groups.Militia.Sa6_1, self._candid, options):Debug(self:IsDebug())
+        local samBush = self:SetupSamAmbushForTarget(self.Groups.Militia.Sa6_1, self._candid, options):Debug(self:IsDebug())
+        function samBush:OnActivated()
+            Debug(_name.." SA-6 in Abkhazia activates")
+            DCAF.delay(function()
+                PhantomCargo:Lowdown_1()
+            end, 20)
+        end
     end
 end
 
@@ -310,36 +335,34 @@ function PhantomCargo:InitiateIntercept(group)
         local interceptor = DCAF.Interceptor:New(unit)
                                             :InitTargetUnit(self._candid)
                                             :InitRestartInterception(false)
-                                            :InitLandRoute(Feet(6000), "RADIO")
+                                            :InitLandingRoute(Feet(6000), "RADIO")
                                             :Debug(self:IsDebug())
                                             :Start()
 
--- nisse - speed up testing the intercept so we don't actually have to set it up properly 
--- DCAF.Interceptor:OnApproaching(function(nearbyUnits)
-    
--- end)
         self._interceptors[#self._interceptors+1] = interceptor
-        self:_init(interceptor)
+        self:_initInterceptor(interceptor)
     end
 
 end
 
-function PhantomCargo:_init(interceptor)
+function PhantomCargo:_initInterceptor(interceptor)
+    local candid = self._candid
+    local story = self
 
-    function interceptor:OnSignalIntercept(unit, signal)
-        self:Intercept(unit, signal)
+    function interceptor:OnEstablished(unit) -- Candid is expecting the escort so no need to wiggle wings
+        if unit ~= candid then return end
+        story:CandidIsIntercepted()
+        DCAF.delay(function()
+            -- wait a while before Candid starts following - he might otherwise do violent maneuvers before player is out of the way
+            interceptor:Intercept(candid)
+        end, 10)
     end
 
     function interceptor:OnLeading(unit)
-        if unit ~= self._candid then return end
-        self._candid._isIntercepted = true
+        if unit ~= candid then return end
+        candid._isIntercepted = true
         Debug(_name..":InitiateIntercept_OnLeading :: unit: " .. unit.UnitName)
-        self:CandidIsIntercepted()
-        self:_end_interception_other_units(unit)
-        -- -- wait one minute before making the aircraft mortal...
-        -- DCAF.delay(function()
-        --     self._candid:SetCommandImmortal(false)
-        -- end, Minutes(1))
+        story:_end_interception_other_units(unit)
     end
 end
 
@@ -353,10 +376,41 @@ end
 
 function PhantomCargo:CandidIsIntercepted()
     self:Send(tts_Candid, self.Messages.CargoPlane.Acknowledge_Signal)
+    DCAF.delay(function()
+        MessageTo(self.AssignedFlight.Group, "The Russian pilots looks pretty young. They both smile and signals thumbs-up")
+    end, 3)
+end
+
+function PhantomCargo:Lowdown_1()
+    if self:IsFunctionDone() then return end
+    self:Send(TTS_Top_Dog, self.Messages.TopDog.Lowdown_1)
+end
+
+function PhantomCargo:Lowdown_2()
+    if self:IsFunctionDone() then return end
+    self:Send(TTS_Top_Dog, self.Messages.TopDog.Lowdown_2)
 end
 
 function PhantomCargo:DivertTbilisi()
-    self:Send(tts_NATO_Center, self.Messages.NatoCenter.DivertTbilisi)
+    if self:IsFunctionDone() then return end
+    local message = self:_substAtcDirectives(self.Messages.NatoCenter.DivertTbilisi, self.AssignedFlight.Group, 210, self.Coordinates.StartDescent)
+    self:Send(tts_NATO_Center, message)
+    self:WhenIn2DRange(NauticalMiles(5), self.AssignedFlight.Group, self.Coordinates.StartDescent, function()
+        self:StartDescent()
+    end)
+end
+
+function PhantomCargo:StartDescent()
+    local startDescent = self:_substAtcDirectives(self.Messages.NatoCenter.StartDescent, self.AssignedFlight.Group, 60, self.Coordinates.ApproachTbilisi)
+    self:Send(tts_NATO_Center, startDescent)
+    local options = DCAF.GBAD.AmbushOptions:New():AttackOnlyTarget():EnsureHit(4000)
+    local samBush = self:SetupSamAmbushForTarget(self.Groups.Militia.Sa15, self._candid, options):Debug(self:IsDebug())
+    function samBush:OnActivated()
+        Debug(_name.." SA-15 in Abkhazia activates")
+        DCAF.delay(function()
+            PhantomCargo:Lowdown_2()
+        end, 20)
+    end
 end
 
 function PhantomCargo:_getHeadingTo(coordDestination, group)
@@ -395,17 +449,6 @@ function PhantomCargo:_substAtcDirectives(text, group, flightLevel, destinationO
     return self:_substHeading(text, group, destinationOrHeading)
 end
 
-function PhantomCargo:StartDescent()
-    local startDescent = self._substHeading(self.Coordinates.ApproachTbilisi, self.Messages.NatoCenter.StartDescent)
-    local response = self.Messages.CargoPlane.StartDescent
-    DCAF.Story:SrsCalls(
-        DCAF.Story:Call(tts_NATO_Center, startDescent, 10),
-        DCAF.Story:Call(tts_NATO_Center, startDescent, 10)
-    )
-
-    self:Send(tts_NATO_Center, startDescent)
-end
-
 function PhantomCargo:ApproachTbilisi()
 end
 
@@ -424,15 +467,15 @@ PhantomCargo:AddStartMenu()
 PhantomCargo:EnableSyntheticController(tts_NATO_Center, true)
 PhantomCargo:EnableAssignFlight()
 
-function PhantomCargo:OnDebug(value)
-    if value then
-        self._menuDebugActivateTestViper_1 = self:AddDebugCommand("Activate TEST Viper-1", function()
-            local viper_1 = getGroup("_TEST Viper-1")
-            if viper_1 and not viper_1:IsActive() then viper_1:Activate() end
-        end)
-    else
-        if self._menuDebugActivateTestViper_1 then self._menuDebugActivateTestViper_1:Remove() end
-    end
-end
+-- function PhantomCargo:OnDebug(value)
+--     if value then
+--         self._menuDebugActivateTestViper_1 = self:AddDebugCommand("Activate TEST Viper-1", function()
+--             local viper_1 = getGroup("_TEST Viper-1")
+--             if viper_1 and not viper_1:IsActive() then viper_1:Activate() end
+--         end)
+--     else
+--         if self._menuDebugActivateTestViper_1 then self._menuDebugActivateTestViper_1:Remove() end
+--     end
+-- end
 
 Trace([[\\\\\\\\ PhantomCargo.lua was loaded //////////]])
