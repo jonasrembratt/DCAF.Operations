@@ -29,9 +29,9 @@ local tts_NATO_Center = DCAF.TTSChannel:New(cs.NATO_C, FREQ.NATO_Center, nil, ni
                                                                                   :InitVariable("ROSTOV", cs.rostov_C)
 
 local tts_Candid = DCAF.TTSChannel:New(PhoneticAlphabet:Convert(cs.candid), FREQ.NATO_Center, nil, nil):InitVoice("ru-RU-Wavenet-B")
-                                                                             :InitVariable("PC_CANDID", PhoneticAlphabet:Convert(cs.candid))
-                                                                             :InitVariable("PC_CANDID_SHORT", PhoneticAlphabet:Convert(cs.candidShort))
-                                                                             :InitVariable("NATO_CENTER", cs.NATO_C)
+                                                                                                       :InitVariable("PC_CANDID", PhoneticAlphabet:Convert(cs.candid))
+                                                                                                       :InitVariable("PC_CANDID_SHORT", PhoneticAlphabet:Convert(cs.candidShort))
+                                                                                                       :InitVariable("NATO_CENTER", cs.NATO_C)
 
 local tts_Rostov_Control = DCAF.TTSChannel:New(cs.rostov_C, FREQ.NATO_Center, nil, nil):InitVoice("ru-RU-Wavenet-D")
                                                                                        :InitVariable("PC_CANDID", PhoneticAlphabet:Convert(cs.candid))
@@ -143,12 +143,15 @@ PhantomCargo.Messages = {
     }
 }
 
-local syntheticConversation = {
+local syntheticResponses = {
     [1] = { TTS = tts_Candid, Msg = story.Messages.CargoPlane.NATO_C_1, Text = "Candid: 'is cleared Sukhumi'" },
     [2] = { TTS = tts_Candid, Msg = story.Messages.CargoPlane.NATO_C_2, Text = "Candid: 'is low on fuel'" },
-    [3] = { TTS = tts_Candid, Msg = story.Messages.CargoPlane.NATO_C_3, Text = "Candid: complies" },
+    [3] = { TTS = tts_Candid, Msg = function()
+            return PhantomCargo:_substAtcDirectives(story.Messages.CargoPlane.NATO_C_3, story._candid, flightLevel, story.Coordinates.DivertTbilisi)
+        end,
+        Text = "Candid: complies" },
     [4] = { TTS = tts_Rostov_Control, Msg = story.Messages.RostovControl.NATO_C_1, Text = "Rostov C: protest 1" },
-    [5] = { TTS = tts_Rostov_Control, Msg = story.Messages.RostovControl.NATO_C_1, Text = "Rostov C: protest 2" }
+    [5] = { TTS = tts_Rostov_Control, Msg = story.Messages.RostovControl.NATO_C_2, Text = "Rostov C: protest 2" }
 }
 
 function PhantomCargo:OnStarted()
@@ -161,7 +164,7 @@ end
 
 function PhantomCargo:DivertCargoPlaneToSukhumi()
     if self:IsFunctionDone() then return end
-    if self.AssignedFlight then self:FlightInitialTasking() end
+    self:FlightInitialTasking()
 end
 
 function PhantomCargo:FlightInitialTasking()
@@ -181,7 +184,7 @@ function PhantomCargo:FlightInitialTasking()
     else
         self:EnableHumanControllerSyntheticConversation()
     end
-    
+
     -- divert flight and Candid to Tbilisi when they get closer to Kuthaisi, of no later than 10 minutes from initial tasking...
     self:WhenIn2DRange(NauticalMiles(22), self.AssignedFlight.Group, self.Coordinates.DivertTbilisi, function()
         self:DivertTbilisi()
@@ -245,29 +248,36 @@ function PhantomCargo:CargoPlaneReroute_Sukhumi(hdg)
 end
 
 function PhantomCargo:EnableHumanControllerSyntheticConversation()
+    Debug(_name..":EnableHumanControllerSyntheticConversation")
     local storyMenu = self:GetMenu()
     self._syntheticConversation = {
         nextCallIndex = 1,
-        menu = storyMenu:AddMenu("Conversation")
+        menu = storyMenu:New("Conversation")
     }
-
     local nextCall
     local function _nextCall()
-        local isConversationComplete = self._syntheticConversation.nextCallIndex > #syntheticConversation
-        if self._syntheticConversation.menu then self._syntheticConversation.menu:Remove(isConversationComplete) end
-        if isConversationComplete then return end
-        local call = syntheticConversation[self._syntheticConversation.nextCallIndex]
+        local isConversationComplete = self._syntheticConversation.nextCallIndex > #syntheticResponses
+        if isConversationComplete then
+            if self._syntheticConversation.menu then self._syntheticConversation.menu:Remove() end
+            return
+        end
+        local call = syntheticResponses[self._syntheticConversation.nextCallIndex]
         self._syntheticConversation.nextCallIndex = self._syntheticConversation.nextCallIndex + 1
-        self._syntheticConversation.menu:AddCommand(call.Text, function()
-            self:Send(call.TTS, call.Msg)
+        local message
+        if isFunction(call.Msg) then message = call.Msg() else message = call.Msg end
+        self._syntheticConversation.menu:NewCommand(call.Text, function(menu)
+            self:Send(call.TTS, message)
+            menu:Remove()
             nextCall()
         end)
     end
     nextCall = _nextCall
+    nextCall()
 end
 
 function PhantomCargo:OnAssignedFlight(flight)
     Debug(_name..":OnAssignedFlight :: flight: " .. DumpPretty(flight))
+    self:AddStartMenu()
 
     local function isAssignedFlight(scan)
         return true -- nisse - speeding up testing. TODO: Ensure we only react to assigned flight
@@ -394,7 +404,7 @@ end
 function PhantomCargo:DivertTbilisi()
     if self:IsFunctionDone() then return end
     local message = self:_substAtcDirectives(self.Messages.NatoCenter.DivertTbilisi, self.AssignedFlight.Group, 210, self.Coordinates.StartDescent)
-    self:Send(tts_NATO_Center, message)
+    self:SendSyntheticController(message)
     self:WhenIn2DRange(NauticalMiles(5), self.AssignedFlight.Group, self.Coordinates.StartDescent, function()
         self:StartDescent()
     end)
@@ -402,7 +412,7 @@ end
 
 function PhantomCargo:StartDescent()
     local startDescent = self:_substAtcDirectives(self.Messages.NatoCenter.StartDescent, self.AssignedFlight.Group, 60, self.Coordinates.ApproachTbilisi)
-    self:Send(tts_NATO_Center, startDescent)
+    self:SendSyntheticController(startDescent)
     local options = DCAF.GBAD.AmbushOptions:New():AttackOnlyTarget():EnsureHit(4000)
     local samBush = self:SetupSamAmbushForTarget(self.Groups.Militia.Sa15, self._candid, options):Debug(self:IsDebug())
     function samBush:OnActivated()
@@ -462,20 +472,7 @@ function PhantomCargo:RedWins()
     self:DebugMessage(_name.." :: RED WINS", 40)
 end
 
-PhantomCargo:AddStartMenu()
-
 PhantomCargo:EnableSyntheticController(tts_NATO_Center, true)
 PhantomCargo:EnableAssignFlight()
-
--- function PhantomCargo:OnDebug(value)
---     if value then
---         self._menuDebugActivateTestViper_1 = self:AddDebugCommand("Activate TEST Viper-1", function()
---             local viper_1 = getGroup("_TEST Viper-1")
---             if viper_1 and not viper_1:IsActive() then viper_1:Activate() end
---         end)
---     else
---         if self._menuDebugActivateTestViper_1 then self._menuDebugActivateTestViper_1:Remove() end
---     end
--- end
 
 Trace([[\\\\\\\\ PhantomCargo.lua was loaded //////////]])
