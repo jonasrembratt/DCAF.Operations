@@ -1,4 +1,4 @@
-local guard = DCAF.Frequencies:Get("Guard", nil, nil)
+local guard = DCAF.Frequencies:Get("Guard", nil)
 FREQ = {
     Top_Dog = DCAF.Frequencies:AddNew("Top Dog", guard.Freq, guard.Mod, "The elusive high-up command"),
     UN_Polaris = DCAF.Frequencies:AddNew("UN/POlaris", 355.25, AM, "Used by units of the UN 'Polaris' base & HQ (Tbilisi)"),

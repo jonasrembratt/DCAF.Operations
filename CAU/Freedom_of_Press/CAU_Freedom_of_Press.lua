@@ -250,7 +250,7 @@ end
 
 function FreedomOfPress:EnableRecon_EchoCache()
     if self:IsFunctionDone() or not self:IsStoryAutomated() then return end
-    self._reconTask_echoPoint = self:EnableReconLocationWithMapMarker(self.Groups.Militia.CheckPoint.ParkedVan, self.Settings.CallContactEchoCacheTolerance, function(task, _)
+    self._reconTask_echoPoint = self:EnableFlightMarkerRecon(self.Groups.Militia.CheckPoint.ParkedVan, self.Settings.CallContactEchoCacheTolerance, function(task, _)
         Debug(_name..":EnableRecon_EchoCache :: mark added to map")
         self:DebugMessage("EnableRecon_EchoCache :: mark added")
         self:ReconSuccess_EchoPoint()
@@ -343,7 +343,7 @@ end
 function FreedomOfPress:EnableRecon_AzureStrand()
     if self:IsFunctionDone() or not self.TTS_Controller then return end
     if not self.AssignedFlight then return Error(_name..":EnableRecon_AzureStrand :: no Flight has been assigned") end
-    self._reconTask_convoy = self:EnableReconLocationWithMapMarker(self._militiaConvoy, self.Settings.ReconMarkerConvoyDistanceTolerance, function(task, event)
+    self._reconTask_convoy = self:EnableFlightMarkerRecon(self._militiaConvoy, self.Settings.ReconMarkerConvoyDistanceTolerance, function(task, event)
         Debug("FreedomOfPress:EnableRecon_AzureStrand :: mark added to map")
         self:DebugMessage("EnableRecon_AzureStrand :: mark added")
         self:ReconSuccess_AzureStrand()
@@ -638,7 +638,7 @@ function FreedomOfPress:EnableRecon_IronPeak(postOp)
     if self:IsFunctionDone() or not self:IsStoryAutomated() then return end
     Debug(_name..":EnableRecon_IronPeak")
     if not self.AssignedFlight then return Error(_name..":EnableRecon_IronPeak :: no Flight has been assigned") end
-    self:EnableReconLocationWithMapMarker(self.Airbases.IronPeak[1], self.Settings.ReconMarkerIronPeakDistanceTolerance, function(task, event)
+    self:EnableFlightMarkerRecon(self.Airbases.IronPeak[1], self.Settings.ReconMarkerIronPeakDistanceTolerance, function(task, event)
         self:ReconSuccess_IronPeak()
         task:End()
         if postOp then
