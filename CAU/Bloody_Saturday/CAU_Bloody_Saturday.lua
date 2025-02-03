@@ -24,7 +24,7 @@ local names = {
 BloodySaturday.Settings = {
     VoiceUnCommander = "en-GB-News-L",
     VoiceUnAssistant = "en-GB-News-L",
-    VoiceUAV = "en-US-Neural2-E",
+    VoiceUAV = "en-US-Journey-O",
     VillageProtest = "Repo-Etseri",
     VillageMilitia = "Humeni-Natopuri",
     TimeFromStartToShotsFired = Minutes(1),         -- ;;; TODO increase to more realistic/balanced delay once tested ;;;
@@ -112,10 +112,18 @@ BloodySaturday.Groups = {
             Technicals_1 = getGroup(_name.." MIL Technicals-1"),
             Technicals_2 = getGroup(_name.." MIL Technicals-2"),
         },
+        ChemTank_3 = getStatic(_name.." ChemTank-3"),
         Shooter_1 = getGroup(names.TangoAlpha),
         Shooter_2 = getGroup(names.TangoBravo),
         Armor = getGroup(_name.." MIL Armor"),
-        CivilianVehicles = getGroup(_name.." MIL Civilian Vehicles")
+        CivilianVehicles = getGroup(_name.." MIL Civilian Vehicles"),
+        CivRoadTraffic = {
+            Civ_1 = getGroup(_name.." MIL Civ-1"),
+            Civ_2 = getGroup(_name.." MIL Civ-2"),
+            Civ_3 = getGroup(_name.." MIL Civ-3"),
+            Civ_4 = getGroup(_name.." MIL Civ-4"),
+            Civ_5 = getGroup(_name.." MIL Civ-5"),
+        }
     }
 }
 
@@ -186,12 +194,16 @@ local tts_UN_commander = DCAF.TTSChannel:New(cs.unCommander, FREQ.UN_Orion, nil,
                                         :InitLocation(story.Groups.BLU.UN_1)
 local tts_assistant = DCAF.TTSChannel:New(cs.unAssistant, FREQ.UN_Orion_Assistant, nil, nil)
                                         :InitVoice(BloodySaturday.Settings.VoiceUnCommander)
-                                        :InitVariable("[COMMANDER]", cs.unCommander)
+                                        :InitVariable("COMMANDER", cs.unCommander)
                                         :InitLocation(story.Groups.BLU.UN_1)
 local tts_uav = DCAF.TTSChannel:New(cs.UAV, FREQ.UN_Orion_Assistant, nil, nil)
                                         :InitVoice(BloodySaturday.Settings.VoiceUAV)
-                                        :InitVariable("[COMMANDER]", cs.unCommander)
+                                        :InitVariable("COMMANDER", cs.unCommander)
                                         :InitLocation(story.Groups.BLU.UAV)
+
+Debug("nisse - init :: tts_uav.Frequency: "..Dump(tts_uav.Frequency).." :: FREQ.UN_Orion_Assistant: "..DumpPretty(FREQ.UN_Orion_Assistant))
+
+
 
 BloodySaturday.Messages = {
     Top_Dog = {
@@ -200,16 +212,17 @@ BloodySaturday.Messages = {
             ". Counter protestors are marching toward "..story.Settings.VillageProtest.." but no hostilities observed yet. "..
             "The UN has a patrol present, and the commander on site request we maintain situational awareness and be prepared for further updates. [CALLSIGN] out",
         ShotsFired = "This is [CALLSIGN]. The demonstrations in "..story.Settings.VillageProtest.." has deteriorated. Reports indicate shots fired in that area but "..
-            "casualties are unconfirmed at this time. The UN Commander on site is "..cs.unCommander..", and needs immediate aerial support to help de-escalate the situation. "..
+            "casualties are unconfirmed at this time. The UN Commander on site is "..cs.unCommander..", and needs immediate aerial support to help cool down the situation. "..
             "Request you prioritize tasking and assign a flight to "..story.Settings.VillageProtest.." to assist. Be advised, militia activity has been reported "..
             "in the vicinity of that location. Maintain situational awareness. Advise assigned flight to make contact with "..cs.unCommander.." on Orion frequency. "..
             FREQ.UN_Orion:PhoneticText()..". [CALLSIGN] out",
         UAV_Assigned = "[FLIGHT], this is [CALLSIGN]. Be advised we have re-assigned a UAV - callSign "..cs.UAV.." - to help monitor the situation at "..story.Settings.VillageProtest..
-            ". "..cs.UAV.." will remain feet wet and it will be operating just under cloud base, [DIRECTION] of the area. Ensure you maintain deconfliction with the UAV. [CALLSIGN] out.",
-        UAV_Assigned_Assistant = "[COMMANDER], this is [CALLSIGN]. Be advised. I'm have been re-assigned to assist. My a UAV is currently en-route to help monitor the situation at "..story.Settings.VillageProtest..
-            ". I will remain over the water, and it will be operating just under cloud base, [DIRECTION] of the area. Ensure your flight maintain deconfliction with the UAV please. [CALLSIGN] out.",
+            ". "..cs.UAV.." will remain off the coast, andwill be operating just under cloud base, [DIRECTION] of the area. Ensure you maintain deconfliction with the UAV. [CALLSIGN] out.",
+        UAV_Assigned_Assistant = "[COMMANDER], this is [CALLSIGN]. I'm operating a Predator UAV off the coast, but I have been re-assigned to assist in monitoring the situation at "..
+        story.Settings.VillageProtest..". I will remain over the water, and establish [DIRECTION] of the area just under cloud base. Please advise [FLIGHT] to "..
+        "maintain deconfliction with my Predator. [CALLSIGN] out.",
     },
-    FlightArrive = "[FLIGHT], this is [CALLSIGN]. Thank you for showing up. Say when ready for situation report!",
+    FlightArrive = "[FLIGHT], this is [CALLSIGN], [GREETING], and thank you for showing up. Really appreciate it! Say when ready for situation report!",
     SitRep = "Situation as follow: The protest in "..story.Settings.VillageProtest.." has turned violent. Counter-protesters originating from Humeni-Natopuri are armed "..
         "and initiating hostilities against civilians and UN personnel. Several gunshots so far, but no injuries. Seems they are mostly shouting and firing into the air, "..
         "to cause terror. Tensions is very high. I need you to execute a show-of-force pass over the counter-protesters' positions to make NATO's presence known. "..
@@ -230,12 +243,12 @@ BloodySaturday.Messages = {
     FirstFatalities = "[FLIGHT], this is [CALLSIGN] with a situation update: We still hear a bit of shooting and one demonstrator was just hit. "..
         "Rescue services are on their way to assist the injured. Additional police units are deploying to help stabilize the situation. Maintain overwatch and stand by for "..
         "updates. Please monitor all roads leading into "..story.Settings.VillageProtest..". We don't want the militia to add more weapons to this situation. [CALLSIGN] out",
-    FirstFatalities_Assistant = "[COMMANDER]. [CALLSIGN]. We still hear a bit of shooting and one demonstrator was just hit and rescue services are on their way to assist the injured. "..
-        "Additional police units are also deploying to help stabilize the situation. Consider asking [FLIGHT] to monitor all roads leading into "..story.Settings.VillageProtest..
-        ". We don't want the militia to add more weapons to this situation.",
+    FirstFatalities_Assistant = "[COMMANDER]. [CALLSIGN]. We still hear a bit of shooting and one demonstrator was just hit. Rescue services are on their way now, to assist "..
+        "the injured. Additional police units are also deploying to help stabilize the situation. Recommend we ask [FLIGHT] to monitor all roads leading into "..
+        story.Settings.VillageProtest..". We don't need militia weapons in this place right now.",
 
     MilitiaTechnicalsInbound = "[FLIGHT], this is [CALLSIGN]. Be advised, militia reinforcements are inbound from the [DIRECTION] along the main road leading into "..story.Settings.VillageProtest..
-        ". We're seeing two technicals, a truck and one unmarked civilian vehicle. Request you perform a show of force to try and deter these guys from getting involved. This doesn't look good. "..
+        ". We're seeing two technicals. Request you perform a show of force to try and deter these guys from getting involved. This doesn't look good. "..
         "Should they not comply, your are cleared to use live munitions for proximity impact only. We cannot risk fatalities or collateral damage. You are cleared show of force. "..
         "[CALLSIGN] out.",
     MilitiaTechnicalsInbound_Assistant = "[COMMANDER], this is [CALLSIGN]. Be advised, militia reinforcements are inbound from the [DIRECTION] along the main road leading into "..
@@ -268,7 +281,7 @@ BloodySaturday.Messages = {
     MilitiaArmorCriticallyClose = "[FLIGHT]. [CALLSIGN]. The militia armored group approaching from the [DIRECTION] is within one mile! We're out of options. You are cleared "..
         "to engage the APC and truck by any means necessary. Take them out before they reach the village. Ensure you confirm egress and mission status once the targets are "..
         "neutralized. We're counting on you. [CALLSIGN] out.",
-    MilitiaArmorCriticallyClose_UAV = "[COMMANDER]. [CALLSIGN]. Be advised. The militia armored group approaching from the [DIRECTION] is within a mile from your position! "..
+    MilitiaArmorCriticallyClose_UAV = "[COMMANDER]. [CALLSIGN]. Be advised. The militia armored group approaching from the [DIRECTION] is less than a mile from your position! "..
         "[CALLSIGN] out.",
 
     MilitiaTechnicalsDestroyed = "[FLIGHT]. [CALLSIGN]. I have word from "..cs.UAV.." that militia vehicles have been destroyed. I did not authorize lethal force "..
@@ -289,7 +302,7 @@ BloodySaturday.Messages = {
     MilitiaArmorTooClose = "[FLIGHT], this is [CALLSIGN]. The armored militia group from the [DIRECTION] is too close — we cannot hold our position any longer. We are "..
         "now pulling back to prevent loss of UN personnel. Maintain overwatch and cover our withdrawal as best you can, but do not engage unless absolutely necessary. "..
         "We appreciate your work here, but this situation is beyond recovery. [CALLSIGN] out.",
-    MilitiaArmorTooClose_UAV = "[COMMANDER]. [CALLSIGN]. Be advised. The militia armor is about to enter your village and you should expect them rolling up you rear"..
+    MilitiaArmorTooClose_UAV = "[COMMANDER]. [CALLSIGN]. Be advised. The militia armor is about to enter your village and you should expect them rolling up you rear "..
         "in a few minutes now. If you wanna get out of there this might be your last chance. [CALLSIGN] out.",
 
     Shooter = {
@@ -313,13 +326,16 @@ BloodySaturday.Messages = {
             Initial = "[FLIGHT], this is [CALLSIGN]! We have more small arms fire. Repeat, more shots fired! This time from the [DIRECTION]! [DESCRIPTION] "..
                 "Position is designated is [DESIGNATION]. We're returning fire, trying to suppress, but UN personnel and demonstrators are very exposed. We've lost visual "..
                 "control of key areas, and I'm getting reports of multiple fatalities. Call contact [DESIGNATION] and stand by for new target designation.",
+            Initial_Assistant = "[COMMANDER] [CALLSIGN]! We have more small arms fire. Repeat, more shots fired! This time from the [DIRECTION]! [DESCRIPTION] "..
+                "We're returning fire, trying to suppress, but UN personnel and demonstrators are very exposed. We've lost visual control of key areas, and I'm getting "..
+                "reports of multiple fatalities. Can you get the fighters to escalate, and stop this carnage? Do we have permission for an intimidation strike?",
             Request_SOF = "[FLIGHT]. [CALLSIGN]. Target confirmed. Shooter position [DESIGNATION] identified! Mark location."..
                 "Situation is critical; we've sustained multiple casualties. I want you to escalate by dropping ordnance on the road outside the village, to the [DIRECTION]. "..
                 "Make it loud and visible. Send a clear message. Type three in effect. Drop on own discretion. Ingress from [INGRESS]. Egress at own discretion. "..
                 "Precision is key; no collateral damage allowed. You are cleared hot!",
-            Request_SOF_Assistant = "[COMMANDER]. This is [CALLSIGN]. Situation is getting critical!. We've sustained multiple casualties. Recommend we escalate by requesting "..
-                "an intimidation strike, on the road just outside the village, to the [DIRECTION]. If [FLIGHT] can make it loud and smoky, it should send a clear warning "..
-                "without risking collateral damage. We need to save lives now. [CALLSIGN] out",
+            Request_SOF_Assistant = "[COMMANDER]. [CALLSIGN]. Situation is getting critical! We now have multiple casualties among demonstrators. Recommend we request "..
+                "an intimidation strike. Please ask the jets to drop on the road just outside the village, to the [DIRECTION]. If [FLIGHT] can make it loud and smoky, "..
+                "it should send a clear warning without risking collateral damage. We can't play it soft anymore! [CALLSIGN] out",
             Assess_SOF = "[FLIGHT], this is [CALLSIGN]. Your strike on the road was effective. The tango alpha position ceased fire and has remained silent. The militia "..
                 "that shooter appears to be disengaging for now, and the immediate threat is neutralized. Maintain overwatch while we secure the area and confirm no "..
                 "further hostile activity. Stand by for additional updates. [CALLSIGN] out.",
@@ -340,12 +356,23 @@ BloodySaturday.Messages = {
         "Use guns, for effect. "..
         "Be advised. Civilians are danger-close. High power cables on egress. "..
         "Do no read back - you know where these bastard are. Cleared hot!",
+    Shooter_RequestAttack_Assistant = "[COMMANDER], this is [CALLSIGN]. Tango bravo has resumed firing and we have now exhausted all other options, the emergency personnel "..
+        "cannot reach the injured and killed. This has to end now. The rules of engagement does allow lethal force to save lives. We need those shooters taken out now! "..
+        "Repeat. The shooters needs to be taken out but we can't reach them from here, without risking more casualties.",
+
     TangoBravo_GoodEffect = "[FLIGHT]. [CALLSIGN]. Good effect! Resume overwatch and monitor the area while we assess the situation. Stand by for assessment.",
+    TangoBravo_GoodEffect_Assistant = "[COMMANDER]. [CALLSIGN]. Good effect! Good effect! I think those shooters are down. Stand by for assessment.",
     TangoBravo_Down = "[FLIGHT]. [CALLSIGN]. Tango Bravo is confirmed neutralized. Outstanding work, [FLIGHT]. We desperately needed this breathing room. Thank you! "..
         "Emergency services are moving in to assist the wounded, and we're regaining control on the ground. Maintain overwatch until further notice. [CALLSIGN] out.",
+    TangoBravo_Down_Assistant = "[COMMANDER]. [CALLSIGN]. The shooters are confirmed neutralized. Outstanding work by [FLIGHT]. We desperately needed this breathing room. "..
+        "Emergency services are moving in to assist the wounded, and we're regaining control on the ground. Thank god for those NATO jets! [CALLSIGN] out.",
+
     BlueWins = "[FLIGHT], this is [CALLSIGN]. Militia forces are retreating, the counter-protesters have started to depart, and the situation down here is stabilizing. "..
         "Outstanding effort—your presence and precision strikes were decisive in saving lives! Emergency services are fully engaged, and UN forces are consolidating "..
         "control of the area. Your mission is complete and you are cleared to depart. Thank you for your support today, [FLIGHT]. [CALLSIGN] out.",
+    BlueWins_Assistant = "[COMMANDER], this is [CALLSIGN]. Militia forces are retreating now, the counter-protesters have started to depart, and the situation is stabilizing. "..
+        "Emergency services are fully engaged, and we can consolidate control of the area. I don't think we'll need that air support to clean this up. [CALLSIGN] out.",
+    RedWins_Assistant = "[COMMANDER], this is [CALLSIGN]. We have to pull out now. We're all mounted and ready to go. We might have to fight our way out of here!",
 }
 
 do  -- ||||||||||||||||||||||||||||||||||||    Act 1: The Gathering Storm    ||||||||||||||||||||||||||||||||||||
@@ -418,10 +445,12 @@ function BloodySaturday:ShotsFired()
 end
 
 function BloodySaturday:SendAssistant(message, delay)
+Debug("nisse - BloodySaturday:SendAssistant :: "..DumpPretty(tts_assistant).." :: message: "..DumpPretty(message))
     if isNumber(delay) then
-        DCAF.Story:SendDelayed(delay, message)
+        self:Delay(delay, function() self:Send(tts_assistant, message) end)
     else
-        DCAF.Story:Send(tts_assistant, message)
+Debug("nisse - BloodySaturday:SendAssistant (bbb)")
+        self:Send(tts_assistant, message)
     end
 end
 
@@ -430,14 +459,16 @@ function BloodySaturday:OnAssignedFlight(flight)
     tts_assistant:InitFlightVariable(flight.CallSignPhonetic)
     tts_uav:InitFlightVariable(flight.CallSignPhonetic)
     self:WhenIn2DRange(NauticalMiles(12), self.Coordinates.HumeniNatopuri, flight.Group, function() self:FlightArrive() end)
+    self:AddFlightCommand_AdviseGZD()
     self:Delay(30, function()
-        TTS_Top_Dog:Tune(FREQ.UN_Orion)
         local direction = self:GetCardinalDirection(self.Groups.BLU.UN_1, self.Coordinates.UAV)
-        local message = DCAF.Story:SubstMessage(self.Messages.Top_Dog.UAV_Assigned, ptn.Direction, direction)
-        self:Send(TTS_Top_Dog, message)
-        TTS_Top_Dog:Detune()
-        if not self:IsSyntheticController() then
-            message = DCAF.Story:SubstMessage(self.Messages.Top_Dog.UAV_Assigned_Assistant, ptn.Direction, direction)
+        if self:IsSyntheticController() then
+            local message = DCAF.Story:SubstMessage(self.Messages.Top_Dog.UAV_Assigned, ptn.Direction, direction)
+            TTS_Top_Dog:Tune(FREQ.UN_Orion)
+            self:Send(TTS_Top_Dog, message)
+            TTS_Top_Dog:Detune()
+        else
+            local message = DCAF.Story:SubstMessage(self.Messages.Top_Dog.UAV_Assigned_Assistant, ptn.Direction, direction)
             self:Send(tts_uav, message)
         end
     end)
@@ -470,12 +501,17 @@ function BloodySaturday:AddShowOfForce(sof)
 end
 
 function BloodySaturday:FlightArrive()
-    if self:IsFunctionDone() or not self:IsSyntheticController() then return end
-    self:SendSyntheticController(self.Messages.FlightArrive)
-    self:AddFlightCommand("Ready for sit-rep", function(menu)
-        menu:Remove()
-        self:SitRep()
-    end)
+    if self:IsFunctionDone() then return end
+    if self:IsSyntheticController() then
+        self:SendSyntheticController(self.Messages.FlightArrive)
+        self:AddFlightCommand("Ready for sit-rep", function(menu)
+            menu:Remove()
+            self:SitRep()
+        end)
+    else
+        self:DebugMessage("Flight has arrived...")
+        self:ShowOfForce_CounterProtesters()
+    end
 end
 
 function BloodySaturday:SitRep()
@@ -498,18 +534,15 @@ end
 
 function BloodySaturday:ShowOfForce_CounterProtesters()
     if self:IsFunctionDone() then return end
-    self:SendSyntheticController(self.Messages.ShowOfForce_1)
+    if self:IsSyntheticController() then
+        self:SendSyntheticController(self.Messages.ShowOfForce_1)
+    end
     local sof = self:AddShowOfForce(DCAF.ShowOfForce.React(self.Groups.RED.CounterProtesters_Group, function(sof, event)
         if self:IsDebug() then
             self:MessageToAssignedFlight(event:DebugText())
         end
         if sof.BuzzCount == 1 and event.Type == DCAF.ShowOfForceEventType.Buzz then
             self:CounterProtestersDisperse()
-            if self:IsSyntheticController() then
-                self:SendSyntheticController(self.Messages.ShowOfForce_2, 20)
-            else
-                self:SendAssistant(self.Messages.ShowOfForce_2_Assistant, 20)
-            end
         else
             -- no point doing more than 2 SOFs...
             self:StartMilitiaReinforcements()
@@ -531,12 +564,13 @@ function BloodySaturday:FirstFatalities()
     if self:IsFunctionDone() then return end
     if self:IsSyntheticController() then
         self:SendSyntheticController(self.Messages.FirstFatalities)
+        self:AddReconReportMenu_InboundMilitia()
     else
         self:SendAssistant(self.Messages.FirstFatalities_Assistant)
+        self:RequestInterdict(nil, self.Groups.RED.Armor, DCAF.ShowOfForceOptions:New():InitWeapon(700))
     end
     self:Activate(self.Groups.BLU.Police)
     self:Activate(self.Groups.BLU.Ambulances)
-    self:AddReconReportMenu_InboundMilitia()
 end
 
 function BloodySaturday:CounterProtestersDisperse()
@@ -567,13 +601,21 @@ function BloodySaturday:CounterProtestersDisperse()
         self:Delay(delay, function() disperse(static, i) end)
         delay = delay + 3
     end
+
+    if self:IsSyntheticController() then
+        self:SendSyntheticController(self.Messages.ShowOfForce_2, 20)
+    else
+        self:SendAssistant(self.Messages.ShowOfForce_2_Assistant, 20)
+    end
 end
 
 end -- (Act 2: The First Shot)
 
 do -- ||||||||||||||||||||||||||||||||||||    Act 3: Reinforcements and Escalation    ||||||||||||||||||||||||||||||||||||
+
 function BloodySaturday:StartMilitiaReinforcements()
     if self:IsFunctionDone() then return end
+    self:Activate(self.Groups.RED.CivRoadTraffic)
     self._eventSinkUnitDead = BASE:New()
     self._monitorHitGroups = {}
 
@@ -619,25 +661,26 @@ function BloodySaturday:StartMilitiaReinforcements()
 end
 
 function BloodySaturday:MilitiaUnitDead(unit)
+    if self:IsEnded() then return end
     self:DebugMessage("Unit dead: "..unit.UnitName)
     local group = unit:GetGroup()
     local message
     local delay = self.Settings.TimeControllerReactAfterKill
+    local direction = self:GetCardinalDirection(self.Groups.BLU.UN_1, self.Groups.RED.Armor)
     if group == self.Groups.RED.Armor then
         if self:IsSyntheticController() then
             message = group._isKillAuthorized and self.Messages.MilitiaArmorDestroyed or self.Messages.MilitiaArmorDestroyed_Unauthorized
-            self:Delay(delay, function() self:SendAssistant(message) end)
+            self:SendAssistant(message, delay)
         else
-            self:Delay(delay, self:Send(tts_uav, self.Messages.MilitiaArmorDestroyed_UAV))
+            local message = self:SubstMessage(self.Messages.MilitiaArmorDestroyed_UAV, ptn.Direction, direction)
+            self:SendDelayed(delay, tts_uav, message)
         end
     elseif group == self.Groups.RED.Technicals.Technicals_1 or group == self.Groups.RED.Technicals.Technicals_2 then
         if self:IsSyntheticController() then
-            self:Delay(delay, function() self:SendAssistant(self.Messages.MilitiaTechnicalsDestroyed) end)
+            self:SendAssistant(self.Messages.MilitiaTechnicalsDestroyed, delay)
         else
-            local groupUN = self.Groups.BLU.UN_1
-            local direction = self:GetCardinalDirection(groupUN, group)
             local message = self:SubstMessage(self.Messages.MilitiaArmorDestroyed_UAV, ptn.Direction, direction)
-            self:Delay(delay, function() self:Send(tts_uav, message) end)
+            self:SendDelayed(delay, tts_uav, message)
         end
     end   
 end
@@ -708,8 +751,9 @@ function BloodySaturday:MilitiaArmorGettingClose()
     end
 
     local distance = math.floor((self:Get2DDistance(un1, armor) + 250) / 500) * 500 -- rounds to nearest 500 meters
+Debug("nisse - BloodySaturday:MilitiaArmorGettingClose :: distance: "..Dump(distance))
     local message = self:SubstMessage(self.Messages.MilitiaArmorGettingClose_UAV, ptn.Direction, direction)
-    message = self:SubstMessage(message, ptn.Distance, distance.." meters")
+    message = self:SubstMessage(message, ptn.Distance, PhoneticAlphabet.ConvertNumber(distance).." meters")
     self:Send(tts_uav, message)
 end
 
@@ -738,8 +782,26 @@ function BloodySaturday:MilitiaArmorTooClose()
         self:SendSyntheticController(self.Messages.MilitiaArmorTooClose)
     else
         self:Send(tts_uav, self.Messages.MilitiaArmorTooClose_UAV)
+        self:Delay(30, function()
+            self:SendAssistant(self.Messages.RedWins_Assistant)
+        end)
+        local coordRetreat = self.Coordinates.Gali
+        if coordRetreat then
+            -- UN troops retreat...
+            local un2 = self.Groups.BLU.UN_2
+            if un2 then
+                un2:OptionROEOpenFire()
+                un2:RouteGroundOnRoad(coordRetreat, 60)
+                un2:CommandSetImmortal(false)
+            end
+            local un1 = self.Groups.BLU.UN_1
+            if un1 then
+                self:Delay(15, function() un1:RouteGroundOnRoad(coordRetreat, 60) end)
+                un1:CommandSetImmortal(false)
+            end
+        end
     end
-    self:RedWins("militia successfully surround UN patrol and take control over the village")
+    self:RedWins("militia take control over the village, arresting hundreds of pro-democratic demonstrators")
 end
 
 function BloodySaturday:StartShooter(groupName, delay) -- triggered by 'MIL Technicals-1', waypoint 1
@@ -782,10 +844,25 @@ function BloodySaturday:ShooterShooting(shooterGroup, shooterNumber)
         self.Groups.RED.CounterProtesters_Group:Destroy() -- avoid having UN suppress this guy (also, we no longer need him)
     end
     local messages = self.Messages.Shooter[shooterNumber]
+    local description = self.Settings.ShooterDescription[shooterNumber]
+
+    local function addDescription(message)
+        if description and isAssignedString(description.Initial) then
+            message = self:SubstMessage(message, ptn.Description, description.Initial)
+        else
+            message = self:SubstMessage(message, ptn.Description, "")
+        end
+        return message
+    end
 
     if not self:IsSyntheticController() then
         local message = self:SubstMessage(messages.Initial_Assistant, ptn.Direction, direction)
+        message = addDescription(message)
         self:SendAssistant(message)
+        if shooterNumber > 1 then
+Debug("nisse - BloodySaturday:ShooterShooting :: requests SOF for shooter #2 in 2 minutes")
+            self:Delay(Minutes(2), function() self:Request_SOF_Shooter(shooterGroup, messages, shooterNumber) end)
+        end
         return
     end
 
@@ -793,12 +870,8 @@ function BloodySaturday:ShooterShooting(shooterGroup, shooterNumber)
     local designation = self:_getShooterTargetDesignation(shooterNumber)
     local message = self:SubstMessage(messages.Initial, ptn.Direction, direction)
     message = self:SubstMessage(message, ptn.Designation, designation)
-    local description = self.Settings.ShooterDescription[shooterNumber]
-    if description and isAssignedString(description.Initial) then
-        message = self:SubstMessage(message, ptn.Description, description.Initial)
-    else
-        message = self:SubstMessage(message, ptn.Description, "")
-    end
+    message = addDescription(message)
+    -- local description = self.Settings.ShooterDescription[shooterNumber]
 
     local designation = self:_getShooterTargetDesignation(shooterNumber)
     self:AddFlightCommand_RequestLocation(designation, shooterGroup)
@@ -830,14 +903,8 @@ function BloodySaturday:_getShooterTargetDesignation(shooterNumber)
 end
 
 function BloodySaturday:Request_SOF_Shooter(shooterGroup, messages, shooterNumber)
-
     Debug(_name..":Request_SOF_Shooter :: shooterGroup: "..shooterGroup.GroupName.." :: messages: "..DumpPretty(messages).." :: shooterNumber: "..Dump(shooterNumber))
-    if not self:IsSyntheticController() then
-        self:Execute_SOF_Shooter(shooterGroup, messages, shooterNumber)
-        return
-    end
-
-    local message = messages.Request_SOF
+    local message = self:IsSyntheticController() and messages.Request_SOF or messages.Request_SOF_Assistant
     local designation = self:_getShooterTargetDesignation(shooterNumber)
     local message = self:SubstMessage(message, ptn.Designation, designation)
     if shooterNumber > 1 then
@@ -845,6 +912,11 @@ function BloodySaturday:Request_SOF_Shooter(shooterGroup, messages, shooterNumbe
         local ingress = self:GetCardinalDirection(self.Coordinates.Weapon_SOF_1, self.Groups.BLU.UN_1)
         message = self:SubstMessage(message, ptn.Direction, direction)
         message = self:SubstMessage(message, ptn.Ingress, ingress)
+    end
+    if not self:IsSyntheticController() then
+        self:SendAssistant(message)
+        self:Delay(Minutes(4), function() self:Shooter_RequestAttack() end)
+        return
     end
     self:SendSyntheticController(message)
     self:Execute_SOF_Shooter(shooterGroup, messages, shooterNumber)
@@ -960,12 +1032,8 @@ function BloodySaturday:TechnicalsRTB()
         group:RouteGroundOnRoad(self.Coordinates.MilitiaOrigin, 80)
     end
     -- shooters won't spawn from waypoints now, so we'll need to spawn them delayed...
-    DCAF.delay(function()
-        self:StartShooter(names.TangoAlpha)
-    end, Minutes(5))
-    DCAF.delay(function()
-        self:StartShooter(names.TangoBravo)
-    end, Minutes(10))
+    self:Delay(Minutes(5), function() self:StartShooter(names.TangoAlpha) end)
+    self:Delay(Minutes(10), function() self:StartShooter(names.TangoBravo) end)
 end
 
 function BloodySaturday:RequestInterdict(message, group, sofOptions)
@@ -987,7 +1055,9 @@ function BloodySaturday:RequestInterdict(message, group, sofOptions)
         sof:End()
         self:MilitiaGroupRTB(group)
     end, sofOptions))
-    self:AddFlightCommand_ArmorRTB()
+    if self:IsSyntheticController() then
+        self:AddFlightCommand_ArmorRTB()
+    end
 end
 
 function BloodySaturday:UnCommanderReceiveReconReport_InboundMilitia(road, types, score)
@@ -1059,6 +1129,12 @@ end -- (Act 3: Reinforcements and Escalation)
 do -- ||||||||||||||||||||||||||||||||||||    Phase 4: Neutralizing the Threat    ||||||||||||||||||||||||||||||||||||
 function BloodySaturday:Shooter_RequestAttack()
     if self:IsFunctionDone() then return end
+    if not self:IsSyntheticController() then
+        self:SendAssistant(self.Messages.Shooter_RequestAttack_Assistant)
+        self:MonitorAttack_TangoBravo()
+        return
+    end
+
     local distance = math.floor(self:Get2DDistance(self.Groups.BLU.UN_1, self.Groups.RED.Shooter_2))
     local message = self:SubstMessageDistance(self.Messages.Shooter_RequestAttack, distance)
     local shooterDescription = self.Settings.ShooterDescription[2]
@@ -1084,8 +1160,13 @@ function BloodySaturday:Shooter_RequestAttack()
         end
     end
     self:SendSyntheticController(message)
+    self:MonitorAttack_TangoBravo()
+end
+
+function BloodySaturday:MonitorAttack_TangoBravo()
     local groupFlight = self.AssignedFlight.Group
     local groupShooter = self.Groups.RED.Shooter_2
+    local chemTank_3 = self.Groups.RED.ChemTank_3
     local isShooterHit
     local schedulerID
 
@@ -1102,15 +1183,15 @@ function BloodySaturday:Shooter_RequestAttack()
         end
 
         schedulerID = DCAF.startScheduler(function()
-            if groupShooter:GetLife()  < groupShooter:GetLife0() then
-Debug("nisse - shooter health deteriorated")
+            if groupShooter:GetLife() < groupShooter:GetLife0() then
+Debug("nisse - BloodySaturday:MonitorAttackOnShooter_2 :: shooter health deteriorated")
                 stopMonitorShooterHealth()
                 story:TangoBravo_GoodEffect()
             end
         end, 1)
         groupShooter:HandleEvent(EVENTS.Hit, function(_, e)
-            isShooterHit = isShooterHit or e.TgtGroup == groupShooter
-Debug("nisse - ".._name.." :: HIT event :: isShooterHit: "..Dump(isShooterHit))
+            isShooterHit = isShooterHit or e.TgtGroup == groupShooter or e.TgtUnit == chemTank_3
+Debug("nisse - BloodySaturday:MonitorAttackOnShooter_2 :: HIT event :: isShooterHit: "..Dump(isShooterHit))
             if isShooterHit then
                 stopMonitorShooterHealth()
                 groupShooter:UnHandleEvent(EVENTS.Hit)
@@ -1120,7 +1201,7 @@ Debug("nisse - ".._name.." :: HIT event :: isShooterHit: "..Dump(isShooterHit))
         end)
         groupFlight:HandleEvent(EVENTS.ShootingEnd, function()
             self:Delay(10, function()
-    Debug("nisse - ".._name.." :: ShootingEnd event :: isShooterHit: "..Dump(isShooterHit))
+Debug("nisse - BloodySaturday:MonitorAttackOnShooter_2 :: ShootingEnd event :: isShooterHit: "..Dump(isShooterHit))
                 if isShooterHit then
                     stopMonitorShooterHealth()
                     story:TangoBravo_GoodEffect()
@@ -1135,7 +1216,11 @@ function BloodySaturday:TangoBravo_GoodEffect(delay)
     if not isNumber(delay) then delay = 3 end
     self:Delay(delay, function()
         -- just mopping up now...
-        self:SendSyntheticController(self.Messages.TangoBravo_GoodEffect)
+        if self:IsSyntheticController() then
+            self:SendSyntheticController(self.Messages.TangoBravo_GoodEffect)
+        else
+            self:SendAssistant(self.Messages.TangoBravo_GoodEffect_Assistant)
+        end
         self:Delay(Minutes(1), function() self:TechnicalsRTB() end)
         self:Delay(Minutes(2), function() self:CounterProtestRTB() end)
         self:Delay(Minutes(3), function() self:TangoBravoDown() end)
@@ -1152,7 +1237,11 @@ end
 
 function BloodySaturday:TangoBravoDown()
     if self:IsFunctionDone() then return end
-    self:SendSyntheticController(self.Messages.TangoBravo_Down)
+    if self:IsSyntheticController() then
+        self:SendSyntheticController(self.Messages.TangoBravo_Down)
+    else
+        self:SendAssistant(self.Messages.TangoBravo_GoodEffect_Assistant)
+    end
     self:Delay(Minutes(2), function() self:BlueWins("Militia is RTB - rescuers can treat demonstrators") end)
 end
 end -- (Phase 4: Neutralizing the Threat)
@@ -1160,12 +1249,21 @@ end -- (Phase 4: Neutralizing the Threat)
 do  -- ||||||||||||||||||||||||||||||||||||    GM Menus    ||||||||||||||||||||||||||||||||||||
 
 function BloodySaturday:BlueWins(resolution)
-    self:SendSyntheticController(self.Messages.BlueWins)
+    if self:IsFunctionDone() then return end
+    if self:IsSyntheticController() then
+        self:SendSyntheticController(self.Messages.BlueWins)
+    else
+        self:SendAssistant(self.Messages.BlueWins)
+    end
     self:End()
     self:DebugMessage(_name.." :: BLU WINS :: "..Dump(resolution), 40)
 end
 
 function BloodySaturday:RedWins(resolution)
+    if self:IsFunctionDone() then return end
+    if not self:IsSyntheticController() then
+        self:SendAssistant(self.Messages.RedWins_Assistant)
+    end
     self:End()
     self:DebugMessage(_name.." :: RED WINS :: "..Dump(resolution), 40)
 end
